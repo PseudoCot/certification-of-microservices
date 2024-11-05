@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DestroyService } from './shared/utils/services/destroy.service';
+import { httpInterceptorProviders } from './shared/utils/http-request.interceptor';
 
 @NgModule({
   imports: [
@@ -11,7 +11,6 @@ import { DestroyService } from './shared/utils/services/destroy.service';
     BrowserModule,
     AppRoutingModule,
   ],
-  providers: [DestroyService],
-  bootstrap: [AppComponent],
+  providers: [DestroyService, httpInterceptorProviders],
 })
 export class AppModule { }
