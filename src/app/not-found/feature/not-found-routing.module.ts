@@ -1,16 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserPage } from './user.page';
+import { NotFoundPage } from './not-found.page';
 
 const routes: Routes = [
   {
-    path: '/',
-    component: UserPage,
-  },
-  {
-    path: '**',
-    redirectTo: '/',
-    pathMatch: 'full'
+    path: '',
+    component: NotFoundPage,
   }
 ];
 
@@ -18,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class UserRoutingModule { }
+export class NotFoundRoutingModule { }

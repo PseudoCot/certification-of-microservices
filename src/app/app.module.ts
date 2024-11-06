@@ -1,16 +1,36 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DestroyService } from './shared/utils/services/destroy.service';
 import { httpInterceptorProviders } from './shared/utils/http-request.interceptor';
+import { environment } from '../environments/environment';
+import { ENVIRONMENT } from './shared/data-accesss/environment.service';
+import { ConfigurationService } from './shared/data-accesss/confifuration.service';
+
+export function initApp(configurationService: ConfigurationService) {
+  return () => configurationService.load().toPromise();
+}
 
 @NgModule({
-  imports: [
+  declarations: [
     AppComponent,
+  ],
+  imports: [
     BrowserModule,
     AppRoutingModule,
   ],
-  providers: [DestroyService, httpInterceptorProviders],
+  providers: [
+    DestroyService,
+    httpInterceptorProviders,
+    { provide: ENVIRONMENT, useValue: environment },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initApp,
+      multi: true,
+      deps: [ConfigurationService]
+    }
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,7 +5,28 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () =>
-      import('./home/feature/home.module').then((m) => m.HomePageModule),
+      import('./home/feature/home.module').then((m) => m.HomeModule),
+  },
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import('./auth/feature/auth-shell/auth.module').then(
+        (m) => m.AuthModule
+      ),
+  },
+  {
+    path: 'user',
+    loadChildren: () =>
+      import('./user/feature/user.module').then(
+        (m) => m.UserModule
+      ),
+  },
+  {
+    path: 'services',
+    loadChildren: () =>
+      import('./services/feature/services-shell/services.module').then(
+        (m) => m.ServicesModule
+      ),
   },
   {
     path: '',
@@ -13,26 +34,12 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'auth',
+    path: '**',
     loadChildren: () =>
-      import('./auth/feature/auth-shell/auth.module').then(
-        (m) => m.AuthPageModule
+      import('./not-found/feature/not-found.module').then(
+        (m) => m.NotFoundModule
       ),
   },
-  {
-    path: 'user',
-    loadChildren: () =>
-      import('./user/feature/user.module').then(
-        (m) => m.UserPageModule
-      ),
-  },
-  // {
-  //   path: 'feedback',
-  //   loadChildren: () =>
-  //     import('./feedback/feature/feedback/feedback.module').then(
-  //       (m) => m.FeedbackPageModule
-  //     ),
-  // },
 ];
 
 @NgModule({
