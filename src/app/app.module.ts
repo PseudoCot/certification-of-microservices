@@ -6,7 +6,7 @@ import { DestroyService } from './shared/utils/services/destroy.service';
 import { httpInterceptorProviders } from './shared/utils/http-request.interceptor';
 import { environment } from '../environments/environment';
 import { ENVIRONMENT } from './shared/data-accesss/environment.service';
-import { ConfigurationService } from './shared/data-accesss/confifuration.service';
+import { ConfigurationService } from './shared/data-accesss/configuration.service';
 
 export function initApp(configurationService: ConfigurationService) {
   return () => configurationService.load().toPromise();
