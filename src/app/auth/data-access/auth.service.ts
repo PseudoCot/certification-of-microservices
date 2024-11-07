@@ -31,7 +31,7 @@ export class AuthService {
       );
   }
 
-  public refteshToken() {
+  public refreshToken() {
     return this.http.post<User>(`${API_URL}/refreshToken`,
       {})
       .pipe(

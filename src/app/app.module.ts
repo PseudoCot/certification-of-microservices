@@ -2,7 +2,7 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { DestroyService } from './shared/utils/services/destroy.service';
+import { DestroyService } from './shared/data-accesss/destroy.service';
 import { httpInterceptorProviders } from './shared/utils/http-request.interceptor';
 import { environment } from '../environments/environment';
 import { ENVIRONMENT } from './shared/data-accesss/environment.service';
