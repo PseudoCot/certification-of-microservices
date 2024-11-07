@@ -1,1 +1,233 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('fonts/BebasNeueBold.eot');
+  src: local('Bebas Neue Bold'), local('BebasNeueBold'), local('Bebas-Neue-Bold'),
+    url('../fonts/BebasNeueBold.woff2') format('woff2'),
+    url('../fonts/BebasNeueBold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('fonts/BebasNeueRegular.eot');
+  src: local('Bebas Neue Regular'), local('BebasNeueRegular'), local('Bebas-Neue-Regular'),
+    url('../fonts/BebasNeueRegular.woff2') format('woff2'),
+    url('../fonts/BebasNeueRegular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Museo Sans';
+  src: url('fonts/MuseoSansMedium.eot');
+  src: local('Museo Sans Medium'), local('MuseoSansMedium'), local('Museo-Sans-Medium'),
+    url('../fonts/MuseoSansMedium.woff2') format('woff2'),
+    url('../fonts/MuseoSansMedium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Museo Sans';
+  src: url('fonts/MuseoSansLight.eot');
+  src: local('Museo Sans Light'), local('MuseoSansLight'), local('Museo-Sans-Light'),
+    url('../fonts/MuseoSansLight.woff2') format('woff2'),
+    url('../fonts/MuseoSansLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+:root {
+  --max-content-width: 1480px;
+
+  --bebas-font: "Bebas Neue", sans-serif;
+  --museo-font: "Museo Sans", sans-serif;
+
+  --dark-text-color: #000;
+  --theme-text-color: #283493;
+
+  --bg-color: #e3f2fdc9;
+  --darker-theme-color: #7e8bff42;
+
+  --loader-light-color: #9ba7ff;
+  --loader-dark-color: #3855f6;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  /* font-family: var(--second-family); */
+}
+
+body {
+  font-weight: 400;
+  background-color: var(--bg-color);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+
+/* glob */
+.list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.btn-reset {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+.title-reset,
+.paragraph-reset {
+  margin: 0;
+}
+
+.stop-scroll {
+  overflow-y: hidden;
+  padding-right: 15px;
+}
+
+html,
+body,
+#root,
+.container {
+  min-height: 100vh;
+}
+
+/* .container {
+  padding: 0 15px;
+  background-color: var(--bg-color);
+} */
+
+.main {
+  padding: 0 100px;
+  margin: 0 auto;
+  max-width: var(--max-content-width);
+  min-height: 500px;
+  /* min-height: calc(100% - var(--header-and-footer-height)); */
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+
+
+
+/* #loader */
+.loader {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--loader-dark-color);
+  box-shadow: 32px 0 var(--loader-dark-color), -32px 0 var(--loader-dark-color);
+  animation: loader 0.5s ease-out infinite alternate;
+}
+
+.loader--vertical-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.loader--horizontal-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.loader--center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loader--small {
+  width: 8px;
+  height: 8px;
+  background-color: var(--loader-dark-color);
+  box-shadow: 16px 0 var(--loader-dark-color), -16px 0 var(--loader-dark-color);
+}
+
+@keyframes loader {
+  0% {
+    background-color: var(--loader-light-color);
+    box-shadow: 32px 0 var(--loader-light-color), -32px 0 var(--loader-dark-color);
+  }
+
+  50% {
+    background-color: var(--loader-dark-color);
+    box-shadow: 32px 0 var(--loader-light-color), -32px 0 var(--loader-light-color);
+  }
+
+  100% {
+    background-color: var(--loader-light-color);
+    box-shadow: 32px 0 var(--loader-dark-color), -32px 0 var(--loader-light-color);
+  }
+}
+
+
+/* #modal-window */
+.modal-window {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(13px);
+  background-color: #80808042;
+  opacity: 0;
+  z-index: -100;
+}
+
+.modal-window--show {
+  padding: 50px 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  z-index: 100;
+  opacity: 1;
+  overflow-y: auto;
+}
