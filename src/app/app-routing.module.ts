@@ -5,11 +5,13 @@ import { AuthGuard } from './shared/utils/guards/auth.guard';
 const routes: Routes = [
   {
     path: 'home',
+    title: 'Аттестация микросервисов',
     loadChildren: () =>
       import('./home/feature/home.module').then((m) => m.HomeModule),
   },
   {
     path: 'auth',
+    title: 'Аутентификация',
     loadChildren: () =>
       import('./auth/feature/auth-shell/auth.module').then(
         (m) => m.AuthModule
@@ -17,6 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'user',
+    title: 'Личный кабинет',
     loadChildren: () =>
       import('./user/feature/user.module').then(
         (m) => m.UserModule
@@ -25,6 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'services',
+    title: 'Сервисы',
     loadChildren: () =>
       import('./services/feature/services-shell/services.module').then(
         (m) => m.ServicesModule
@@ -38,6 +42,7 @@ const routes: Routes = [
   },
   {
     path: '**',
+    title: 'Страница не найдена',
     loadChildren: () =>
       import('./not-found/feature/not-found.module').then(
         (m) => m.NotFoundModule

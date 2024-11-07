@@ -8,18 +8,22 @@ import { ServicesUnitPage } from '../services-unit/services-unit.page';
 const routes: Routes = [
   {
     path: '/',
+    title: 'Список сервисов',
     component: ServicesListPage,
   },
   {
     path: '/templates',
+    title: 'Набор шаблонов',
     component: ServicesTemplatesPage,
   },
   {
     path: '/templates/:id',
+    title: 'Детали шаблона',
     component: ServicesTemplatePage,
   },
   {
     path: '/:id',
+    title: 'Информация о сервисе',
     component: ServicesUnitPage,
   },
   {

@@ -6,10 +6,12 @@ import { AuthRegisterPage } from '../auth-register/auth-register.page';
 const routes: Routes = [
   {
     path: '/login',
+    title: 'Вход',
     component: AuthLoginPage,
   },
   {
     path: '/register',
+    title: 'Регистрация',
     component: AuthRegisterPage,
   },
   {
