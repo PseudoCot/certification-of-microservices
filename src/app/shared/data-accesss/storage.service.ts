@@ -1,37 +1,36 @@
 import { Injectable } from '@angular/core';
+import { JWTSession } from '../types/jwt-session.type';
 
-const USER_KEY = 'auth-user';
+const SESSION_KEY = 'session';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
-  constructor() { }
 
-  clean(): void {
-    window.sessionStorage.clear();
-  }
+  private _sessionData!: JWTSession | null;
 
-  public saveUser(user: any): void {
-    window.sessionStorage.removeItem(USER_KEY);
-    window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
-  }
-
-  public getUser(): any {
-    const user = window.sessionStorage.getItem(USER_KEY);
-    if (user) {
-      return JSON.parse(user);
+  public getSessionData(): JWTSession | null {
+    if (this._sessionData) {
+      return this._sessionData
+    } else {
+      const sessionData = localStorage.getItem(SESSION_KEY)
+      if (sessionData) {
+        this._sessionData = JSON.parse(sessionData) as JWTSession
+        return this._sessionData;
+      } else {
+        return null;
+      }
     }
-
-    return {};
   }
 
-  public isLoggedIn(): boolean {
-    const user = window.sessionStorage.getItem(USER_KEY);
-    if (user) {
-      return true;
-    }
+  public setSessionData(data: JWTSession): void {
+    localStorage.setItem(SESSION_KEY, JSON.stringify(data))
+    this._sessionData = data;
+  }
 
-    return false;
+  public removeSession() {
+    localStorage.removeItem(SESSION_KEY)
+    this._sessionData = null;
   }
 }
