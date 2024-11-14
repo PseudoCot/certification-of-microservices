@@ -1,0 +1,391 @@
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('fonts/BebasNeueBold.eot');
+  src: local('Bebas Neue Bold'), local('BebasNeueBold'), local('Bebas-Neue-Bold'),
+    url('../fonts/BebasNeueBold.woff2') format('woff2'),
+    url('../fonts/BebasNeueBold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('fonts/BebasNeueRegular.eot');
+  src: local('Bebas Neue Regular'), local('BebasNeueRegular'), local('Bebas-Neue-Regular'),
+    url('../fonts/BebasNeueRegular.woff2') format('woff2'),
+    url('../fonts/BebasNeueRegular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Museo Sans';
+  src: url('fonts/MuseoSansMedium.eot');
+  src: local('Museo Sans Medium'), local('MuseoSansMedium'), local('Museo-Sans-Medium'),
+    url('../fonts/MuseoSansMedium.woff2') format('woff2'),
+    url('../fonts/MuseoSansMedium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Museo Sans';
+  src: url('fonts/MuseoSansLight.eot');
+  src: local('Museo Sans Light'), local('MuseoSansLight'), local('Museo-Sans-Light'),
+    url('../fonts/MuseoSansLight.woff2') format('woff2'),
+    url('../fonts/MuseoSansLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+:root {
+  --max-content-width: 1950px;
+
+  --museo-font: "Museo Sans", sans-serif;
+  --bebas-font: "Bebas Neue", sans-serif;
+  --font-family: "Museo Sans", sans-serif;
+  --second-family: "Bebas Neue", sans-serif;
+
+  --black-color: #1C1A1A;
+  --orange-color: #CF5F00;
+  --test-green-color: #5BAB35;
+  --white-color: #FFFFFF;
+
+  --green-color: #538C38;
+
+  --text-dark-color: #212121;
+  --text-light-color: #FFFFFF;
+
+  --page-bg-color: #1C1A1A;
+  --footer-bg-color: #37373733;
+  --card-bg-color: #373737;
+  --hidden-nav-bg-color: #2C2C2C;
+
+  --loader-light-color: #9ba7ff;
+  --loader-dark-color: #3855f6;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  /* font-family: var(--second-family); */
+}
+
+body {
+  font-weight: 400;
+  background-color: var(--page-bg-color);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+
+/* /// global /// */
+html,
+body,
+#root,
+.main-container {
+  min-height: 100vh;
+}
+
+.main-container {
+  padding: 0 15px;
+  background-color: var(--bg-color);
+}
+
+.header {
+  margin: 0 auto;
+  max-width: var(--max-content-width);
+  /* min-height: calc(100% - var(--header-and-footer-height)); */
+}
+
+.nav {
+  padding: 40px 100px 0;
+  margin-bottom: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.hidden-nav {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  padding: 20px 20px 60px 15px;
+  min-width: 200px;
+  max-width: 300px;
+  min-height: 200px;
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+.hidden-nav__close-btn {
+  padding: 5px;
+  margin: -5px -5px 40px auto;
+  width: 16px;
+}
+
+.hidden-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hidden-nav__item-link {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 28px;
+  color: var(--text-light-color);
+}
+
+.nav-control {
+  width: 53px;
+  height: 53px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 3px solid var(--green-color);
+}
+
+.main-controls {
+  display: flex;
+  flex-direction: row;
+  gap: 27px;
+}
+
+.burger-btn__list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.burger-btn__item {
+  border-radius: 5px;
+  width: 21px;
+  height: 3px;
+  background-color: var(--green-color);
+}
+
+.user-controls__list {
+  display: flex;
+  flex-direction: row;
+  gap: 27px;
+}
+
+
+.main {
+  margin: 0 auto 100px;
+  max-width: var(--max-content-width);
+  /* min-height: calc(100% - var(--header-and-footer-height)); */
+}
+
+
+.footer {
+  margin: 0 auto;
+  max-width: var(--max-content-width);
+  /* min-height: calc(100% - var(--header-and-footer-height)); */
+  box-shadow: inset 4px 1px 10 rgba(0, 0, 0, 0.4);
+  background-color: var(--footer-bg-color);
+}
+
+.media {
+  padding: 50px;
+}
+
+.media__list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 25px;
+}
+
+.media__item-link {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 36px;
+  color: var(--orange-color);
+}
+
+.background-angle {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: -100;
+}
+
+
+/* /// common /// */
+.list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.btn-reset {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+.title-reset,
+.paragraph-reset {
+  margin: 0;
+}
+
+.stop-scroll {
+  overflow-y: hidden;
+  padding-right: 15px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+
+/* #loader */
+.loader {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--loader-dark-color);
+  box-shadow: 32px 0 var(--loader-dark-color), -32px 0 var(--loader-dark-color);
+  animation: loader 0.5s ease-out infinite alternate;
+}
+
+.loader--vertical-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.loader--horizontal-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.loader--center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loader--small {
+  width: 8px;
+  height: 8px;
+  background-color: var(--loader-dark-color);
+  box-shadow: 16px 0 var(--loader-dark-color), -16px 0 var(--loader-dark-color);
+}
+
+@keyframes loader {
+  0% {
+    background-color: var(--loader-light-color);
+    box-shadow: 32px 0 var(--loader-light-color), -32px 0 var(--loader-dark-color);
+  }
+
+  50% {
+    background-color: var(--loader-dark-color);
+    box-shadow: 32px 0 var(--loader-light-color), -32px 0 var(--loader-light-color);
+  }
+
+  100% {
+    background-color: var(--loader-light-color);
+    box-shadow: 32px 0 var(--loader-dark-color), -32px 0 var(--loader-light-color);
+  }
+}
+
+
+/* #modal-window */
+.modal-window {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(13px);
+  background-color: #80808042;
+  opacity: 0;
+  z-index: -100;
+}
+
+.modal-window--show {
+  padding: 50px 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  z-index: 100;
+  opacity: 1;
+  overflow-y: auto;
+}
+
+
+
+/* /// cervices /// */
+
+
+
+
+/* /// realises /// */
+
+
+
+
+/* /// requirements /// */
+
+
+
+
+/* /// templates /// */
+
+
+
+/*
+alpha % = alpha HEX
+90% = e6
+80% = cc
+70% = b3
+60% = 99
+50% = 80
+40% = 66
+30% = 4d
+20% = 33
+10% = 1a
+*/
