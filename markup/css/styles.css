@@ -31,6 +31,20 @@
   font-display: swap;
 }
 
+/* /////////////////////// */
+/* /////////////////////// */
+/* /////////////////////// */
+@font-face {
+  font-family: 'Museo Sans Cyrl';
+  src: url('fonts/MuseoSansCyrlMedium.eot');
+  src: local('Museo Sans Cyrl Medium'), local('MuseoSansCyrlMedium'), local('Museo-Sans-Medium'),
+    url('../fonts/MuseoSansCyrlMedium.woff2') format('woff2'),
+    url('../fonts/MuseoSansCyrlMedium.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @font-face {
   font-family: 'Museo Sans Cyrl';
   src: url('fonts/MuseoSansCyrlLight.eot');
@@ -64,8 +78,11 @@
   --footer-bg-color: #37373733;
   --hidden-nav-bg-color: #2C2C2C;
   --card-bg-color: #373737;
-  --input-bg-color: #d9d9d90C;
+  --search-bg-color: #d9d9d90C;
   --list-item-bg-color: #1C1A1A;
+  --button-bg-color: #4D4D4D;
+  --checked-radio-btn-bg-color: #585757;
+  --unchecked-radio-btn-bg-color: #3F3F3F;
 
   --loader-light-color: #9ba7ff;
   --loader-dark-color: #3855f6;
@@ -101,7 +118,9 @@ img {
 
 
 
-/* /// common /// */
+/* ///////////////////        /////////////////// */
+/* /////////////////// common /////////////////// */
+/* ///////////////////        /////////////////// */
 .list-reset {
   margin: 0;
   padding: 0;
@@ -140,8 +159,9 @@ img {
 }
 
 
-
-/* /// global /// */
+/* ///////////////////        /////////////////// */
+/* /////////////////// global /////////////////// */
+/* ///////////////////        /////////////////// */
 .header {
   padding: 0 15px;
 }
@@ -280,9 +300,10 @@ img {
 
 
 
+/* /// card /// */
 .card {
   border-radius: 10px;
-  box-shadow: 0 9px 8px 0 rgba(255, 115, 0, 0.1);
+  box-shadow: 0 9px 8px 0 #FF73001A;
   background-color: var(--card-bg-color);
 }
 
@@ -290,15 +311,16 @@ img {
   font-family: var(--second-family);
   font-weight: 700;
   font-size: 70px;
+  line-height: 100%;
   letter-spacing: 1px;
   color: var(--text-light-color);
 }
 
-.card-input-wrapper {
+.card-search-wrapper {
   position: relative;
 }
 
-.card-input-wrapper::before {
+.card-search-wrapper::before {
   position: absolute;
   left: 20px;
   top: calc(50% - 21px);
@@ -308,19 +330,20 @@ img {
   background-image: url('../icons/loupe.svg');
 }
 
-.card-input {
+.card-search {
   padding: 21px 16px 21px 50px;
   font-family: var(--font-family);
   font-weight: 300;
   font-size: 26px;
+  line-height: 100%;
   color: var(--text-light-color);
-  background-color: var(--input-bg-color);
+  background-color: var(--search-bg-color);
   border: 1px solid var(--black-color);
   border-radius: 10px;
 }
 
-.card-input::placeholder {
-  color: #ffffff4D;
+.card-search::placeholder {
+  color: #FFFFFF4D;
 }
 
 .card-list-item {
@@ -328,6 +351,7 @@ img {
   font-family: var(--font-family);
   font-weight: 300;
   font-size: 26px;
+  line-height: 100%;
   color: var(--text-light-color);
   border: 1px solid var(--black-color);
   border-radius: 10px;
@@ -335,9 +359,71 @@ img {
 
 
 
+/* /// modal-card /// */
+.modal-card {
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 0 21px 0 var(--green-color);
+  background-color: var(--card-bg-color);
+}
+
+.modal-card-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 5px;
+}
+
+.modal-card-title {
+  display: block;
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 100%;
+  letter-spacing: 1px;
+  text-align: center;
+  color: var(--text-light-color);
+}
+
+.modal-card-question {
+  display: block;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 32px;
+  text-align: justify;
+  color: var(--text-light-color);
+}
+
+.modal-card-input {
+  padding: 9px 15px;
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 100%;
+  color: var(--text-light-color);
+  background-color: inherit;
+  border: 2px solid #FFFFFF4D;
+  border-radius: 10px;
+}
+
+.modal-card-input::placeholder {
+  color: #FFFFFF4D;
+}
+
+.modal-card-submit-btn {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  color: var(--text-light-color);
+  background-color: var(--button-bg-color);
+  border: 1px solid var(--green-color);
+  border-radius: 35px;
+}
 
 
-/* #loader */
+
+/* /// loader /// */
 .loader {
   position: relative;
   display: inline-block;
@@ -393,7 +479,7 @@ img {
 }
 
 
-/* #modal-window */
+/* /// modal-window /// */
 .modal-window {
   position: fixed;
   top: 0;
@@ -424,55 +510,202 @@ img {
 
 
 
-/* /// cervices /// */
-.cervices {
+/* ///////////////////          /////////////////// */
+/* /////////////////// cervices /////////////////// */
+/* ///////////////////          /////////////////// */
+
+/* /// cervices-list /// */
+.cervices-list {
   padding: 48px 70px;
   margin: 0 auto;
   width: 770px;
 }
 
-.cervices__head {
+.cervices-list__head {
   position: relative;
-  margin: 0 auto 76px;
+  margin: 0 auto 65px;
   width: fit-content;
 }
 
-.cervices__add-btn {
+.cervices-list__add-btn {
   position: absolute;
   top: 5px;
   right: -55px;
   padding: 5px;
 }
 
-.cervices__search-input {
+.cervices-list__search-input {
   margin-bottom: 21px;
   width: 100%;
   height: 60px;
 }
 
-.cervices__list {
+.cervices-list__list {
   display: flex;
   flex-direction: column;
   gap: 21px;
 }
 
-.cervices__item {}
 
-.cervices__item-link {}
+/* /// add-cervice /// */
+.add-cervice__form {
+  padding: 56px 90px 20px;
+  width: 570px;
+}
+
+.add-cervice__title {
+  margin-bottom: 30px;
+}
+
+.add-cervice__input {
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.add-cervice__btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+}
+
+.add-cervice__submit-btn,
+.add-cervice__cancel-btn {
+  padding: 13px 20px;
+}
+
+
+/* /// delete-cervice /// */
+.delete-cervice__form {
+  padding: 66px 50px 30px;
+  width: 720px;
+}
+
+.delete-cervice__question {
+  margin-bottom: 50px;
+}
+
+.delete-cervice__btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 10px;
+}
+
+.delete-cervice__submit-btn {
+  padding: 12px 40px;
+}
+
+.delete-cervice__cancel-btn {
+  padding: 12px 34px;
+}
+
+
+/* /// add-requirement /// */
+.create-requirement__form {
+  padding: 56px 53px 20px;
+  width: 570px;
+}
+
+.create-requirement__title {
+  margin-bottom: 10px;
+}
+
+.create-requirement__input {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.create-requirement__radio-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.create-requirement__radio-input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  z-index: -1;
+}
+
+.create-requirement__radio-label {
+  position: relative;
+  padding: 8px 10px 8px 40px;
+  display: block;
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 24px;
+  color: #FFFFFF80;
+  border: 1px solid #797979;
+  border-radius: 8px;
+  background-color: var(--unchecked-radio-btn-bg-color);
+  cursor: pointer;
+}
+
+.create-requirement__radio-input:checked+.create-requirement__radio-label {
+  color: #FFFFFF;
+  border: 1px solid #FFFFFFA7;
+  background-color: var(--checked-radio-btn-bg-color);
+}
+
+.create-requirement__radio-label::before {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  width: 24px;
+  height: 21px;
+  content: '';
+  transform: translateY(-55%);
+  z-index: 100;
+}
+
+.create-requirement__submit-btn {
+  padding: 13px 20px;
+  display: block;
+  margin: 0 auto;
+}
+
+.create-requirement__link-radio-btn .create-requirement__radio-label::before {
+  background: no-repeat center center url('../icons/link.svg');
+}
+
+.create-requirement__file-radio-btn .create-requirement__radio-label::before {
+  background: no-repeat center center url('../icons/file.svg');
+}
+
+.create-requirement__text-radio-btn .create-requirement__radio-label::before {
+  background: no-repeat center center url('../icons/pen.svg');
+}
 
 
 
-/* /// realises /// */
+
+
+
+/* ///////////////////          /////////////////// */
+/* /////////////////// realises /////////////////// */
+/* ///////////////////          /////////////////// */
 
 
 
 
-/* /// requirements /// */
+
+/* ///////////////////              /////////////////// */
+/* /////////////////// requirements /////////////////// */
+/* ///////////////////              /////////////////// */
 
 
 
 
-/* /// templates /// */
+
+/* ///////////////////           /////////////////// */
+/* /////////////////// templates /////////////////// */
+/* ///////////////////           /////////////////// */
+
 
 
 
