@@ -119,6 +119,24 @@
         </form>
       </div> -->
 
+      <!-- <div class="cervices__delete-cervice delete-cervice modal-window modal-window--show">
+        <form class="delete-cervice__form modal-card">
+          <button class="delete-cervice__close-btn modal-card-close-btn btn-reset" type="button">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.6 16L0 14.4L6.4 8L0 1.6L1.6 0L8 6.4L14.4 0L16 1.6L9.6 8L16 14.4L14.4 16L8 9.6L1.6 16Z"
+                fill="#538C38" />
+            </svg>
+          </button>
+          <label class="delete-cervice__question modal-card-question" for="cervice-name">
+            Вы действительно хотите безвозвратно удалить это требование?
+          </label>
+          <div class="delete-cervice__btns">
+            <input class="delete-cervice__submit-btn modal-card-submit-btn" type="submit" value="Да">
+            <input class="delete-cervice__cancel-btn modal-card-submit-btn" type="submit" value="Нет">
+          </div>
+        </form>
+      </div> -->
+
       <!-- <div class="cervices__create-requirement create-requirement modal-window modal-window--show">
         <form class="create-requirement__form modal-card">
           <button class="create-requirement__close-btn modal-card-close-btn btn-reset" type="button">
@@ -131,20 +149,23 @@
           <input class="create-requirement__input modal-card-input" type="text" name="cervice-name" id="cervice-name"
             placeholder="Название требования">
           <div class="create-requirement__radio-btns">
-            <div class="create-requirement__radio-btn create-requirement__link-radio-btn">
+            <div class="create-requirement__radio-btn">
               <input class="create-requirement__radio-input" type="radio" name="requirement-type" id="link-requirement"
                 value="link-requirement" checked>
-              <label class="create-requirement__radio-label" for="link-requirement">Ссылка</label>
+              <label class="create-requirement__radio-label requirement-entity requirement-entity--link"
+                for="link-requirement">Ссылка</label>
             </div>
-            <div class="create-requirement__radio-btn create-requirement__file-radio-btn">
+            <div class="create-requirement__radio-btn">
               <input class="create-requirement__radio-input" type="radio" name="requirement-type" id="file-requirement"
                 value="file-requirement">
-              <label class="create-requirement__radio-label" for="file-requirement">Файл</label>
+              <label class="create-requirement__radio-label requirement-entity requirement-entity--file"
+                for="file-requirement">Файл</label>
             </div>
-            <div class="create-requirement__radio-btn create-requirement__text-radio-btn">
+            <div class="create-requirement__radio-btn">
               <input class="create-requirement__radio-input" type="radio" name="requirement-type" id="text-requirement"
                 value="text-requirement">
-              <label class="create-requirement__radio-label" for="text-requirement">Текст</label>
+              <label class="create-requirement__radio-label requirement-entity requirement-entity--text"
+                for="text-requirement">Текст</label>
             </div>
           </div>
           <button class="create-requirement__submit-btn modal-card-submit-btn btn-reset"
@@ -152,39 +173,152 @@
         </form>
       </div> -->
 
-      <section class="cervices__cervices-list cervices-list card">
-        <div class="cervices-list__head card-head">
-          <h1 class="cervices-list__title card-title title-reset">Сервисы</h1>
-          <button class="cervices-list__add-btn btn-reset">
-            <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M8.18015 11.3993H0.467773V8.59637H8.18015V0.1875H10.7509V8.59637H18.4633V11.3993H10.7509V19.8082H8.18015V11.3993Z"
-                fill="#538C38" />
-            </svg>
+      <div class="cervices__cervice-info-wrapper">
+        <div class="cervices__cervice-actions cervice-actions">
+          <button class="cervice-actions__check-readiness-btn btn-reset">
+            Проверить готовность
+          </button>
+          <button class="cervice-actions__generate-page-btn btn-reset">
+            Сгенерировать страницу Confluence
           </button>
         </div>
-        <div class="cervices-list__search card-search-wrapper">
-          <input class="cervices-list__search-input card-search" type="text" name="cervice-search" id="cervice-search"
-            placeholder="Поиск сервиса">
+        <div class="cervice__reliases card">
+          <h2 class="cervice__reliases-title card-small-title title-reset">Релизы</h2>
+          <ul class="cervice__reliases-list list-reset">
+            <li class="cervice__reliase-item">
+              <a href="#" class="cervice__reliase-link">Инициация</a>
+            </li>
+            <li class="cervice__reliase-item">
+              <a href="#" class="cervice__reliase-link">Проектирование</a>
+            </li>
+            <li class="cervice__reliase-item">
+              <a href="#" class="cervice__reliase-link">Разработка</a>
+            </li>
+            <li class="cervice__reliase-item">
+              <a href="#" class="cervice__reliase-link">Выкатка</a>
+            </li>
+          </ul>
         </div>
-        <ul class="cervices-list__list list-reset">
-          <li class="cervices-list__item card-list-item">
-            <a class="cervices-list__item-link" href="#">
-              Название сервиса
-            </a>
-          </li>
-          <li class="cervices-list__item card-list-item">
-            <a class="cervices-list__item-link" href="#">
-              Название сервиса
-            </a>
-          </li>
-          <li class="cervices-list__item card-list-item">
-            <a class="cervices-list__item-link" href="#">
-              Название сервиса
-            </a>
-          </li>
-        </ul>
-      </section>
+        <section class="cervices__cervice-info cervice-info card">
+          <div class="cervice-info__head card-head">
+            <h1 class="cervice-info__title card-small-title title-reset">Название сервиса</h1>
+            <button class="cervice-info__edit-btn btn-reset">
+              <svg width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M2.52421 21.7299H4.32271L16.6598 8.4543L14.8613 6.51898L2.52421 19.7946V21.7299ZM0 24.4462V18.6742L16.6598 0.780919C16.9122 0.53193 17.1909 0.33953 17.4959 0.203718C17.8009 0.067906 18.1217 0 18.4583 0C18.7948 0 19.1209 0.067906 19.4364 0.203718C19.7519 0.33953 20.0254 0.543248 20.2568 0.814872L21.9922 2.71624C22.2446 2.96523 22.4287 3.25949 22.5443 3.59902C22.66 3.93855 22.7179 4.27808 22.7179 4.61761C22.7179 4.97978 22.66 5.32496 22.5443 5.65318C22.4287 5.98139 22.2446 6.28131 21.9922 6.55293L5.36394 24.4462H0ZM15.7448 7.50362L14.8613 6.51898L16.6598 8.4543L15.7448 7.50362Z"
+                  fill="#538C38" />
+              </svg>
+            </button>
+            <button class="cervice-info__delete-btn btn-reset">
+              <svg width="21" height="24" viewBox="0 0 21 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M3.9375 24C3.21563 24 2.59766 23.7389 2.08359 23.2167C1.56953 22.6944 1.3125 22.0667 1.3125 21.3333V4H0V1.33333H6.5625V0H14.4375V1.33333H21V4H19.6875V21.3333C19.6875 22.0667 19.4305 22.6944 18.9164 23.2167C18.4023 23.7389 17.7844 24 17.0625 24H3.9375ZM17.0625 4H3.9375V21.3333H17.0625V4ZM6.5625 18.6667H9.1875V6.66667H6.5625V18.6667ZM11.8125 18.6667H14.4375V6.66667H11.8125V18.6667Z"
+                  fill="#538C38" />
+              </svg>
+            </button>
+          </div>
+          <ul class="cervice-info__requirements-list list-reset">
+            <li class="cervice-info__requirement-item">
+              <div class="cervice-info__requirement-name">
+                ОПИСАНИЕ
+              </div>
+              <div class="cervice-info__requirement-content">
+                <span class="cervice-info__requirement-row-text">Текст текстовый</span>
+              </div>
+            </li>
+            <li class="cervice-info__requirement-item">
+              <div class="cervice-info__requirement-name">
+                ВЛАДЕЛЕЦ
+              </div>
+              <div class="cervice-info__requirement-content">
+                <span class="cervice-info__requirement-row-text">Текст текстовый</span>
+              </div>
+            </li>
+            <li class="cervice-info__requirement-item">
+              <div class="cervice-info__requirement-name">
+                СТАТУС
+              </div>
+              <div class="cervice-info__requirement-content">
+                <button class="cervice-info__requirement-entity requirement-entity requirement-entity--text btn-reset">
+                  draft
+                </button>
+              </div>
+            </li>
+            <li class="cervice-info__requirement-item">
+              <div class="cervice-info__requirement-name">
+                YT
+              </div>
+              <div class="cervice-info__requirement-content">
+                <button class="cervice-info__requirement-entity requirement-entity requirement-entity--link btn-reset">
+                  youtrack.com
+                </button>
+              </div>
+            </li>
+            <li class="cervice-info__requirement-item">
+              <div class="cervice-info__requirement-name">
+                GITHUB
+              </div>
+              <div class="cervice-info__requirement-content">
+                <button class="cervice-info__requirement-entity requirement-entity requirement-entity--link btn-reset">
+                  github.com
+                </button>
+              </div>
+            </li>
+            <li class="cervice-info__requirement-item">
+              <div class="cervice-info__requirement-name">
+                КОМАНДА
+              </div>
+              <div class="cervice-info__requirement-content">
+                <span class="cervice-info__requirement-row-text">
+                  Артём<br />
+                  Настя<br />
+                  Саша<br />
+                  Лёша
+                </span>
+              </div>
+            </li>
+            <li class="cervice-info__requirement-item">
+              <div class="cervice-info__requirement-name">
+                ТРЕБОВАНИЕ 1
+              </div>
+              <div class="cervice-info__requirement-content">
+                <button class="cervice-info__requirement-entity requirement-entity requirement-entity--link btn-reset">
+                  Ссылка
+                </button>
+              </div>
+            </li>
+            <li class="cervice-info__requirement-item">
+              <div class="cervice-info__requirement-name">
+                ТРЕБОВАНИЕ 2
+              </div>
+              <div class="cervice-info__requirement-content">
+                <button class="cervice-info__requirement-entity requirement-entity requirement-entity--file btn-reset">
+                  Файл
+                </button>
+              </div>
+            </li>
+            <li class="cervice-info__requirement-item">
+              <div class="cervice-info__requirement-name">
+                ТРЕБОВАНИЕ 3
+              </div>
+              <div class="cervice-info__requirement-content">
+                <button class="cervice-info__requirement-entity requirement-entity requirement-entity--text btn-reset">
+                  Текст
+                </button>
+              </div>
+            </li>
+          </ul>
+          <div class="cervice-info__footer">
+            <button class="cervice-info__add-requirement-btn btn-reset">
+              <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M8.18015 11.3993H0.467773V8.59637H8.18015V0.1875H10.7509V8.59637H18.4633V11.3993H10.7509V19.8082H8.18015V11.3993Z"
+                  fill="#538C38" />
+              </svg>
+            </button>
+          </div>
+        </section>
+      </div>
     </article>
 
   </main>
@@ -264,29 +398,6 @@
       </ul>
     </div>
   </footer>
-
-  <svg class="background-angle" width="1480" height="599" viewBox="0 0 1480 599" fill="none"
-    xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-    <g filter="url(#filter0_i_1098_56)">
-      <path
-        d="M1213 372.5L-85 0V652.5C258.333 687.667 952.9 758.9 984.5 762.5C1016.1 766.1 1332 717 1486 692L1497 293L1213 372.5Z"
-        fill="#1C1A1A" />
-    </g>
-    <defs>
-      <filter id="filter0_i_1098_56" x="-85" y="0" width="1582" height="781.688" filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB">
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
-        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-          result="hardAlpha" />
-        <feOffset dy="19" />
-        <feGaussianBlur stdDeviation="11.45" />
-        <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
-        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-        <feBlend mode="normal" in2="shape" result="effect1_innerShadow_1098_56" />
-      </filter>
-    </defs>
-  </svg>
 </body>
 
 </html>
