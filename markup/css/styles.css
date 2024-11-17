@@ -953,25 +953,93 @@ img {
 
 
 
-/* ///////////////////          /////////////////// */
-/* /////////////////// realises /////////////////// */
-/* ///////////////////          /////////////////// */
+/* //////////////////          /////////////////// */
+/* ////////////////// realises /////////////////// */
+/* //////////////////          /////////////////// */
 
 
 
 
 
-/* ///////////////////              /////////////////// */
-/* /////////////////// requirements /////////////////// */
-/* ///////////////////              /////////////////// */
+/* ///////////////              ////////////////// */
+/* /////////////// requirements ////////////////// */
+/* ///////////////              ////////////////// */
+
+/* /// requirements list /// */
+.requirements-list {
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.requirements-list__title-wrapper {
+  position: relative;
+  margin: 0 auto 40px;
+  width: fit-content;
+}
+
+.requirements-list__title {
+  font-size: 64px;
+}
+
+.requirements-list__add-btn {
+  position: absolute;
+  top: 5px;
+  right: -55px;
+  padding: 5px;
+}
+
+.requirements-list__requirement-item {
+  display: flex;
+  flex-direction: row;
+  border-top: var(--info-table-border);
+}
+
+.requirements-list__requirement-item:first-of-type {
+  border-top: none;
+}
+
+.requirements-list__requirement-name {
+  padding: 14px 30px;
+  min-width: 250px;
+  max-width: 400px;
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 24px;
+  color: var(--text-light-color);
+  border-right: var(--info-table-border);
+}
+
+.requirements-list__requirement-content {
+  padding: 15px 18px 17px;
+  min-width: 300px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.requirements-list__requirement-row-text {
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 28px;
+  color: var(--text-light-color);
+}
+
+.requirements-list__requirement-entity {
+  margin: -7px 0;
+}
+
+.requirements-list__requirement-delete-btn {
+  padding: 5px;
+  margin: -5px;
+}
 
 
 
-
-
-/* ///////////////////           /////////////////// */
-/* /////////////////// templates /////////////////// */
-/* ///////////////////           /////////////////// */
+/* /////////////////           /////////////////// */
+/* ///////////////// templates /////////////////// */
+/* /////////////////           /////////////////// */
 
 
 
