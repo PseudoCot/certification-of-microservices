@@ -578,92 +578,92 @@ img {
 
 
 /* ///////////////////          /////////////////// */
-/* /////////////////// cervices /////////////////// */
+/* /////////////////// services /////////////////// */
 /* ///////////////////          /////////////////// */
 
-/* /// cervices-list /// */
-.cervices-list {
+/* /// services-list /// */
+.services-list {
   padding: 48px 70px;
   margin: 0 auto;
   width: 770px;
 }
 
-.cervices-list__head {
+.services-list__head {
   position: relative;
   margin: 0 auto 65px;
   width: fit-content;
 }
 
-.cervices-list__add-btn {
+.services-list__add-btn {
   position: absolute;
   top: 5px;
   right: -55px;
   padding: 5px;
 }
 
-.cervices-list__search-input {
+.services-list__search-input {
   margin-bottom: 21px;
   width: 100%;
   height: 60px;
 }
 
-.cervices-list__list {
+.services-list__list {
   display: flex;
   flex-direction: column;
   gap: 21px;
 }
 
 
-/* /// add-cervice /// */
-.add-cervice__form {
+/* /// add-service /// */
+.add-service__form {
   padding: 56px 90px 20px;
   width: 570px;
 }
 
-.add-cervice__title {
+.add-service__title {
   margin-bottom: 30px;
 }
 
-.add-cervice__input {
+.add-service__input {
   margin-bottom: 40px;
   width: 100%;
 }
 
-.add-cervice__btns {
+.add-service__btns {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 20px;
 }
 
-.add-cervice__submit-btn,
-.add-cervice__cancel-btn {
+.add-service__submit-btn,
+.add-service__cancel-btn {
   padding: 13px 20px;
 }
 
 
-/* /// delete-cervice /// */
-.delete-cervice__form {
+/* /// delete-service /// */
+.delete-service__form {
   padding: 66px 50px 30px;
   width: 720px;
 }
 
-.delete-cervice__question {
+.delete-service__question {
   margin-bottom: 50px;
 }
 
-.delete-cervice__btns {
+.delete-service__btns {
   display: flex;
   flex-direction: row;
   justify-content: end;
   gap: 10px;
 }
 
-.delete-cervice__submit-btn {
+.delete-service__submit-btn {
   padding: 12px 40px;
 }
 
-.delete-cervice__cancel-btn {
+.delete-service__cancel-btn {
   padding: 12px 34px;
 }
 
@@ -718,8 +718,8 @@ img {
 }
 
 
-/* /// cervice actions /// */
-.cervice-actions {
+/* /// service actions /// */
+.service-actions {
   margin-bottom: 30px;
   grid-column-start: 2;
   display: flex;
@@ -728,8 +728,8 @@ img {
   gap: 12px;
 }
 
-.cervice-actions__check-readiness-btn,
-.cervice-actions__generate-page-btn {
+.service-actions__check-readiness-btn,
+.service-actions__generate-page-btn {
   position: relative;
   padding: 7px 10px 7px 30px;
   font-family: var(--font-family);
@@ -741,8 +741,8 @@ img {
   border-radius: 5px;
 }
 
-.cervice-actions__check-readiness-btn::before,
-.cervice-actions__generate-page-btn::before {
+.service-actions__check-readiness-btn::before,
+.service-actions__generate-page-btn::before {
   position: absolute;
   top: 50%;
   left: 9px;
@@ -752,17 +752,17 @@ img {
   transform: translateY(-42%);
 }
 
-.cervice-actions__check-readiness-btn::before {
+.service-actions__check-readiness-btn::before {
   background: no-repeat url('../icons/clock.svg');
 }
 
-.cervice-actions__generate-page-btn::before {
+.service-actions__generate-page-btn::before {
   background: no-repeat url('../icons/plus-in-sircle.svg');
 }
 
 
-/* /// cervice reliases /// */
-.cervice__reliases {
+/* /// service reliases /// */
+.service__reliases {
   padding: 35px 30px;
   margin-right: 40px;
   min-width: 250px;
@@ -772,22 +772,22 @@ img {
   grid-row-start: 2;
 }
 
-.cervice__reliases-title {
+.service__reliases-title {
   margin-bottom: 30px;
 }
 
-.cervice__reliases-list {
+.service__reliases-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.cervice__reliase-item {
+.service__reliase-item {
   position: relative;
   padding-left: 16px;
 }
 
-.cervice__reliase-item::before {
+.service__reliase-item::before {
   position: absolute;
   top: 15px;
   left: 0;
@@ -798,7 +798,7 @@ img {
   background-color: #FFFFFF;
 }
 
-.cervice__reliase-link {
+.service__reliase-link {
   font-family: var(--font-family);
   font-weight: 300;
   font-size: 28px;
@@ -806,27 +806,27 @@ img {
   color: #FFFFFF99;
 }
 
-.cervice__reliase-link:hover {
+.service__reliase-link:hover {
   color: var(--green-color);
 }
 
 
-/* /// cervice info /// */
-/* /// cervice edit /// */
-.cervice-info,
-.cervice-edit {
+/* /// service info /// */
+/* /// service edit /// */
+.service-info,
+.service-edit {
   grid-column-start: 2;
   grid-row-start: 2;
 }
 
-.cervices__cervice-info-wrapper {
+.services__service-info-wrapper {
   padding: 0 25px;
   display: grid;
   grid-template-columns: minmax(290px, 1fr) minmax(800px, 2.6fr) 1fr;
 }
 
-.cervice-info__head,
-.cervice-edit__head {
+.service-info__head,
+.service-edit__head {
   padding: 20px 20px 0 30px;
   margin-bottom: 30px;
   display: flex;
@@ -835,37 +835,37 @@ img {
   align-items: flex-start;
 }
 
-.cervice-info__title,
-.cervice-edit__title {
+.service-info__title,
+.service-edit__title {
   margin-top: 15px;
   width: 100%;
 }
 
-.cervice-info__edit-btn {
+.service-info__edit-btn {
   padding: 5px;
   margin: -5px 20px -5px -5px;
 }
 
-.cervice-info__delete-btn,
-.cervice-edit__close-btn {
+.service-info__delete-btn,
+.service-edit__close-btn {
   padding: 5px;
   margin: -5px -5px -5px -5px;
 }
 
-.cervice-info__requirement-item,
-.cervice-edit__requirement-item {
+.service-info__requirement-item,
+.service-edit__requirement-item {
   display: flex;
   flex-direction: row;
   border-top: var(--info-table-border);
 }
 
-.cervice-info__requirement-item:last-of-type,
-.cervice-edit__requirement-item:last-of-type {
+.service-info__requirement-item:last-of-type,
+.service-edit__requirement-item:last-of-type {
   border-bottom: var(--info-table-border);
 }
 
-.cervice-info__requirement-name,
-.cervice-edit__requirement-name {
+.service-info__requirement-name,
+.service-edit__requirement-name {
   padding: 14px 30px;
   width: 366px;
   font-family: var(--second-family);
@@ -875,77 +875,77 @@ img {
   border-right: var(--info-table-border);
 }
 
-.cervice-info__requirement-content,
-.cervice-edit__requirement-content {
+.service-info__requirement-content,
+.service-edit__requirement-content {
   padding: 15px 18px 17px;
   width: 100%;
 }
 
-.cervice-info__requirement-row-text,
-.cervice-edit__requirement-row-text {
+.service-info__requirement-row-text,
+.service-edit__requirement-row-text {
   font-family: var(--font-family);
   font-weight: 300;
   font-size: 28px;
   color: var(--text-light-color);
 }
 
-.cervice-info__requirement-entity,
-.cervice-edit__requirement-entity {
+.service-info__requirement-entity,
+.service-edit__requirement-entity {
   margin: -7px 0;
 }
 
-.cervice-info__footer,
-.cervice-edit__footer {
+.service-info__footer,
+.service-edit__footer {
   padding: 10px 30px 0;
 }
 
-.cervice-info__add-requirement-btn,
-.cervice-edit__add-requirement-btn {
+.service-info__add-requirement-btn,
+.service-edit__add-requirement-btn {
   padding: 5px;
   margin: -5px -5px 0;
 }
 
 
-/* /// cervice edit /// */
-.cervice-edit__requirement-item:hover {
+/* /// service edit /// */
+.service-edit__requirement-item:hover {
   background-color: #D9D9D928;
 }
 
-.cervice-edit__requirement-name {
+.service-edit__requirement-name {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.cervice-edit__requirement-dnd-btn {
+.service-edit__requirement-dnd-btn {
   padding: 5px;
   margin: -5px 5px -5px -5px;
 }
 
-.cervice-edit__requirement-content {
+.service-edit__requirement-content {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
 
-.cervice-edit__requirement-delete-btn {
+.service-edit__requirement-delete-btn {
   padding: 5px;
   margin: -5px;
 }
 
-.cervice-edit__footer {
+.service-edit__footer {
   padding-bottom: 20px;
   display: flex;
   flex-direction: column;
 }
 
-.cervice-edit__add-requirement-btn {
+.service-edit__add-requirement-btn {
   margin-bottom: 12px;
   width: fit-content;
 }
 
-.cervice-edit__save-changes-btn {
+.service-edit__save-changes-btn {
   padding: 16px 34px;
   margin: 0 auto;
   display: block;
