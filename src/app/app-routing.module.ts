@@ -4,13 +4,7 @@ import { AuthGuard } from './shared/utils/guards/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'home',
-    title: 'Аттестация микросервисов',
-    loadChildren: () =>
-      import('./home/feature/home.module').then((m) => m.HomeModule),
-  },
-  {
-    path: 'auth',
+    path: '/auth',
     title: 'Аутентификация',
     loadChildren: () =>
       import('./auth/feature/auth-shell/auth.module').then(
@@ -18,7 +12,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'user',
+    path: '/user',
     title: 'Личный кабинет',
     loadChildren: () =>
       import('./user/feature/user.module').then(
@@ -27,7 +21,7 @@ const routes: Routes = [
     // canActivate: [AuthGuard]
   },
   {
-    path: 'services',
+    path: '/services',
     title: 'Сервисы',
     loadChildren: () =>
       import('./services/feature/services-shell/services.module').then(
@@ -36,8 +30,26 @@ const routes: Routes = [
     // canActivate: [AuthGuard]
   },
   {
+    path: '/templates',
+    title: 'Шаблоны',
+    loadChildren: () =>
+      import('./templates/feature/templates-shell/templates.module').then(
+        (m) => m.TemplatesModule
+      ),
+    // canActivate: [AuthGuard]
+  },
+  {
+    path: '/requirements',
+    title: 'Требования',
+    loadChildren: () =>
+      import('./services/feature/services-shell/services.module').then(
+        (m) => m.ServicesModule
+      ),
+    // canActivate: [AuthGuard]
+  },
+  {
     path: '',
-    redirectTo: 'home',
+    redirectTo: '/services',
     pathMatch: 'full',
   },
   {

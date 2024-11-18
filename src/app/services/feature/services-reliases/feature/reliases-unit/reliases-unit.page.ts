@@ -2,13 +2,15 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-services-templates-page',
-  templateUrl: './services-templates.page.html',
-  styleUrl: './services-templates.page.scss',
+  selector: 'app-reliases-unit-page',
+  templateUrl: './reliases-unit.page.html',
+  styleUrl: './reliases-unit.page.scss',
   imports: [
     CommonModule,
   ],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ServicesTemplatesPage { }
+export class ReliasesUnitPage {
+  constructor() { }
+}

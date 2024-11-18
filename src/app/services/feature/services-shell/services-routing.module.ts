@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ServicesListPage } from '../services-list/services-list.page';
-import { ServicesTemplatesPage } from '../services-templates/services-templates.page';
-import { ServicesTemplatePage } from '../services-template/services-template.page';
 import { ServicesUnitPage } from '../services-unit/services-unit.page';
 
 const routes: Routes = [
@@ -12,14 +10,13 @@ const routes: Routes = [
     component: ServicesListPage,
   },
   {
-    path: '/templates',
-    title: 'Набор шаблонов',
-    component: ServicesTemplatesPage,
-  },
-  {
-    path: '/templates/:id',
-    title: 'Детали шаблона',
-    component: ServicesTemplatePage,
+    path: '/reliases',
+    title: 'Список релизов',
+    loadChildren: () =>
+      import('../services-reliases/feature/reliases-shell/reliases.module').then(
+        (m) => m.ReliasesModule
+      ),
+    // canActivate: [AuthGuard]
   },
   {
     path: '/:id',
