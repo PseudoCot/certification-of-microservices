@@ -7,6 +7,9 @@ import { httpInterceptorProviders } from './shared/utils/http-request.intercepto
 import { environment } from '../environments/environment';
 import { ENVIRONMENT } from './shared/data-accesss/environment.service';
 import { ConfigurationService } from './shared/data-accesss/configuration.service';
+import { LayoutHeaderComponent } from "./shared/feature/layout/feature/layout-header/layout-header.component";
+import { LayoutFooterComponent } from "./shared/feature/layout/feature/layout-footer/layout-footer.component";
+import { LayoutMainComponent } from "./shared/feature/layout/feature/layout-main/layout-main.component";
 
 export function initApp(configurationService: ConfigurationService) {
   return () => configurationService.load().toPromise();
@@ -19,6 +22,9 @@ export function initApp(configurationService: ConfigurationService) {
   imports: [
     BrowserModule,
     AppRoutingModule,
+    LayoutHeaderComponent,
+    LayoutFooterComponent,
+    LayoutMainComponent
   ],
   providers: [
     DestroyService,

@@ -1,0 +1,30 @@
+<header class="header">
+  <nav class="header__nav nav">
+    <app-hidden-nav [opened$]="hiddenNavOpened$" [fullyClosed$]="hiddenNavFullyClosed$"
+      [onCloseButtonClick]="toggleHiddenNav" />
+
+    <ul class="nav__main-controls main-controls__list list-reset">
+      <li class="main-controls__item">
+        <app-burger-btn (burgerClicked$)="toggleHiddenNav()" />
+      </li>
+      <li class="main-controls__item">
+        <a class="main-controls__home-link nav__control" [routerLink]="[homeLinkPath]">
+          <app-svg-icon icon="home" />
+        </a>
+      </li>
+    </ul>
+
+    <ul class="nav__user-controls user-controls__list list-reset">
+      <li class="user-controls__item">
+        <a class="user-controls__item-link nav__control" [routerLink]="[userLinkPath]">
+          <app-svg-icon icon="user" />
+        </a>
+      </li>
+      <li class="user-controls__item">
+        <button class="user-controls__item-btn nav__control btn-reset" (click)="handleLogoutButtonClick()">
+          <app-svg-icon icon="exit" />
+        </button>
+      </li>
+    </ul>
+  </nav>
+</header>

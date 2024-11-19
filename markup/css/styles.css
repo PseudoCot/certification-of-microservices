@@ -249,7 +249,7 @@ img {
   color: var(--text-light-color);
 }
 
-.nav-control {
+.nav__control {
   width: 53px;
   height: 53px;
   display: flex;
@@ -259,7 +259,7 @@ img {
   border: 3px solid var(--green-color);
 }
 
-.main-controls {
+.main-controls__list {
   display: flex;
   flex-direction: row;
   gap: 27px;

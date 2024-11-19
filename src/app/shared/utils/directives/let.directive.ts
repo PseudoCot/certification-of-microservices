@@ -17,7 +17,7 @@ export class LetContext<T> {
 
 
 @Directive({
-  selector: "[ngLet]",
+  selector: "[appLet]",
   standalone: true,
 })
 export class LetDirective<T> {

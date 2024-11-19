@@ -1,0 +1,49 @@
+:host {
+  .header {
+    padding: 0 15px;
+  }
+
+  .nav {
+    padding: 40px 100px 0;
+    margin: 0 auto 70px;
+    width: 100%;
+    max-width: var(--max-content-width);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &__control {
+      width: 53px;
+      height: 53px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      border: 3px solid var(--green-color);
+    }
+  }
+
+  .main-controls {
+    &__list {
+      display: flex;
+      flex-direction: row;
+      gap: 27px;
+    }
+
+    &__home-link svg {
+      margin-top: -5px;
+    }
+  }
+
+  .user-controls {
+    &__list {
+      display: flex;
+      flex-direction: row;
+      gap: 27px;
+    }
+
+    &__item-btn svg {
+      margin-right: -5px;
+    }
+  }
+}
