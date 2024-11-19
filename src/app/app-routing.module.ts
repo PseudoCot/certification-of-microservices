@@ -1,19 +1,20 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './shared/utils/guards/auth.guard';
+import { AppRoutes } from './shared/consts';
 
 const routes: Routes = [
   {
-    path: '/auth',
-    title: 'Аутентификация',
+    path: AppRoutes.Auth.Path,
+    title: AppRoutes.Auth.Title,
     loadChildren: () =>
       import('./auth/feature/auth-shell/auth.module').then(
         (m) => m.AuthModule
       ),
   },
   {
-    path: '/user',
-    title: 'Личный кабинет',
+    path: AppRoutes.User.Path,
+    title: AppRoutes.User.Title,
     loadChildren: () =>
       import('./user/feature/user.module').then(
         (m) => m.UserModule
@@ -21,8 +22,8 @@ const routes: Routes = [
     // canActivate: [AuthGuard]
   },
   {
-    path: '/services',
-    title: 'Сервисы',
+    path: AppRoutes.Services.Path,
+    title: AppRoutes.Services.Title,
     loadChildren: () =>
       import('./services/feature/services-shell/services.module').then(
         (m) => m.ServicesModule
@@ -30,8 +31,8 @@ const routes: Routes = [
     // canActivate: [AuthGuard]
   },
   {
-    path: '/templates',
-    title: 'Шаблоны',
+    path: AppRoutes.Templates.Path,
+    title: AppRoutes.Templates.Title,
     loadChildren: () =>
       import('./templates/feature/templates-shell/templates.module').then(
         (m) => m.TemplatesModule
@@ -39,8 +40,8 @@ const routes: Routes = [
     // canActivate: [AuthGuard]
   },
   {
-    path: '/requirements',
-    title: 'Требования',
+    path: AppRoutes.Requirements.Path,
+    title: AppRoutes.Requirements.Title,
     loadChildren: () =>
       import('./services/feature/services-shell/services.module').then(
         (m) => m.ServicesModule
@@ -49,8 +50,8 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/services',
     pathMatch: 'full',
+    redirectTo: AppRoutes.Auth.Path,
   },
   {
     path: '**',

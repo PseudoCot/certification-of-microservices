@@ -2,22 +2,23 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TemplatesListPage } from '../templates-list/templates-list.page';
 import { TemplatesUnitPage } from '../templates-unit/templates-unit.page';
+import { AppRoutes } from '../../../shared/consts';
 
 const routes: Routes = [
   {
-    path: '/',
-    title: 'Список шаблонов',
+    path: AppRoutes.Templates.Children.List.Path,
+    title: AppRoutes.Templates.Children.List.Title,
     component: TemplatesListPage,
   },
   {
-    path: '/:id',
-    title: 'Информация о шаблоне',
+    path: AppRoutes.Templates.Children.Unit.Path,
+    title: AppRoutes.Templates.Children.Unit.Title,
     component: TemplatesUnitPage,
   },
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: '/',
+    redirectTo: AppRoutes.Templates.Children.List.Path,
   }
 ];
 

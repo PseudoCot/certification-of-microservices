@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RequirementsListPage } from '../requirements-list/requirements-list.page';
+import { AppRoutes } from '../../../shared/consts';
 
 const routes: Routes = [
   {
-    path: '/',
-    title: 'Список требований',
+    path: AppRoutes.Requirements.Children.List.Path,
+    title: AppRoutes.Requirements.Children.List.Title,
     component: RequirementsListPage,
   },
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: '/',
+    redirectTo: AppRoutes.Requirements.Children.List.Path,
   }
 ];
 

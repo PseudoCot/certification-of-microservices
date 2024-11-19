@@ -2,31 +2,31 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ServicesListPage } from '../services-list/services-list.page';
 import { ServicesUnitPage } from '../services-unit/services-unit.page';
+import { AppRoutes } from '../../../shared/consts';
 
 const routes: Routes = [
   {
-    path: '/',
-    title: 'Список сервисов',
+    path: AppRoutes.Services.Children.List.Path,
+    title: AppRoutes.Services.Children.List.Title,
     component: ServicesListPage,
   },
   {
-    path: '/reliases',
-    title: 'Список релизов',
+    path: AppRoutes.Services.Children.Reliases.Path,
+    title: AppRoutes.Services.Children.Reliases.Title,
     loadChildren: () =>
       import('../services-reliases/feature/reliases-shell/reliases.module').then(
         (m) => m.ReliasesModule
       ),
-    // canActivate: [AuthGuard]
   },
   {
-    path: '/:id',
-    title: 'Информация о сервисе',
+    path: AppRoutes.Services.Children.Unit.Path,
+    title: AppRoutes.Services.Children.Unit.Title,
     component: ServicesUnitPage,
   },
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: '/',
+    redirectTo: AppRoutes.Services.Children.List.Path,
   }
 ];
 
