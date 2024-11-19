@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../data-access/auth.service';
 import { Router } from '@angular/router';
 
@@ -10,12 +10,13 @@ import { Router } from '@angular/router';
   styleUrl: './auth-login.page.scss',
   imports: [
     CommonModule,
+    ReactiveFormsModule,
   ],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthLoginPage {
-  form: FormGroup;
+  protected form: FormGroup;
 
   constructor(private fb: FormBuilder,
     private authService: AuthService,
@@ -27,7 +28,7 @@ export class AuthLoginPage {
     });
   }
 
-  login() {
+  protected login() {
     const val = this.form.value;
 
     if (val.email && val.password) {

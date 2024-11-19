@@ -11,6 +11,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ServicesUnitPage {
-  constructor() { }
-}
+export class ServicesUnitPage { }

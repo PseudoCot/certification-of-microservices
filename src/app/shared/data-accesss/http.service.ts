@@ -57,7 +57,8 @@ export class HttpService {
         skipWhile((event: HttpResponse<Res>) => event.type !== HttpEventType.Response),
         tap((value: HttpResponse<Res>) => {
           if (isDevMode()) {
-            const log: any = {};
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const log: Record<string, any> = {};
             if (requestParams.method) {
               log[requestParams.method.toLowerCase()] = requestParams.url;
             }

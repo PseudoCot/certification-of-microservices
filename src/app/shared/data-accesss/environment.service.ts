@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Inject, Injectable, InjectionToken, Optional } from "@angular/core";
 
-export const ENVIRONMENT = new InjectionToken<{ [key: string]: any }>('environment');
+export const ENVIRONMENT = new InjectionToken<Record<string, any>>('environment');
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class EnvironmentService {
     this.environment = environment !== null ? environment : {};
   }
 
-  getValue(key: string, defaultValue?: any): any {
+  getValue<T = string>(key: string, defaultValue?: T): T {
     return this.environment[key] || defaultValue;
   }
 }

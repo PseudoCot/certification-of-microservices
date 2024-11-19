@@ -1,24 +1,27 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, tap, mapTo } from "rxjs";
+import { Observable, tap, map } from "rxjs";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Config = Record<string, any>;
 
 @Injectable({
   providedIn: 'root',
 })
 export class ConfigurationService {
-  private configuration: { [key: string]: any } = {};
+  private configuration: Config = {};
 
   constructor(private http: HttpClient) { }
 
   load(): Observable<void> {
     return this.http.get('/assets/config.json')
       .pipe(
-        tap((configuration: any) => this.configuration = configuration),
-        mapTo(undefined),
+        tap((configuration: Config) => this.configuration = configuration),
+        map(() => undefined),
       );
   }
 
-  getValue(key: string, defaultValue?: any): any {
+  getValue<T = string>(key: string, defaultValue?: T): T {
     return this.configuration[key] || defaultValue;
   }
 }

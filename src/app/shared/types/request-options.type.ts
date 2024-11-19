@@ -8,9 +8,8 @@ export type RequestOptions<F = null> = {
   url: string;
   method?: RequestMethodType;
   timeout?: number;
-  params?: string | URLSearchParams | {
-    [key: string]: any | any[];
-  };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  params?: string | URLSearchParams | Record<string, any | any[]>;
   headers?: HttpHeaders;
   withCredentials?: boolean;
   responseType?: RequestResponseType;
