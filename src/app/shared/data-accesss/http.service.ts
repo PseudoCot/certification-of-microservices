@@ -2,10 +2,16 @@ import { HttpClient, HttpEventType, HttpHeaders, HttpRequest, HttpResponse } fro
 import { Injectable, isDevMode } from '@angular/core';
 import { merge, Observable, Subject } from 'rxjs';
 import { skipWhile, takeUntil, tap } from 'rxjs/operators';
-import { ContentType } from '../types/content-type.type';
-import { RequestResponseType } from '../types/request-response.type';
 import { ContentTypes } from '../consts';
-import { RequestOptions } from '../types/request-options.type';
+import { RequestOptions } from '../types/http/request-options.type';
+import { JsonRpcRequestOptions } from '../types/json-rpc/json-rpc-request-options.type';
+import { ContentType } from '../types/http/content-type.type';
+import { JsonRpcRequestMethod } from '../types/json-rpc/json-rpc-request-method.type';
+import { JsonRpcRequest } from '../types/json-rpc/json-rpc-request.type';
+import { v4 as uuidv4 } from 'uuid';
+import { HttpOptions } from '../types/http/http-options.type';
+
+const JSON_RPC_VERSION = '2.0'; // TODO вынести в конфиг или env
 
 @Injectable({
   providedIn: 'root',
@@ -18,13 +24,9 @@ export class HttpService {
     protected http: HttpClient
   ) { }
 
+  // TODO реализовать отбрасывание запроса при таймауте, приписывание параметров, прогресс
   public request<Res, Req = null>(requestParams: RequestOptions<Req>): Observable<HttpResponse<Res>> {
-    const httpOptions: {
-      headers?: HttpHeaders;
-      reportProgress?: boolean;
-      responseType?: RequestResponseType;
-      withCredentials?: boolean;
-    } = {
+    const httpOptions: HttpOptions = {
       headers: requestParams.headers || new HttpHeaders(),
       reportProgress: false,
       responseType: requestParams.responseType,
@@ -55,20 +57,38 @@ export class HttpService {
     return (this.http.request<Res>(request) as Observable<HttpResponse<Res>>)
       .pipe(
         skipWhile((event: HttpResponse<Res>) => event.type !== HttpEventType.Response),
-        tap((value: HttpResponse<Res>) => {
+        tap((response: HttpResponse<Res>) => {
           if (isDevMode()) {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const log: Record<string, any> = {};
-            if (requestParams.method) {
-              log[requestParams.method.toLowerCase()] = requestParams.url;
-            }
-            log['request'] = { requestParams, httpOptions };
-            log['response'] = value;
-            console.log(log);
+            this._logRequest(requestParams, httpOptions, response);
           }
         }),
         takeUntil(requestParams.unsubscriber ? merge(this._takeUntil, requestParams.unsubscriber) : this._takeUntil)
       );
+  }
+
+  public jsonRpcRequest<Res, Req = null>(requestParams: JsonRpcRequestOptions<Req>): Observable<HttpResponse<Res>> {
+    const jsonRpcRequestBody = this._createJsonRpcRequestBody<Req>(requestParams.jsonRpcMethod, requestParams.body as Req);
+
+    const jsonRpcRequestParams: RequestOptions<Req> = {
+      ...requestParams,
+      method: 'POST',
+      responseType: 'json',
+      body: jsonRpcRequestBody as Req,
+    };
+
+    return this.request(jsonRpcRequestParams);
+  }
+
+  // private _createJsonRpcRequestBody<P extends JsonRpcParams>(method: JsonRpcRequestMethod, params: P): JsonRpcRequest<P> {
+  private _createJsonRpcRequestBody<P>(method: JsonRpcRequestMethod, params: P): JsonRpcRequest<P> {
+    const uuid = uuidv4();
+
+    return {
+      jsonrpc: JSON_RPC_VERSION,
+      id: uuid,
+      method: method,
+      params: params,
+    };
   }
 
   private _convertContentType(contentType: ContentType): string {
@@ -83,6 +103,17 @@ export class HttpService {
     ]);
 
     return m.get(contentType)!;
+  }
+
+  private _logRequest<Res, Req>(requestParams: RequestOptions<Req>, httpOptions: HttpOptions, response: HttpResponse<Res>) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const log: Record<string, any> = {};
+    if (requestParams.method) {
+      log[requestParams.method.toLowerCase()] = requestParams.url;
+    }
+    log['request'] = { requestParams, httpOptions };
+    log['response'] = response;
+    console.log(log);
   }
 
   public unsubscribeAll(): void {

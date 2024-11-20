@@ -5,7 +5,7 @@ export const API_URL = !environment.production && environment.useProxy
   ? environment.proxyUrl
   : environment.apiUrl;
 
-export const APIMethods = {
+export const ApiMethods = {
   Register: 'register',
   Login: 'login',
   RefreshSession: 'refresh_session',
@@ -15,7 +15,7 @@ export const APIMethods = {
   UpdateUser: 'update_user_data',
 } as const;
 
-export const APIRoutes = {
+export const ApiRoutes = {
   Register: 'v1/auth/register',
   Login: 'v1/auth/login',
   RefreshSession: 'v1/auth/refresh_session',
@@ -27,7 +27,15 @@ export const APIRoutes = {
 
 
 ///// REQUESTS /////
-export const ContentTypes = { // проверить, что работает с заглавными первыми буквами
+export const JsonRpcErrorCodes = {
+  [-32700]: 'Parse Error',
+  [-32600]: 'Invalid Request',
+  [-32601]: 'Method not found',
+  [-32602]: 'Invalid params',
+  [-32603]: 'Internal error',
+} as const;
+
+export const ContentTypes = {
   Raw: 0,
   Json: 1,
   FormUrlEncoded: 2,

@@ -1,10 +1,10 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
-import { ContentType } from './content-type.type';
 import { RequestMethodType } from './request-method.type';
 import { RequestResponseType } from './request-response.type';
+import { ContentType } from './content-type.type';
 
-export type RequestOptions<F = null> = {
+export type RequestOptions<T = null> = {
   url: string;
   method?: RequestMethodType;
   timeout?: number;
@@ -15,5 +15,5 @@ export type RequestOptions<F = null> = {
   responseType?: RequestResponseType;
   unsubscriber?: Subject<void>,
   contentType?: ContentType,
-  body?: F | null;
+  body?: T | null;
 }
