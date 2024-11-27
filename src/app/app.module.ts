@@ -11,6 +11,7 @@ import { LayoutHeaderComponent } from "./shared/feature/layout/feature/layout-he
 import { LayoutFooterComponent } from "./shared/feature/layout/feature/layout-footer/layout-footer.component";
 import { LayoutMainComponent } from "./shared/feature/layout/feature/layout-main/layout-main.component";
 import { RequirementEntityComponent } from "./shared/ui/requirement-entity/requirement-entity.component";
+import { provideHttpClient } from '@angular/common/http';
 
 export function initApp(configurationService: ConfigurationService) {
   return () => configurationService.load().toPromise();
@@ -29,6 +30,7 @@ export function initApp(configurationService: ConfigurationService) {
     RequirementEntityComponent
   ],
   providers: [
+    provideHttpClient(),
     DestroyService,
     httpInterceptorProviders,
     { provide: ENVIRONMENT, useValue: environment },

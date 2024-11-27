@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { SvgIconComponent } from "../../../../ui/svg-icon.component";
+import { SvgIconComponent } from "../../../../ui/svg-icon/svg-icon.component";
 import { RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HiddenNavRoutes } from '../../../../consts';

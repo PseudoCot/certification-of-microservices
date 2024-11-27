@@ -170,20 +170,21 @@ img {
 /* /////////////////// global /////////////////// */
 /* ///////////////////        /////////////////// */
 
+
 /* /// btn /// */
-.btn {
+/* .btn {
   font-family: var(--font-family);
   font-weight: 400;
-  font-size: 20px;
+  font-size: 24px;
   line-height: 100%;
   color: var(--text-light-color);
   background-color: var(--button-bg-color);
   border: 1px solid var(--green-color);
   border-radius: 35px;
-}
+} */
 
 /* /// dnd btn /// */
-.dnd-btn {
+/* .dnd-btn {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2px;
@@ -194,14 +195,14 @@ img {
   height: 5px;
   border-radius: 50%;
   background-color: #D9D9D9;
-}
+} */
 
 
 
 /* ///////////////////        /////////////////// */
 /* /////////////////// layout /////////////////// */
 /* ///////////////////        /////////////////// */
-.header {
+/* .header {
   padding: 0 15px;
 }
 
@@ -327,7 +328,7 @@ img {
   font-weight: 700;
   font-size: 36px;
   color: var(--orange-color);
-}
+} */
 
 
 
@@ -435,10 +436,10 @@ img {
 }
 
 .modal-card__input {
-  padding: 9px 15px;
+  padding: 14px 15px;
   font-family: var(--font-family);
   font-weight: 300;
-  font-size: 24px;
+  font-size: 28px;
   line-height: 100%;
   color: var(--text-light-color);
   background-color: inherit;
@@ -453,7 +454,7 @@ img {
 
 
 /* /// requirement-entity /// */
-.requirement-entity {
+/* .requirement-entity {
   position: relative;
   padding: 8px 10px 8px 40px;
   display: block;
@@ -486,7 +487,7 @@ img {
 
 .requirement-entity--text::before {
   background: no-repeat center center url('../icons/pen.svg');
-}
+} */
 
 
 
@@ -547,7 +548,7 @@ img {
 
 
 /* /// modal-window /// */
-.modal-window {
+/* .modal-window {
   position: fixed;
   top: 0;
   left: 0;
@@ -573,7 +574,7 @@ img {
   z-index: 100;
   opacity: 1;
   overflow-y: auto;
-}
+} */
 
 
 
@@ -582,7 +583,7 @@ img {
 /* ///////////////////          /////////////////// */
 
 /* /// services-list /// */
-.services-list {
+/* .services-list {
   padding: 48px 70px;
   margin: 0 auto;
   width: 770px;
@@ -611,11 +612,11 @@ img {
   display: flex;
   flex-direction: column;
   gap: 21px;
-}
+} */
 
 
 /* /// add-service /// */
-.add-service__form {
+/* .add-service__form {
   padding: 56px 90px 20px;
   width: 570px;
 }
@@ -639,11 +640,11 @@ img {
 .add-service__submit-btn,
 .add-service__cancel-btn {
   padding: 13px 20px;
-}
+} */
 
 
 /* /// delete-service /// */
-.delete-service__form {
+/* .delete-service__form {
   padding: 66px 50px 30px;
   width: 720px;
 }
@@ -665,11 +666,11 @@ img {
 
 .delete-service__cancel-btn {
   padding: 12px 34px;
-}
+} */
 
 
 /* /// add-requirement /// */
-.create-requirement__form {
+/* .create-requirement__form {
   padding: 56px 53px 20px;
   width: 570px;
 }
@@ -709,17 +710,15 @@ img {
   background-color: var(--checked-radio-btn-bg-color);
 }
 
-
-/* /// create requirement /// */
 .create-requirement__submit-btn {
   padding: 13px 20px;
   display: block;
   margin: 0 auto;
-}
+} */
 
 
 /* /// service actions /// */
-.service-actions {
+/* .service-actions {
   margin-bottom: 30px;
   grid-column-start: 2;
   display: flex;
@@ -758,11 +757,11 @@ img {
 
 .service-actions__generate-page-btn::before {
   background: no-repeat url('../icons/plus-in-sircle.svg');
-}
+} */
 
 
 /* /// service reliases /// */
-.service__reliases {
+/* .service__reliases {
   padding: 35px 30px;
   margin-right: 40px;
   min-width: 250px;
@@ -808,12 +807,12 @@ img {
 
 .service__reliase-link:hover {
   color: var(--green-color);
-}
+} */
 
 
 /* /// service info /// */
 /* /// service edit /// */
-.service-info,
+/* .service-info,
 .service-edit {
   grid-column-start: 2;
   grid-row-start: 2;
@@ -951,8 +950,7 @@ img {
   display: block;
 }
 
-
-
+*/
 /* //////////////////          /////////////////// */
 /* ////////////////// realises /////////////////// */
 /* //////////////////          /////////////////// */

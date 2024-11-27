@@ -14,7 +14,7 @@ export class ConfigurationService {
   constructor(private http: HttpClient) { }
 
   load(): Observable<void> {
-    return this.http.get('/assets/config.json')
+    return this.http.get('/config.json')
       .pipe(
         tap((configuration: Config) => this.configuration = configuration),
         map(() => undefined),

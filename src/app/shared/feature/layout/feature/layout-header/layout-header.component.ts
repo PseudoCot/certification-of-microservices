@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { SvgIconComponent } from "../../../../ui/svg-icon.component";
+import { SvgIconComponent } from "../../../../ui/svg-icon/svg-icon.component";
 import { RouterModule } from '@angular/router';
 import { BurgerButtonComponent } from "../../ui/burger-btn/burger-btn.component";
 import { BehaviorSubject, delayWhen, interval, map, of, throttleTime } from 'rxjs';

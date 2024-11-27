@@ -5,5 +5,31 @@
       "style": "scss",
       "stylesArray": true
     }
-  }
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "tsconfig.spec.json": true,
+    "package-lock.json": true,
+    "src/main.server.ts": true,
+    "server.ts": true,
+    "src/app/app.config.ts": true,
+    "src/app/app.config.server.ts": true,
+    "node_modules": true,
+    "src/app/app.routes.ts": true
+  },
+  "hide-files.files": [
+    "tsconfig.spec.json",
+    "package-lock.json",
+    "src/main.server.ts",
+    "server.ts",
+    "src/app/app.config.ts",
+    "src/app/app.config.server.ts",
+    "node_modules",
+    "src/app/app.routes.ts"
+  ]
 }

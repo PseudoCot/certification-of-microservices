@@ -1,16 +1,16 @@
-:host {
-  .burger-btn {
-    &__list {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
+:host {}
 
-    &__item {
-      border-radius: 5px;
-      width: 21px;
-      height: 3px;
-      background-color: var(--green-color);
-    }
+.burger-btn {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__item {
+    border-radius: 5px;
+    width: 21px;
+    height: 3px;
+    background-color: var(--green-color);
   }
 }

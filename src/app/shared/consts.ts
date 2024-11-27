@@ -69,49 +69,49 @@ export const RequestResponseTypes = {
 ///// OTHER /////
 export const AppRoutes = {
   Home: {
-    Path: '/home',
+    Path: 'home',
     Title: 'Сервис для аттестации микросервисов'
   },
   Auth: {
-    Path: '/auth',
+    Path: 'auth',
     Title: 'Аутентификация',
     Children: {
       Login: {
-        Path: '/login',
+        Path: 'login',
         Title: 'Вход',
       },
       Register: {
-        Path: '/register',
+        Path: 'register',
         Title: 'Регистрация',
       },
     }
   },
   User: {
-    Path: '/user',
+    Path: 'user',
     Title: 'Личный кабинет',
   },
   Services: {
-    Path: '/services',
+    Path: 'services',
     Title: 'Сервисы',
     Children: {
       List: {
-        Path: '/',
+        Path: '',
         Title: 'Список сервисов',
       },
       Unit: {
-        Path: '/:id',
+        Path: ':id',
         Title: 'Информация о сервисе',
       },
       Reliases: {
-        Path: '/reliases',
+        Path: 'reliases',
         Title: 'Релизы',
         Children: {
           List: {
-            Path: '/',
+            Path: '',
             Title: 'Список релизов',
           },
           Unit: {
-            Path: '/:id',
+            Path: ':id',
             Title: 'Информация о релизе',
           },
         }
@@ -119,25 +119,25 @@ export const AppRoutes = {
     }
   },
   Templates: {
-    Path: '/templates',
+    Path: 'templates',
     Title: 'Шаблоны',
     Children: {
       List: {
-        Path: '/',
+        Path: '',
         Title: 'Список шаблонов',
       },
       Unit: {
-        Path: '/:id',
+        Path: ':id',
         Title: 'Информация о шаблоне',
       },
     }
   },
   Requirements: {
-    Path: '/requirements',
+    Path: 'requirements',
     Title: 'Требования',
     Children: {
       List: {
-        Path: '/',
+        Path: '',
         Title: 'Список требований',
       }
     }
