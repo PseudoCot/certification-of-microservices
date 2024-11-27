@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'Bebas Neue';
-  src: url('fonts/BebasNeueBold.eot');
+  src: url('/fonts/BebasNeueBold.eot');
   src: local('Bebas Neue Bold'), local('BebasNeueBold'), local('Bebas-Neue-Bold'),
-    url('../fonts/BebasNeueBold.woff2') format('woff2'),
-    url('../fonts/BebasNeueBold.woff') format('woff');
+    url('/fonts/BebasNeueBold.woff2') format('woff2'),
+    url('/fonts/BebasNeueBold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -11,10 +11,10 @@
 
 @font-face {
   font-family: 'Bebas Neue';
-  src: url('fonts/BebasNeueRegular.eot');
+  src: url('/fonts/BebasNeueRegular.eot');
   src: local('Bebas Neue Regular'), local('BebasNeueRegular'), local('Bebas-Neue-Regular'),
-    url('../fonts/BebasNeueRegular.woff2') format('woff2'),
-    url('../fonts/BebasNeueRegular.woff') format('woff');
+    url('/fonts/BebasNeueRegular.woff2') format('woff2'),
+    url('/fonts/BebasNeueRegular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -22,10 +22,10 @@
 
 @font-face {
   font-family: 'Museo Sans Cyrl';
-  src: url('fonts/MuseoSansCyrlMedium.eot');
+  src: url('/fonts/MuseoSansCyrlMedium.eot');
   src: local('Museo Sans Cyrl Medium'), local('MuseoSansCyrlMedium'), local('Museo-Sans-Medium'),
-    url('../fonts/MuseoSansCyrlMedium.woff2') format('woff2'),
-    url('../fonts/MuseoSansCyrlMedium.woff') format('woff');
+    url('/fonts/MuseoSansCyrlMedium.woff2') format('woff2'),
+    url('/fonts/MuseoSansCyrlMedium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -36,10 +36,10 @@
 /* /////////////////////// */
 @font-face {
   font-family: 'Museo Sans Cyrl';
-  src: url('fonts/MuseoSansCyrlMedium.eot');
+  src: url('/fonts/MuseoSansCyrlMedium.eot');
   src: local('Museo Sans Cyrl Medium'), local('MuseoSansCyrlMedium'), local('Museo-Sans-Medium'),
-    url('../fonts/MuseoSansCyrlMedium.woff2') format('woff2'),
-    url('../fonts/MuseoSansCyrlMedium.woff') format('woff');
+    url('/fonts/MuseoSansCyrlMedium.woff2') format('woff2'),
+    url('/fonts/MuseoSansCyrlMedium.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -47,10 +47,10 @@
 
 @font-face {
   font-family: 'Museo Sans Cyrl';
-  src: url('fonts/MuseoSansCyrlLight.eot');
+  src: url('/fonts/MuseoSansCyrlLight.eot');
   src: local('Museo Sans Cyrl Light'), local('MuseoSansCyrlLight'), local('Museo-Sans-Light'),
-    url('../fonts/MuseoSansCyrlLight.woff2') format('woff2'),
-    url('../fonts/MuseoSansCyrlLight.woff') format('woff');
+    url('/fonts/MuseoSansCyrlLight.woff2') format('woff2'),
+    url('/fonts/MuseoSansCyrlLight.woff') format('woff');
   font-weight: 300;
   font-style: normal;
   font-display: swap;

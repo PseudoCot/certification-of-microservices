@@ -10,6 +10,7 @@ import { ConfigurationService } from './shared/data-accesss/configuration.servic
 import { LayoutHeaderComponent } from "./shared/feature/layout/feature/layout-header/layout-header.component";
 import { LayoutFooterComponent } from "./shared/feature/layout/feature/layout-footer/layout-footer.component";
 import { LayoutMainComponent } from "./shared/feature/layout/feature/layout-main/layout-main.component";
+import { RequirementEntityComponent } from "./shared/ui/requirement-entity/requirement-entity.component";
 
 export function initApp(configurationService: ConfigurationService) {
   return () => configurationService.load().toPromise();
@@ -24,7 +25,8 @@ export function initApp(configurationService: ConfigurationService) {
     AppRoutingModule,
     LayoutHeaderComponent,
     LayoutFooterComponent,
-    LayoutMainComponent
+    LayoutMainComponent,
+    RequirementEntityComponent
   ],
   providers: [
     DestroyService,
