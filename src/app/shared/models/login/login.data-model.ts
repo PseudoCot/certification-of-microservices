@@ -1,7 +1,7 @@
-import { LoginRequestModel } from '../request-models/login.request-model';
-import { DataModel } from './data-model.type';
+import { DataModel } from '../../types/models/data-model.type';
+import { LoginRequestModel } from './login.request-model';
 
-export class LoginModel implements DataModel {
+export class LoginDataModel implements DataModel {
   public login!: string;
   public password!: string;
 

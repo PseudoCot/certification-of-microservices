@@ -1,5 +1,5 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginModel } from '../data-models/login.data-model';
+import { LoginModel } from './login.data-model';
 
 export class LoginFormViewModel {
   public form: FormGroup = new FormGroup({
