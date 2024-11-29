@@ -1,1 +1,2 @@
-<p>services-list works!</p>
+<app-list-card classPrefix="services-list" title="Сервисы" [items]="services.services" [trackItemBy]="trackByService"
+  (addClick$)="openAddServiceModal()" (searchInputChanges$)="searchServices($event)" />

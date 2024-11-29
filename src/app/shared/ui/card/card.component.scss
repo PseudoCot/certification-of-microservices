@@ -1,0 +1,22 @@
+.card {
+  border-radius: 10px;
+  box-shadow: 0 9px 8px 0 #FF73001A;
+  background-color: var(--card-bg-color);
+
+  &__title {
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: 70px;
+    line-height: 100%;
+    letter-spacing: 1px;
+    color: var(--text-light-color);
+  }
+
+  &__small-title {
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    color: var(--text-light-color);
+  }
+}

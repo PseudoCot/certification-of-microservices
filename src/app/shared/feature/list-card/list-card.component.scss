@@ -1,0 +1,51 @@
+:host {}
+
+.list-card {
+  &__search-wrapper {
+    position: relative;
+  }
+
+  &__search-wrapper::before {
+    position: absolute;
+    left: 20px;
+    top: calc(50% - 21px);
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: no-repeat url('/icons/loupe.svg');
+  }
+
+  &__search-input {
+    padding: 21px 16px 21px 50px;
+    font-family: var(--font-family);
+    font-weight: 300;
+    font-size: 26px;
+    line-height: 100%;
+    color: var(--text-light-color);
+    background-color: var(--search-bg-color);
+    border: 1px solid var(--black-color);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px 0 #0000001A;
+  }
+
+  &__search-input::placeholder {
+    color: #FFFFFF4D;
+  }
+
+  &__list-item {
+    border: 1px solid var(--black-color);
+    border-radius: 10px;
+  }
+
+  &__item-link {
+    padding: 17px 16px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-family: var(--font-family);
+    font-weight: 300;
+    font-size: 26px;
+    line-height: 100%;
+    color: var(--text-light-color);
+  }
+}
