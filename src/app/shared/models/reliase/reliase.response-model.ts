@@ -1,6 +1,7 @@
+import { RequirementsListResponseModel } from "../requirements-list/requirements-list.response-model";
+
 export type ReliaseResponseModel = {
-  readonly name: string;
   readonly id: string;
-  readonly description: string;
-  readonly manager: string;
+  readonly order: number;
+  readonly requirements: RequirementsListResponseModel;
 }

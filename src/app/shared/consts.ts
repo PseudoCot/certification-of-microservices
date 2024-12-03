@@ -165,3 +165,9 @@ export const AuthStatuses = {
   NoAuth: 'NoAuth',
   Unknown: 'Unknown',
 } as const;
+
+export const RequirementTypes = {
+  Text: 'text',
+  Link: 'link',
+  File: 'file'
+} as const;

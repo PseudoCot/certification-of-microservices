@@ -1,6 +1,8 @@
+import { ReliasesListResponseModel } from "../reliases-list/reliases-list.response-model";
+import { RequirementsListResponseModel } from "../requirements-list/requirements-list.response-model";
+
 export type ServiceResponseModel = {
-  readonly name: string;
   readonly id: string;
-  readonly description: string;
-  readonly owner: string;
+  readonly requirements: RequirementsListResponseModel;
+  readonly reliases: ReliasesListResponseModel;
 }

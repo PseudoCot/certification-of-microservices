@@ -3,31 +3,28 @@ import { DataItem } from '../../types/data-item.type';
 import { DataModel } from '../../types/models/data-model.type';
 import { TemplateRequestModel } from './template.request-model';
 import { TemplateResponseModel } from './template.response-model';
+import { RequirementsListDataModel } from '../requirements-list/requirements-list.data-model';
 
 export class TemplateDataModel implements DataModel, DataItem {
-  public name!: string;
   public id!: string;
-  public description!: string;
-  public manager!: string;
+  public requirements!: RequirementsListDataModel;
 
-  constructor(responseData: JsonValue) {
-    this.fromDTO(responseData);
+  constructor(responseData?: JsonValue) {
+    if (responseData) {
+      this.fromDTO(responseData);
+    }
   }
 
   public fromDTO(responseData: JsonValue) {
     const dto = responseData as TemplateResponseModel;
-    this.name = dto.name;
     this.id = dto.id;
-    this.description = dto.description;
-    this.manager = dto.manager;
+    this.requirements = new RequirementsListDataModel(dto.requirements);
   }
 
   public toDTO(): TemplateRequestModel {
     return {
-      name: this.name,
       id: this.id,
-      description: this.description,
-      manager: this.manager,
+      requirements: this.requirements.toDTO(),
     }
   }
 }

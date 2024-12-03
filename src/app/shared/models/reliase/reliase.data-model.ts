@@ -1,33 +1,33 @@
 import { JsonValue } from '../../types/http/json-value.type';
 import { DataItem } from '../../types/data-item.type';
-import { DataModel } from '../../types/models/data-model.type';
 import { ReliaseRequestModel } from './reliase.request-model';
 import { ReliaseResponseModel } from './reliase.response-model';
+import { DataModel } from '../../types/models/data-model.type';
+import { RequirementsListDataModel } from '../requirements-list/requirements-list.data-model';
 
 export class ReliaseDataModel implements DataModel, DataItem {
-  public name!: string;
   public id!: string;
-  public description!: string;
-  public manager!: string;
+  public order!: number;
+  public requirements!: RequirementsListDataModel;
 
-  constructor(responseData: JsonValue) {
-    this.fromDTO(responseData);
+  constructor(responseData?: JsonValue) {
+    if (responseData) {
+      this.fromDTO(responseData);
+    }
   }
 
   public fromDTO(responseData: JsonValue) {
     const dto = responseData as ReliaseResponseModel;
-    this.name = dto.name;
     this.id = dto.id;
-    this.description = dto.description;
-    this.manager = dto.manager;
+    this.order = dto.order;
+    this.requirements = new RequirementsListDataModel(dto.requirements);
   }
 
   public toDTO(): ReliaseRequestModel {
     return {
-      name: this.name,
       id: this.id,
-      description: this.description,
-      manager: this.manager,
+      order: this.order,
+      requirements: this.requirements.toDTO(),
     }
   }
 }

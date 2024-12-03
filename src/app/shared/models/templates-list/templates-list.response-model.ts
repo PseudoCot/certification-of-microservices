@@ -1,5 +1,5 @@
-import { ServiceResponseModel } from "../service/service.response-model";
+import { TemplateResponseModel } from "../template/template.response-model";
 
 export type TemplatesListResponseModel = {
-  readonly templates: ServiceResponseModel[];
+  readonly templates: TemplateResponseModel[];
 }
