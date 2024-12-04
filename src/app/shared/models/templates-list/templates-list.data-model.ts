@@ -5,7 +5,7 @@ import { TemplatesListRequestModel } from './templates-list.request-model';
 import { TemplatesListResponseModel } from './templates-list.response-model';
 
 export class TemplatesListDataModel implements DataModel {
-  public templates!: readonly TemplateDataModel[];
+  public templates!: TemplateDataModel[];
 
   constructor(responseData?: JsonValue) {
     if (responseData) {
@@ -15,12 +15,12 @@ export class TemplatesListDataModel implements DataModel {
 
   public fromDTO(responseData: JsonValue) {
     const dto = responseData as TemplatesListResponseModel;
-    this.templates = dto.templates.map((templateDto) => new TemplateDataModel(templateDto));
+    this.templates = dto.templates?.map((templateDto) => new TemplateDataModel(templateDto)) || [];
   }
 
   public toDTO(): TemplatesListRequestModel {
     return {
-      templates: this.templates.map((templateData) => templateData.toDTO()),
+      templates: this.templates?.map((templateData) => templateData.toDTO()) || [],
     }
   }
 }

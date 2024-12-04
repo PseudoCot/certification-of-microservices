@@ -492,7 +492,7 @@ img {
 
 
 /* /// loader /// */
-.loader {
+/* .loader {
   position: relative;
   display: inline-block;
   width: 16px;
@@ -544,7 +544,7 @@ img {
     background-color: var(--loader-light-color);
     box-shadow: 32px 0 var(--loader-dark-color), -32px 0 var(--loader-light-color);
   }
-}
+} */
 
 
 /* /// modal-window /// */

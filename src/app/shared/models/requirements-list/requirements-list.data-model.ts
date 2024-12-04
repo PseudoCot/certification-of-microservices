@@ -5,7 +5,7 @@ import { RequirementsListRequestModel } from './requirements-list.request-model'
 import { RequirementsListResponseModel } from './requirements-list.response-model';
 
 export class RequirementsListDataModel implements DataModel {
-  public requirements!: readonly RequirementDataModel[];
+  public requirements!: RequirementDataModel[];
 
   constructor(responseData?: JsonValue) {
     if (responseData) {
@@ -15,12 +15,12 @@ export class RequirementsListDataModel implements DataModel {
 
   public fromDTO(responseData: JsonValue) {
     const dto = responseData as RequirementsListResponseModel;
-    this.requirements = dto.requirements.map((requirementDto) => new RequirementDataModel(requirementDto));
+    this.requirements = dto.requirements?.map((requirementDto) => new RequirementDataModel(requirementDto)) || [];
   }
 
   public toDTO(): RequirementsListRequestModel {
     return {
-      requirements: this.requirements.map((requirementData) => requirementData.toDTO()),
+      requirements: this.requirements?.map((requirementData) => requirementData.toDTO()) || [],
     }
   }
 }

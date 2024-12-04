@@ -3,6 +3,7 @@ import { RequirementsListRequestModel } from "../requirements-list/requirements-
 
 export type ServiceRequestModel = {
   readonly id: string;
+  readonly name: string;
   readonly requirements: RequirementsListRequestModel;
   readonly reliases: ReliasesListRequestModel;
 }

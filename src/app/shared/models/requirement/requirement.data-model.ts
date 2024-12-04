@@ -1,5 +1,5 @@
 import { JsonValue } from '../../types/http/json-value.type';
-import { DataItem } from '../../types/data-item.type';
+import { DataItem } from '../../types/models/data-item.type';
 import { RequirementRequestModel } from './requirement.request-model';
 import { RequirementResponseModel } from './requirement.response-model';
 import { RequirementType } from '../../types/requirement.type';

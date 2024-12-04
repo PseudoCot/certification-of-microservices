@@ -1,5 +1,5 @@
 import { FormGroup } from "@angular/forms";
-import { DataModel } from "../data-models/data-model.type";
+import { DataModel } from "./data-model.type";
 
 export type ViewModel = {
   readonly form: FormGroup;

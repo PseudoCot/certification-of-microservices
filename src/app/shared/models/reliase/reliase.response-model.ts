@@ -2,6 +2,7 @@ import { RequirementsListResponseModel } from "../requirements-list/requirements
 
 export type ReliaseResponseModel = {
   readonly id: string;
+  readonly name: string;
   readonly order: number;
   readonly requirements: RequirementsListResponseModel;
 }

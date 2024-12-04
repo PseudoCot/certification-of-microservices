@@ -2,5 +2,6 @@ import { RequirementsListRequestModel } from "../requirements-list/requirements-
 
 export type TemplateRequestModel = {
   readonly id: string;
+  readonly name: string;
   readonly requirements: RequirementsListRequestModel;
 }

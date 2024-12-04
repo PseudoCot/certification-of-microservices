@@ -5,7 +5,7 @@ import { ServicesListRequestModel } from './services-list.request-model';
 import { ServicesListResponseModel } from './services-list.response-model';
 
 export class ServicesListDataModel implements DataModel {
-  public services!: readonly ServiceDataModel[];
+  public services!: ServiceDataModel[];
 
   constructor(responseData?: JsonValue) {
     if (responseData) {
@@ -15,12 +15,12 @@ export class ServicesListDataModel implements DataModel {
 
   public fromDTO(responseData: JsonValue) {
     const dto = responseData as ServicesListResponseModel;
-    this.services = dto.services.map((serviceDto) => new ServiceDataModel(serviceDto));
+    this.services = dto.services?.map((serviceDto) => new ServiceDataModel(serviceDto)) || [];
   }
 
   public toDTO(): ServicesListRequestModel {
     return {
-      services: this.services.map((serviceData) => serviceData.toDTO()),
+      services: this.services?.map((serviceData) => serviceData.toDTO()) || [],
     }
   }
 }
