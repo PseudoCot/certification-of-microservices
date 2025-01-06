@@ -13,52 +13,55 @@
   <header class="header">
     <nav class="header__nav nav">
       <!-- <div class="nav__hidden-nav hidden-nav">
-        <button class="hidden-nav__close-btn btn-reset">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1.6 16L0 14.4L6.4 8L0 1.6L1.6 0L8 6.4L14.4 0L16 1.6L9.6 8L16 14.4L14.4 16L8 9.6L1.6 16Z"
-              fill="#538C38" />
-          </svg>
-        </button>
-        <ul class="hidden-nav__list list-reset">
-          <li class="hidden-nav__item">
-            <a class="hidden-nav__item-link" href="#">
-              СЕРВИСЫ
-            </a>
-          </li>
-          <li class="hidden-nav__item">
-            <a class="hidden-nav__item-link" href="#">
-              ШАБЛОНЫ
-            </a>
-          </li>
-          <li class="hidden-nav__item">
-            <a class="hidden-nav__item-link" href="#">
-              ТРЕБОВАНИЯ
-            </a>
-          </li>
-        </ul>
-      </div> -->
-
-      <div class="nav__main-controls main-controls">
-        <button class="main-controls__burger-btn burger-btn nav-control btn-reset">
-          <ul class="burger-btn__list list-reset">
-            <li class="burger-btn__item"></li>
-            <li class="burger-btn__item"></li>
-            <li class="burger-btn__item"></li>
+          <button class="hidden-nav__close-btn btn-reset">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.6 16L0 14.4L6.4 8L0 1.6L1.6 0L8 6.4L14.4 0L16 1.6L9.6 8L16 14.4L14.4 16L8 9.6L1.6 16Z"
+                fill="#538C38" />
+            </svg>
+          </button>
+          <ul class="hidden-nav__list list-reset">
+            <li class="hidden-nav__item">
+              <a class="hidden-nav__item-link" href="#">
+                СЕРВИСЫ
+              </a>
+            </li>
+            <li class="hidden-nav__item">
+              <a class="hidden-nav__item-link" href="#">
+                ШАБЛОНЫ
+              </a>
+            </li>
+            <li class="hidden-nav__item">
+              <a class="hidden-nav__item-link" href="#">
+                ТРЕБОВАНИЯ
+              </a>
+            </li>
           </ul>
-        </button>
+        </div> -->
 
-        <a class="main-controls__home-link nav-control" href="#">
-          <svg width=" 31" height="26" viewBox="0 0 31 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M15.3995 0.432495L0.769531 13.6H4.75953V25.57H14.0695V17.59H16.7295V25.57H26.0395V13.6H30.0295L15.3995 0.432495ZM15.3995 4.01207L23.3795 11.1946V12.27V22.91H19.3895V14.93H11.4095V22.91H7.41953V11.1946L15.3995 4.01207Z"
-              fill="#538C38" />
-          </svg>
-        </a>
-      </div>
+      <ul class="nav__main-controls main-controls__list list-reset">
+        <li class="main-controls__item">
+          <button class="main-controls__burger-btn burger-btn nav__control btn-reset">
+            <ul class="burger-btn__list list-reset">
+              <li class="burger-btn__item"></li>
+              <li class="burger-btn__item"></li>
+              <li class="burger-btn__item"></li>
+            </ul>
+          </button>
+        </li>
+        <li class="main-controls__item">
+          <a class="main-controls__home-link nav__control" href="#">
+            <svg width="31" height="26" viewBox="0 0 31 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M15.3995 0.432495L0.769531 13.6H4.75953V25.57H14.0695V17.59H16.7295V25.57H26.0395V13.6H30.0295L15.3995 0.432495ZM15.3995 4.01207L23.3795 11.1946V12.27V22.91H19.3895V14.93H11.4095V22.91H7.41953V11.1946L15.3995 4.01207Z"
+                fill="#538C38" />
+            </svg>
+          </a>
+        </li>
+      </ul>
 
       <ul class="nav__user-controls user-controls__list list-reset">
-        <li class="user-controls__item nav-control">
-          <a class="user-controls__item-link" href="#">
+        <li class="user-controls__item">
+          <a class="user-controls__item-link nav__control" href="#">
             <svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M13.7002 13.5C11.8439 13.5 10.2549 12.8391 8.93301 11.5172C7.61113 10.1953 6.9502 8.60625 6.9502 6.75C6.9502 4.89375 7.61113 3.30469 8.93301 1.98281C10.2549 0.660938 11.8439 0 13.7002 0C15.5564 0 17.1455 0.660938 18.4674 1.98281C19.7893 3.30469 20.4502 4.89375 20.4502 6.75C20.4502 8.60625 19.7893 10.1953 18.4674 11.5172C17.1455 12.8391 15.5564 13.5 13.7002 13.5ZM0.200195 27V22.275C0.200195 21.3188 0.446289 20.4398 0.938477 19.6383C1.43066 18.8367 2.08457 18.225 2.9002 17.8031C4.64395 16.9312 6.41582 16.2773 8.21582 15.8414C10.0158 15.4055 11.8439 15.1875 13.7002 15.1875C15.5564 15.1875 17.3846 15.4055 19.1846 15.8414C20.9846 16.2773 22.7564 16.9312 24.5002 17.8031C25.3158 18.225 25.9697 18.8367 26.4619 19.6383C26.9541 20.4398 27.2002 21.3188 27.2002 22.275V27H0.200195ZM3.5752 23.625H23.8252V22.275C23.8252 21.9656 23.7479 21.6844 23.5932 21.4312C23.4385 21.1781 23.2346 20.9813 22.9814 20.8406C21.4627 20.0813 19.9299 19.5117 18.383 19.132C16.8361 18.7523 15.2752 18.5625 13.7002 18.5625C12.1252 18.5625 10.5643 18.7523 9.01738 19.132C7.47051 19.5117 5.9377 20.0813 4.41895 20.8406C4.16582 20.9813 3.96191 21.1781 3.80723 21.4312C3.65254 21.6844 3.5752 21.9656 3.5752 22.275V23.625ZM13.7002 10.125C14.6283 10.125 15.4229 9.79453 16.0838 9.13359C16.7447 8.47266 17.0752 7.67812 17.0752 6.75C17.0752 5.82188 16.7447 5.02734 16.0838 4.36641C15.4229 3.70547 14.6283 3.375 13.7002 3.375C12.7721 3.375 11.9775 3.70547 11.3166 4.36641C10.6557 5.02734 10.3252 5.82188 10.3252 6.75C10.3252 7.67812 10.6557 8.47266 11.3166 9.13359C11.9775 9.79453 12.7721 10.125 13.7002 10.125Z"
@@ -66,8 +69,8 @@
             </svg>
           </a>
         </li>
-        <li class="user-controls__item nav-control">
-          <button class="user-controls__item-btn btn-reset">
+        <li class="user-controls__item">
+          <button class="user-controls__item-btn nav__control btn-reset">
             <svg width="25" height="21" viewBox="0 0 25 21" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M17.1053 21L0 21L0 0L17.1053 0L17.1053 6.5625H14.4737V2.625L2.63158 2.625L2.63158 18.375L14.4737 18.375V14.4375H17.1053V21Z"
