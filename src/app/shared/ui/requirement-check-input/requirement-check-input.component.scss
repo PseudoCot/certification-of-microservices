@@ -1,0 +1,28 @@
+:host {}
+
+.requirement-check-input {
+  margin: 0;
+  width: 0;
+  height: 0;
+  display: none;
+  opacity: 0;
+  z-index: -100;
+}
+
+.requirement-check-label {
+  padding: 9px 15px;
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 24px;
+  color: #FFFFFFCC;
+  background-color: #FFFFFF1A;
+  border: 1px solid #FFFFFFA5;
+  border-radius: 35px;
+}
+
+.requirement-check-label:focus,
+.requirement-check-label:hover,
+.requirement-check-label:active {
+  color: #CF5F00E6;
+  border-color: #CF5F00E6;
+}

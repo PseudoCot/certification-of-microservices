@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
 @Component({
   selector: 'app-burger-btn',
   templateUrl: './burger-btn.component.html',
-  styleUrls: ['./burger-btn.component.scss', '../../feature/layout-header/layout-header.component.scss'],
+  styleUrls: ['./burger-btn.component.scss', '../../../../ui/icon-link/icon-link.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })

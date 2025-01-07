@@ -1,0 +1,21 @@
+:host {}
+
+.text-link {
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 28px;
+  word-wrap: break-word;
+  color: #FFFFFF99;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    color: var(--green-color);
+  }
+
+  &:focus,
+  &:active {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+  }
+}

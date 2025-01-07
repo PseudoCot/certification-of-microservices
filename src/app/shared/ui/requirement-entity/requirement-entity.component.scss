@@ -1,0 +1,43 @@
+:host {}
+
+.requirement-entity {
+  position: relative;
+  padding: 8px 16px 8px 45px;
+  display: block;
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 24px;
+  color: #FFFFFF80;
+  border: 1px solid #797979;
+  border-radius: 8px;
+  background-color: var(--unchecked-radio-btn-bg-color);
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    width: 24px;
+    height: 21px;
+    content: '';
+    transform: translateY(-50%);
+  }
+
+  &--link::before {
+    background: no-repeat center center url('/icons/link.svg');
+  }
+
+  &--file::before {
+    background: no-repeat center center url('/icons/file.svg');
+  }
+
+  &--text::before {
+    background: no-repeat center center url('/icons/pen.svg');
+  }
+
+  &:focus,
+  &:hover,
+  &:active,
+  &:checked {
+    background-color: var(--checked-radio-btn-bg-color);
+  }
+}

@@ -1,0 +1,25 @@
+:host {}
+
+.icon-link {
+  padding: 5px;
+  margin: -5px;
+  width: 53px;
+  height: 53px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 3px solid var(--green-color);
+}
+
+.icon-link:focus,
+.icon-link:hover,
+.icon-link:active {
+  border-color: #62a741;
+}
+
+.icon-link:focus path,
+.icon-link:hover path,
+.icon-link:active path {
+  fill: #62a741;
+}

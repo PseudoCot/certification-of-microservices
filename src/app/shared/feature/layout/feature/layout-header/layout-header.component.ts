@@ -5,19 +5,21 @@ import { BurgerButtonComponent } from "../../ui/burger-btn/burger-btn.component"
 import { BehaviorSubject, delayWhen, interval, map, of, throttleTime } from 'rxjs';
 import { HiddenNavComponent } from "../../ui/hidden-nav/hidden-nav.component";
 import { AppRoutes } from '../../../../consts';
+import { IconLinkComponent } from "../../../../ui/icon-link/icon-link.component";
 
 @Component({
   selector: 'app-layout-header',
   templateUrl: './layout-header.component.html',
-  styleUrl: './layout-header.component.scss',
+  styleUrls: ['./layout-header.component.scss', '../../../../ui/icon-link/icon-link.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [SvgIconComponent, RouterModule, BurgerButtonComponent, HiddenNavComponent],
+  imports: [SvgIconComponent, RouterModule, BurgerButtonComponent, HiddenNavComponent, IconLinkComponent],
 })
 export class LayoutHeaderComponent {
 
   protected homeLinkPath = AppRoutes.Home.Path;
   protected userLinkPath = AppRoutes.User.Path;
+
   private _hiddenNavOpened$ = new BehaviorSubject(false);
   protected hiddenNavOpened$ = this._hiddenNavOpened$.pipe(
     throttleTime(1000)

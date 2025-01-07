@@ -1,0 +1,9 @@
+<input class="requirement-check-input" type="checkbox" [name]="name" [id]="id" [value]="value" multiple>
+<label class="requirement-check-label" [for]="name">
+  @if (label) {
+  {{ label }}
+  }
+  @else {
+  <ng-content />
+  }
+</label>

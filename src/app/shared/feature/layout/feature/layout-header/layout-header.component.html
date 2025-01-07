@@ -8,20 +8,20 @@
         <app-burger-btn (burgerClicked$)="toggleHiddenNav()" />
       </li>
       <li class="main-controls__item">
-        <a class="main-controls__home-link nav__control" [routerLink]="[homeLinkPath]">
+        <app-icon-link classes="main-controls__home-link" [linkPath]="homeLinkPath">
           <app-svg-icon icon="home" width="31" height="26" />
-        </a>
+        </app-icon-link>
       </li>
     </ul>
 
     <ul class="nav__user-controls user-controls__list list-reset">
       <li class="user-controls__item">
-        <a class="user-controls__item-link nav__control" [routerLink]="[userLinkPath]">
+        <app-icon-link classes="user-controls__item-link" [linkPath]="userLinkPath">
           <app-svg-icon icon="user" width="28" height="27" />
-        </a>
+        </app-icon-link>
       </li>
       <li class="user-controls__item">
-        <button class="user-controls__item-btn nav__control btn-reset" (click)="handleLogoutButtonClick()">
+        <button class="user-controls__item-btn icon-link btn-reset" (click)="handleLogoutButtonClick()">
           <app-svg-icon icon="exit" width="25" height="21" />
         </button>
       </li>
