@@ -1,16 +1,18 @@
-<form [formGroup]="form">
-  <fieldset>
-    <legend>Login</legend>
-    <div class="form-field">
-      <label for="email">Email:</label>
-      <input name="email" formControlName="email">
+<form class="auth__login-form login-form card" [formGroup]="_form">
+  <h1 class="login-form__title card__title title-reset">Авторизация</h1>
+
+  <div class="login-form__fields-wrapper">
+    <div class="login-form__field form__field">
+      <input class="login-form__input form__input" name="login" type="text" id="login"
+        placeholder="Имя пользователя или почта" maxlength="100" formControlName="login">
     </div>
-    <div class="form-field">
-      <label for="password">Password:</label>
-      <input name="password" formControlName="password" type="password">
+    <div class="login-form__field form__field">
+      <input class="login-form__input form__input" name="password" type="password" id="password" placeholder="Пароль"
+        maxlength="100" formControlName="password">
     </div>
-  </fieldset>
-  <div class="form-buttons">
-    <button class="button button-primary" (click)="login()">Login</button>
+  </div>
+
+  <div class="login-form__btns-wrapper">
+    <app-button classes="login-form__btn" type="submit" [disabled]="!_form.valid" (click)="_login()">Войти</app-button>
   </div>
 </form>

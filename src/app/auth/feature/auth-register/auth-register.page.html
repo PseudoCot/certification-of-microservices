@@ -1,1 +1,27 @@
-<p>register works!</p>,
+<form class="auth__register-form register-form card" [formGroup]="_form">
+  <h1 class="register-form__title card__title title-reset">Регистрация</h1>
+
+  <div class="register-form__fields-wrapper">
+    <div class="register-form__field form__field">
+      <input class="register-form__input form__input" name="name" type="text" id="name" placeholder="Фамилия имя"
+        maxlength="100" formControlName="name">
+    </div>
+    <div class="register-form__field form__field">
+      <input class="register-form__input form__input" name="email" type="text" id="email" placeholder="Почта"
+        maxlength="100" formControlName="email">
+    </div>
+    <div class="register-form__field form__field">
+      <input class="register-form__input form__input" name="nickname" type="text" id="nickname" maxlength="100"
+        placeholder="Имя пользователя" formControlName="nickname">
+    </div>
+    <div class="register-form__field form__field">
+      <input class="register-form__input form__input" name="password" type="password" id="password" placeholder="Пароль"
+        maxlength="100" formControlName="password">
+    </div>
+  </div>
+
+  <div class="register-form__btns-wrapper">
+    <app-button classes="register-form__btn" [disabled]="!_form.valid"
+      (click)="_register()">Зарегистрироваться</app-button>
+  </div>
+</form>

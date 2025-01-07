@@ -1,3 +1,30 @@
-:host {
-  display: block;
+:host {}
+
+.register-form {
+  padding: 45px 70px 50px;
+  margin: 0 auto;
+  min-width: 770px;
+  width: fit-content;
+
+  &__title {
+    margin-bottom: 70px;
+    text-align: center;
+  }
+
+  &__fields-wrapper {
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+  }
+
+  &__btns-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  &__btn {
+    padding: 10px 49px;
+  }
 }
