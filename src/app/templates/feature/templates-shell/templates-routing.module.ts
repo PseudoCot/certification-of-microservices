@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TemplatesListPage } from '../templates-list/templates-list.page';
-import { TemplatesUnitPage } from '../templates-unit/templates-unit.page';
+import { TemplatesInfoPage } from '../templates-info/templates-info.page';
 import { AppRoutes } from '../../../shared/consts';
 
 const routes: Routes = [
@@ -11,9 +11,9 @@ const routes: Routes = [
     component: TemplatesListPage,
   },
   {
-    path: AppRoutes.Templates.Children.Unit.Path,
-    title: AppRoutes.Templates.Children.Unit.Title,
-    component: TemplatesUnitPage,
+    path: AppRoutes.Templates.Children.Info.Path,
+    title: AppRoutes.Templates.Children.Info.Title,
+    component: TemplatesInfoPage,
   },
   {
     path: '**',
