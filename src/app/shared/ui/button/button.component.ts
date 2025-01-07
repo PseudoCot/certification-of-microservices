@@ -10,5 +10,8 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 })
 export class ButtonComponent {
   @Input() classes = '';
+  @Input() type = 'button';
+  @Input() disabled = false;
+
   @Output() click$ = new EventEmitter<void>();
 }
