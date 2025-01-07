@@ -1,3 +1,75 @@
-:host {
-  display: block;
+:host {}
+
+.user-info {
+  position: relative;
+  padding: 45px 70px 50px;
+  margin: 0 auto;
+  min-width: 770px;
+  width: fit-content;
+
+  &__title {
+    text-align: center;
+    margin-bottom: 70px;
+  }
+
+  &__controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  &__edit-btn {
+    padding: 5px;
+    margin: -5px 15px -5px -5px;
+  }
+
+  &__delete-btn {
+    padding: 5px;
+    margin: -5px;
+  }
+
+  &__cancel-edit-btn {
+    padding: 5px;
+    margin: -5px;
+  }
+
+  &__fields-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+  }
+
+  &__fields-wrapper:not(:last-child) {
+    margin-bottom: 40px;
+  }
+
+  &__field:focus,
+  &__field:hover,
+  &__field:active {
+    background-color: transparent;
+  }
+
+  &__data-value {
+    width: 100%;
+    display: inline-block;
+  }
+}
+
+::ng-deep .user-edit-form {
+  &__fields-wrapper {
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+  }
+
+  &__btns-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  &__btn {
+    padding: 10px 49px;
+  }
 }
