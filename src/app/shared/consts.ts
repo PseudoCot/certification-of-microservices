@@ -98,7 +98,7 @@ export const AppRoutes = {
         Path: '',
         Title: 'Список сервисов',
       },
-      Unit: {
+      Info: {
         Path: ':id',
         Title: 'Информация о сервисе',
       },
@@ -110,25 +110,11 @@ export const AppRoutes = {
             Path: '',
             Title: 'Список релизов',
           },
-          Unit: {
+          Info: {
             Path: ':id',
             Title: 'Информация о релизе',
           },
         }
-      },
-    }
-  },
-  Templates: {
-    Path: 'templates',
-    Title: 'Шаблоны',
-    Children: {
-      List: {
-        Path: '',
-        Title: 'Список шаблонов',
-      },
-      Unit: {
-        Path: ':id',
-        Title: 'Информация о шаблоне',
       },
     }
   },
@@ -148,10 +134,6 @@ export const HiddenNavRoutes: { Path: string, Title: string }[] = [
   {
     Path: AppRoutes.Services.Path,
     Title: AppRoutes.Services.Title
-  },
-  {
-    Path: AppRoutes.Templates.Path,
-    Title: AppRoutes.Templates.Title
   },
   {
     Path: AppRoutes.Requirements.Path,

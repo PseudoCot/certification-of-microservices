@@ -31,15 +31,6 @@ const routes: Routes = [
     // canActivate: [AuthGuard]
   },
   {
-    path: AppRoutes.Templates.Path,
-    title: AppRoutes.Templates.Title,
-    loadChildren: () =>
-      import('./templates/feature/templates-shell/templates.module').then(
-        (m) => m.TemplatesModule
-      ),
-    // canActivate: [AuthGuard]
-  },
-  {
     path: AppRoutes.Requirements.Path,
     title: AppRoutes.Requirements.Title,
     loadChildren: () =>
