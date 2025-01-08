@@ -1,0 +1,49 @@
+.modal-card {
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 0 21px 0 var(--green-color);
+  background-color: var(--card-bg-color);
+
+  &__close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 5px;
+  }
+
+  &__title {
+    display: block;
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 100%;
+    letter-spacing: 1px;
+    text-align: center;
+    color: var(--text-light-color);
+  }
+
+  &__question {
+    display: block;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 32px;
+    text-align: justify;
+    color: var(--text-light-color);
+  }
+
+  &__input {
+    padding: 14px 15px;
+    font-family: var(--font-family);
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 100%;
+    color: var(--text-light-color);
+    background-color: inherit;
+    border: 2px solid #FFFFFF4D;
+    border-radius: 10px;
+  }
+
+  &__input::placeholder {
+    color: #FFFFFF4D;
+  }
+}

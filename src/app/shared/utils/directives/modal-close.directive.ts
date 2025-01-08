@@ -17,19 +17,19 @@ export class ModalCloseDirective {
     const esc$: Observable<unknown> = fromEvent<KeyboardEvent>(
       documentRef,
       "keydown"
-    ).pipe(filter(({ key }) => key === "Escape"));
+    ).pipe(
+      filter(({ key }) => key === "Escape"),
+    );
 
     const clickOutside$ = fromEvent<MouseEvent>(documentRef, "mousedown").pipe(
-      filter(
-        ({ target }) =>
-          target instanceof Element && !nativeElement.contains(target)
+      filter(({ target }) =>
+        target instanceof Element && !nativeElement.contains(target)
       ),
       switchMapTo(
         fromEvent<MouseEvent>(documentRef, "mouseup").pipe(
           take(1),
-          filter(
-            ({ target }) =>
-              target instanceof Element && !nativeElement.contains(target)
+          filter(({ target }) =>
+            target instanceof Element && !nativeElement.contains(target)
           )
         )
       )

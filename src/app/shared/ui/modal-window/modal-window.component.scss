@@ -1,0 +1,49 @@
+:host {}
+
+.modal-overlay {
+  position: fixed;
+  padding: 50px 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(13px);
+  background-color: #80808042;
+  z-index: 100;
+  opacity: 1;
+  overflow-y: auto;
+}
+
+// .modal-overlay {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   width: 0;
+//   height: 0;
+//   display: none;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   backdrop-filter: blur(13px);
+//   background-color: #80808042;
+//   opacity: 0;
+//   z-index: -100;
+
+//   &--show {
+//     padding: 50px 0;
+//     width: 100vw;
+//     height: 100vh;
+//     display: flex;
+//     z-index: 100;
+//     opacity: 1;
+//     overflow-y: auto;
+//   }
+// }

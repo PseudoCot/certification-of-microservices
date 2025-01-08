@@ -1,0 +1,9 @@
+<div class="modal-overlay" *ngIf="show$ | async">
+  <div class="modal-card" (appModalClose)="show$.next(false)">
+    <button class="modal-card__close-btn btn-reset" type="button" (click)="show$.next(false)">
+      <app-svg-icon icon="cross" size="16" />
+    </button>
+
+    <ng-content />
+  </div>
+</div>
