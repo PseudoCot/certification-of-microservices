@@ -10,8 +10,8 @@ import {
 export class LetContext<T> {
   constructor(private readonly dir: LetDirective<T>) { }
 
-  get ngLet(): T {
-    return this.dir.ngLet;
+  get appLet(): T {
+    return this.dir.appLet;
   }
 }
 
@@ -21,8 +21,7 @@ export class LetContext<T> {
   standalone: true,
 })
 export class LetDirective<T> {
-  @Input()
-  public ngLet!: T;
+  @Input({ required: true }) public appLet!: T;
 
   constructor(
     @Inject(ViewContainerRef) viewContainer: ViewContainerRef,

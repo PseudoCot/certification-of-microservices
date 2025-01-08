@@ -1,15 +1,16 @@
-<ng-container *ngIf="opened$ | async as opened">
-  <div class="nav__hidden-nav hidden-nav" *ngIf="fullyClosed$ | async as fullyClosed"
-    [ngClass]=" {'hidden-nav--opened': opened, 'hidden-nav--fully-closed' : fullyClosed}">
-    <button class="hidden-nav__close-btn btn-reset" (click)="onCloseButtonClick()">
-      <app-svg-icon icon="cross" />
-    </button>
-    <ul class="hidden-nav__list list-reset">
-      <li class="hidden-nav__item" *ngFor="let route of routes">
-        <a class="hidden-nav__item-link" [routerLink]="[route.Path]" routerLinkActive="hidden-nav__item-link--active">
-          {{ route.Title | uppercase }}
-        </a>
-      </li>
-    </ul>
-  </div>
-</ng-container>
+@let opened = (opened$ | async);
+@let fullyClosed = (fullyClosed$ | async);
+
+<div class="nav__hidden-nav hidden-nav"
+  [ngClass]=" {'hidden-nav--opened': opened, 'hidden-nav--fully-closed' : fullyClosed}">
+  <button class="hidden-nav__close-btn btn-reset" (click)="closeButtonClick.next()">
+    <app-svg-icon icon="cross" />
+  </button>
+  <ul class="hidden-nav__list list-reset">
+    <li class="hidden-nav__item" *ngFor="let route of routes">
+      <a class="hidden-nav__item-link" [routerLink]="[route.Path]" routerLinkActive="hidden-nav__item-link--active">
+        {{ route.Title | uppercase }}
+      </a>
+    </li>
+  </ul>
+</div>

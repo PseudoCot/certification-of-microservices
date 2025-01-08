@@ -16,22 +16,16 @@ import { IconLinkComponent } from "../../../../ui/icon-link/icon-link.component"
   imports: [SvgIconComponent, RouterModule, BurgerButtonComponent, HiddenNavComponent, IconLinkComponent],
 })
 export class LayoutHeaderComponent {
-
-  protected homeLinkPath = AppRoutes.Home.Path;
   protected userLinkPath = AppRoutes.User.Path;
 
-  private _hiddenNavOpened$ = new BehaviorSubject(false);
-  protected hiddenNavOpened$ = this._hiddenNavOpened$.pipe(
+  protected hiddenNav$ = new BehaviorSubject(false);
+  protected hiddenNavOpened$ = this.hiddenNav$.pipe(
     throttleTime(1000)
   );
   protected hiddenNavFullyClosed$ = this.hiddenNavOpened$.pipe(
-    delayWhen((opened) => opened ? of(undefined) : interval(1000)),
-    map((opened) => !opened)
+    delayWhen((opened) => opened ? of(opened) : interval(500)),
+    map((opened) => !opened),
   );
-
-  protected toggleHiddenNav() {
-    this._hiddenNavOpened$.next(!this._hiddenNavOpened$.value);
-  }
 
   protected handleLogoutButtonClick() {
     console.log('logout');

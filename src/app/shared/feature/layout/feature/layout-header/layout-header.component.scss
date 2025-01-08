@@ -11,11 +11,11 @@
   max-width: var(--max-content-width);
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 }
 
 .user-controls {
   &__list {
+    margin-left: auto;
     display: flex;
     flex-direction: row;
     gap: 27px;
