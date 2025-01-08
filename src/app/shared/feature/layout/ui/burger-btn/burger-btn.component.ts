@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-burger-btn',
@@ -8,6 +8,8 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
   standalone: true,
 })
 export class BurgerButtonComponent {
+  @Input() classes = '';
+
   @Output() burgerClicked$ = new EventEmitter();
 
   public handleButtonClick() {

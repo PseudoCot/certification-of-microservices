@@ -3,16 +3,7 @@
     <!-- <app-hidden-nav [opened$]="hiddenNavOpened$" [fullyClosed$]="hiddenNavFullyClosed$"
       [onCloseButtonClick]="toggleHiddenNav" /> -->
 
-    <ul class="nav__main-controls main-controls__list list-reset">
-      <li class="main-controls__item">
-        <app-burger-btn (burgerClicked$)="toggleHiddenNav()" />
-      </li>
-      <li class="main-controls__item">
-        <app-icon-link classes="main-controls__home-link" [linkPath]="homeLinkPath">
-          <app-svg-icon icon="home" width="31" height="26" />
-        </app-icon-link>
-      </li>
-    </ul>
+    <app-burger-btn classes="nav__burger" (burgerClicked$)="toggleHiddenNav()" />
 
     <ul class="nav__user-controls user-controls__list list-reset">
       <li class="user-controls__item">

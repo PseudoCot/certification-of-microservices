@@ -219,8 +219,12 @@ export const HiddenNavRoutes: { Path: string, Title: string }[] = [
     Title: AppRoutes.Services.Title
   },
   {
-    Path: AppRoutes.Requirements.Path,
-    Title: AppRoutes.Requirements.Title
+    Path: `${AppRoutes.Requirements.Path}?type=services`,
+    Title: `${AppRoutes.Requirements.Title} сервисов`
+  },
+  {
+    Path: `${AppRoutes.Requirements.Path}?type=releases`,
+    Title: `${AppRoutes.Requirements.Title} релизов`
   },
 ];
 
