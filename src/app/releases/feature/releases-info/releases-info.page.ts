@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-reliases-info-page',
-  templateUrl: './reliases-info.page.html',
-  styleUrl: './reliases-info.page.scss',
+  selector: 'app-releases-info-page',
+  templateUrl: './releases-info.page.html',
+  styleUrl: './releases-info.page.scss',
   imports: [
     CommonModule,
   ],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ReliasesInfoPage { }
+export class ReleasesInfoPage { }

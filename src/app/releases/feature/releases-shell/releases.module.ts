@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReleasesRoutingModule } from './releases-routing.module';
 
-import { ReliasesRoutingModule } from './reliases-routing.module';
 
 @NgModule({
-  imports: [CommonModule, ReliasesRoutingModule],
+  imports: [CommonModule, ReleasesRoutingModule],
 })
-export class ReliasesModule { }
+export class ReleasesModule { }

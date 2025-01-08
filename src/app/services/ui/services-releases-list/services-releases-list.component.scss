@@ -1,0 +1,37 @@
+:host {}
+
+.service-releases {
+  padding: 35px 30px;
+  margin-right: 40px;
+  min-width: 250px;
+  max-width: 344px;
+  height: fit-content;
+  grid-column-start: 1;
+  grid-row-start: 2;
+
+  &__title {
+    margin-bottom: 30px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__item {
+    position: relative;
+    padding-left: 16px;
+  }
+
+  &__item::before {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    content: '';
+    border-radius: 50%;
+    background-color: #FFFFFF;
+  }
+}

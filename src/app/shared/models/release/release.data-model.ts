@@ -1,11 +1,11 @@
 import { JsonValue } from '../../types/http/json-value.type';
 import { DataItem } from '../../types/models/data-item.type';
-import { ReliaseRequestModel } from './reliase.request-model';
-import { ReliaseResponseModel } from './reliase.response-model';
+import { ReleaseRequestModel } from './release.request-model';
+import { ReleaseResponseModel } from './release.response-model';
 import { DataModel } from '../../types/models/data-model.type';
 import { RequirementsListDataModel } from '../requirements-list/requirements-list.data-model';
 
-export class ReliaseDataModel implements DataModel, DataItem {
+export class ReleaseDataModel implements DataModel, DataItem {
   public id!: string;
   public name!: string;
   public order!: number;
@@ -18,14 +18,14 @@ export class ReliaseDataModel implements DataModel, DataItem {
   }
 
   public fromDTO(responseData: JsonValue) {
-    const dto = responseData as ReliaseResponseModel;
+    const dto = responseData as ReleaseResponseModel;
     this.id = dto.id;
     this.name = dto.name;
     this.order = dto.order;
     this.requirementsData = new RequirementsListDataModel(dto.requirements);
   }
 
-  public toDTO(): ReliaseRequestModel {
+  public toDTO(): ReleaseRequestModel {
     return {
       id: this.id,
       name: this.name,

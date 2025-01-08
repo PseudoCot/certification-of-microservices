@@ -5,24 +5,107 @@ export const API_URL = !environment.production && environment.useProxy
   ? environment.proxyUrl
   : environment.apiUrl;
 
-export const ApiMethods = {
-  Register: 'register',
-  Login: 'login',
-  RefreshSession: 'refresh_session',
-  Logout: 'logout',
-
-  FetchUser: 'get_profile',
-  UpdateUser: 'update_user_data',
-} as const;
-
 export const ApiRoutes = {
-  Register: 'v1/auth/register',
-  Login: 'v1/auth/login',
-  RefreshSession: 'v1/auth/refresh_session',
-  Logout: 'v1/auth/logout',
+  Register: {
+    Path: 'v1/auth/register_user',
+    Method: 'register_user'
+  },
+  Login: {
+    Path: 'v1/auth/login',
+    Method: 'login'
+  },
+  RefreshSession: {
+    Path: 'v1/auth/refresh_session',
+    Method: 'refresh_session'
+  },
+  Logout: {
+    Path: 'v1/auth/logout',
+    Method: 'logout'
+  },
 
-  FetchUser: 'v1/user/get_profile',
-  UpdateUser: 'v1/user/update_user_data',
+  FetchUser: {
+    Path: 'v1/auth/get_current_user',
+    Method: 'get_current_user'
+  },
+  UpdateUser: {
+    Path: 'v1/auth/update_user_data',
+    Method: 'update_user_data'
+  },
+  DeleteUser: {
+    Path: 'v1/auth/delete_user',
+    Method: 'delete_user'
+  },
+
+  CreateServiceArbitrarily: {
+    Path: 'v1/auth/create_service_arbitrarily',
+    Method: 'create_service_arbitrarily'
+  },
+  CreateServiceByAnother: {
+    Path: 'v1/auth/create_service_by_another',
+    Method: 'create_service_by_another'
+  },
+  GetServices: {
+    Path: 'v1/auth/get_services',
+    Method: 'get_services'
+  },
+  GetService: {
+    Path: 'v1/auth/get_service',
+    Method: 'get_service'
+  },
+  GetServiceReleases: {
+    Path: 'v1/auth/get_service_releases',
+    Method: 'get_service_releases'
+  },
+  AddServiceRequirement: {
+    Path: 'v1/auth/add_service_requirement',
+    Method: 'add_service_requirement'
+  },
+  EditServiceRequirement: {
+    Path: 'v1/auth/edit_service_requirement',
+    Method: 'edit_service_requirement'
+  },
+  DeleteServiceRequirement: {
+    Path: 'v1/auth/delete_service_requirement',
+    Method: 'delete_service_requirement'
+  },
+
+  CreateReleaseArbitrarily: {
+    Path: 'v1/auth/create_release_arbitrarily',
+    Method: 'create_release_arbitrarily'
+  },
+  CreateReleaseByAnother: {
+    Path: 'v1/auth/create_release_by_another',
+    Method: 'create_release_by_another'
+  },
+  SearchReleases: {
+    Path: 'v1/auth/search_releases',
+    Method: 'search_releases'
+  },
+  GetRelease: {
+    Path: 'v1/auth/get_release',
+    Method: 'get_release'
+  },
+  AddReleaseRequirement: {
+    Path: 'v1/auth/add_release_requirement',
+    Method: 'add_release_requirement'
+  },
+  EditReleaseRequirement: {
+    Path: 'v1/auth/edit_release_requirement',
+    Method: 'edit_release_requirement'
+  },
+  DeleteReleaseRequirement: {
+    Path: 'v1/auth/delete_release_requirement',
+    Method: 'delete_release_requirement'
+  },
+
+  GetAllServiceRequirements: {
+    Path: 'v1/auth/get_all_service_requirements',
+    Method: 'get_all_service_requirements'
+  },
+  GetAllReleaseRequirements: {
+    Path: 'v1/auth/get_all_release_requirements',
+    Method: 'get_all_release_requirements'
+  },
 } as const;
 
 
@@ -102,8 +185,8 @@ export const AppRoutes = {
         Path: ':id',
         Title: 'Информация о сервисе',
       },
-      Reliases: {
-        Path: 'reliases',
+      Releases: {
+        Path: 'releases',
         Title: 'Релизы',
         Children: {
           List: {
