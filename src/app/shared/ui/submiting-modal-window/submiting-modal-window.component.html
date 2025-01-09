@@ -1,0 +1,11 @@
+<app-modal-window [show$]="show$">
+  <form class="delete-service__form">
+    <div class="delete-service__question modal-card__question" for="service-name">
+      {{question}}
+    </div>
+    <div class="delete-service__btns">
+      <app-button classes="delete-service__submit-btn" (click$)="submitClick$.next()">{{ submitText }}</app-button>
+      <app-button classes="delete-service__dismiss-btn" (click$)="dismissClick$.next()">{{ dismissText }}</app-button>
+    </div>
+  </form>
+</app-modal-window>
