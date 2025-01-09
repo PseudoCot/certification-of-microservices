@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Output } from '@angular/core';
 import { SvgIconComponent } from "../../ui/svg-icon/svg-icon.component";
 import { CommonModule } from '@angular/common';
-import { DataItem } from '../../types/data-item.type';
+import { DataItem } from '../../types/models/data-item.type';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-list-card',
@@ -18,10 +19,9 @@ export class ListCardComponent {
   @Input({ required: true }) title!: string;
   @Input({ required: true }) items!: readonly DataItem[];
 
-  @Output() addClick$ = new EventEmitter();
+  protected addClick$ = new Subject<void>();
+  @Output() add$ = this.addClick$.asObservable();
 
   protected searchInput = new FormControl('');
   @Output() searchInputChanges$ = this.searchInput.valueChanges;
-
-  @Input({ required: true }) trackItemBy!: (index: number, item: DataItem) => number | string;
 }

@@ -1,8 +1,8 @@
 <div class="service__service-releases service-releases card">
   <h2 class="service-releases__title card__small-title title-reset">Релизы</h2>
-  @if (releases?.length) {
+  @if (releasesData?.length) {
   <ul class="service-releases__list list-reset">
-    @for (release of releases; track release.id) {
+    @for (release of releasesData; track release.id) {
     <li class="service-releases__item">
       <app-text-link class="service-releases__link" [linkPath]="release.id">
         {{ release.name }}

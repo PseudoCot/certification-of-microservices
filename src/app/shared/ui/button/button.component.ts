@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
@@ -6,12 +7,13 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
   styleUrls: ['./button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
 })
 export class ButtonComponent {
   @Input() classes = '';
   @Input() type = 'button';
   @Input() disabled = false;
+  @Input() selected = false;
 
   @Output() click$ = new EventEmitter<void>();
 }

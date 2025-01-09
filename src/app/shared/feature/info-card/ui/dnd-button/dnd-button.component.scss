@@ -1,0 +1,14 @@
+:host {
+  .dnd-btn {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+
+    &__dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: #D9D9D9;
+    }
+  }
+}

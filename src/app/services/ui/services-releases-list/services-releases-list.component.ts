@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ReleaseDataModel } from '../../../shared/models/release/release.data-model';
 import { TextLinkComponent } from "../../../shared/ui/text-link/text-link.component";
+import { ReleaseData } from '../../../shared/models/data/release.data';
 
 @Component({
   selector: 'app-services-releases-list',
@@ -12,5 +12,5 @@ import { TextLinkComponent } from "../../../shared/ui/text-link/text-link.compon
   imports: [RouterModule, TextLinkComponent],
 })
 export class ServicesReleasesListComponent {
-  @Input() releases?: ReleaseDataModel[];
+  @Input() releasesData?: ReleaseData[];
 }

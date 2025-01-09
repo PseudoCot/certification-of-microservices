@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ServicesListPage } from '../services-list/services-list.page';
-import { ServicesUnitPage } from '../services-unit/services-unit.page';
+import { ServicesInfoPage } from '../services-info/services-info.page';
 import { AppRoutes } from '../../../shared/consts';
 
 const routes: Routes = [
@@ -11,17 +11,17 @@ const routes: Routes = [
     component: ServicesListPage,
   },
   {
-    path: AppRoutes.Services.Children.Reliases.Path,
-    title: AppRoutes.Services.Children.Reliases.Title,
+    path: AppRoutes.Services.Children.Releases.Path,
+    title: AppRoutes.Services.Children.Releases.Title,
     loadChildren: () =>
-      import('../services-reliases/feature/reliases-shell/reliases.module').then(
-        (m) => m.ReliasesModule
+      import('../../../releases/feature/releases-shell/releases.module').then(
+        (m) => m.ReleasesModule
       ),
   },
   {
-    path: AppRoutes.Services.Children.Unit.Path,
-    title: AppRoutes.Services.Children.Unit.Title,
-    component: ServicesUnitPage,
+    path: AppRoutes.Services.Children.Info.Path,
+    title: AppRoutes.Services.Children.Info.Title,
+    component: ServicesInfoPage,
   },
   {
     path: '**',

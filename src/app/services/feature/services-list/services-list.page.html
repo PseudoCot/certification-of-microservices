@@ -1,2 +1,8 @@
-<app-list-card classPrefix="services-list" title="Сервисы" [items]="services.services" [trackItemBy]="trackByService"
-  (addClick$)="openAddServiceModal()" (searchInputChanges$)="searchServices($event)" />
+@if (servicesData) {
+<app-list-card classPrefix="services-list" title="Сервисы" [items]="servicesData" (addClick$)="openAddServiceModal()"
+  (searchInputChanges$)="searchServices($event)" />
+}
+
+@else {
+<app-loader />
+}

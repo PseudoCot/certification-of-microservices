@@ -1,22 +1,31 @@
 <section class="{{classPrefix}} card">
   <div class="{{classPrefix}}__head card__head">
-    <h1 class="{{classPrefix}}__title card__title title-reset">{{ title }}</h1>
-    <button class="{{classPrefix}}__add-btn list-card__add-btn btn-reset" (click)="addClick$.emit()">
+    <h1 class="{{classPrefix}}__title card__title title-reset">
+      {{ title }}
+    </h1>
+    <button class="{{classPrefix}}__add-btn list-card__add-btn btn-reset" (click)="addClick$.next()">
       <app-svg-icon icon="plus" width="19" height="20" />
     </button>
   </div>
+
   <div class="{{classPrefix}}__search list-card__search-wrapper">
     <input class="{{classPrefix}}__search-input list-card__search-input" type="text" name="service-search"
       id="service-search" placeholder="Поиск сервиса" [formControl]="searchInput">
   </div>
+
   <ul class="{{classPrefix}}__list list-card__list list-reset">
-    <li class="{{classPrefix}}__item list-card__list-item" *ngFor="let item of items; trackBy: trackItemBy">
+    @for (item of items; track item.id) {
+    <li class="{{classPrefix}}__item list-card__list-item">
       <a class="{{classPrefix}}__item-link list-card__item-link" [routerLink]="item.id">
         {{ item.name }}
       </a>
     </li>
+    }
   </ul>
-  <p class="{{classPrefix}}__empty-message list-card__empty-message paragraph-reset" *ngIf="!items.length">
+
+  @if (!items.length) {
+  <p class="{{classPrefix}}__empty-message list-card__empty-message paragraph-reset">
     {{ title }} не найдены
   </p>
+  }
 </section>
