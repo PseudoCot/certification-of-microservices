@@ -17,7 +17,7 @@ export class HttpRequestInterceptor implements HttpInterceptor {
   ) { }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const idToken = localStorage.getItem("id_token"); // заменить на использование сервиса
 
     const cloned = req.clone({
