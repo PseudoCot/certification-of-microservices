@@ -2,7 +2,7 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
-import { StorageService } from '../../data-accesss/storage.service';
+import { StorageService } from '../../data-access/storage.service';
 
 @Injectable({
   providedIn: 'root',

@@ -1,10 +1,10 @@
-<form class="auth__login-form login-form card" [formGroup]="_form">
+<form class="auth__login-form login-form card" [formGroup]="formModel.form">
   <h1 class="login-form__title card__title title-reset">Авторизация</h1>
 
   <div class="login-form__fields-wrapper">
     <div class="login-form__field form__field">
-      <input class="login-form__input form__input" name="login" type="text" id="login"
-        placeholder="Имя пользователя или почта" maxlength="100" formControlName="login">
+      <input class="login-form__input form__input" name="firstFactor" type="text" id="firstFactor"
+        placeholder="Имя пользователя или почта" maxlength="100" formControlName="firstFactor">
     </div>
     <div class="login-form__field form__field">
       <input class="login-form__input form__input" name="password" type="password" id="password" placeholder="Пароль"
@@ -13,6 +13,7 @@
   </div>
 
   <div class="login-form__btns-wrapper">
-    <app-button classes="login-form__btn" type="submit" [disabled]="!_form.valid" (click)="_login()">Войти</app-button>
+    <app-button classes="login-form__btn" type="submit" [disabled]="!formModel.form.valid"
+      (click)="login()">Войти</app-button>
   </div>
 </form>

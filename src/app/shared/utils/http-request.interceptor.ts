@@ -3,8 +3,8 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS
 import { Observable, throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import { AuthService } from '../../auth/data-access/auth.service';
-import { EventBusService } from '../data-accesss/event-bus.service';
-import { StorageService } from '../data-accesss/storage.service';
+import { EventBusService } from '../data-access/event-bus.service';
+import { StorageService } from '../data-access/storage.service';
 
 @Injectable()
 export class HttpRequestInterceptor implements HttpInterceptor {

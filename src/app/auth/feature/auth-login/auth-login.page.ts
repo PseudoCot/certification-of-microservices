@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonComponent } from "../../../shared/ui/button/button.component";
+import { LoginFormViewModel } from '../../../shared/models/auth-login/login-form.view-model';
 
 @Component({
   selector: 'app-login-page',
@@ -17,21 +17,16 @@ import { ButtonComponent } from "../../../shared/ui/button/button.component";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthLoginPage {
-  protected _form: FormGroup;
+  protected formModel: LoginFormViewModel;
 
   constructor(
-    private fb: FormBuilder,
     // private authService: AuthService,
-    private router: Router
   ) {
-    this._form = this.fb.group({
-      login: ['', Validators.required],
-      password: ['', Validators.required]
-    });
+    this.formModel = new LoginFormViewModel();
   }
 
-  protected _login() {
-    const val = this._form.value;
+  protected login() {
+    const val = this.formModel.form.value;
 
     if (val.email && val.password) {
       // this.authService.login(val.email, val.password)
