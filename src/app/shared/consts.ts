@@ -23,7 +23,7 @@ export const ApiRoutes = {
     Method: 'logout'
   },
 
-  FetchUser: {
+  GetUser: {
     Path: 'v1/auth/get_current_user',
     Method: 'get_current_user'
   },

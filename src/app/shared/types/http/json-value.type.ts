@@ -3,4 +3,5 @@ export type JsonValue =
   | number
   | boolean
   | { [key: string]: JsonValue }
-  | JsonValue[];
+  | JsonValue[]
+  | undefined;
