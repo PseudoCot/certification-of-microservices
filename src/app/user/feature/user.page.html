@@ -4,7 +4,7 @@
   <div class="user-info__controls">
     @if (editMode$ | async) {
     <button class="user-info__cancel-edit-btn btn-reset" (click)="cancelChangesClick$.next()">
-      <app-svg-icon icon="cross" width="16" height="16" />
+      <app-svg-icon icon="cross" size="20" />
     </button>
     } @else {
     <button class="user-info__edit-btn btn-reset" (click)="editClick$.next()">

@@ -4,7 +4,7 @@
 <div class="nav__hidden-nav hidden-nav"
   [ngClass]=" {'hidden-nav--opened': opened, 'hidden-nav--fully-closed' : fullyClosed}">
   <button class="hidden-nav__close-btn btn-reset" (click)="closeButtonClick.next()">
-    <app-svg-icon icon="cross" />
+    <app-svg-icon icon="cross" size="20" />
   </button>
   <ul class="hidden-nav__list list-reset">
     <li class="hidden-nav__item" *ngFor="let route of routes">

@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 @Component({
   selector: 'app-svg-icon',
   templateUrl: './svg-icon.component.html',
+  styleUrl: 'svg-icon.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [],
