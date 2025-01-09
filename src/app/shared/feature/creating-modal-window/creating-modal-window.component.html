@@ -1,0 +1,18 @@
+<app-modal-window [show$]="show$">
+  <form class="creating-form modal-card">
+    <button class="creating-form__close-btn modal-card__close-btn btn-reset" type="button">
+      <app-svg-icon icon="cross" size="20" />
+    </button>
+    <label class="creating-form__title modal-card__title" for="service-name">{{ title }}</label>
+    <input class="creating-form__input modal-card__input" type="text" name="service-name" id="service-name"
+      [placeholder]="namePlaceholder">
+    <div class="creating-form__btns">
+      <app-button class="creating-form__template-btn" (click$)="templateCreate$.next('')">
+        По шаблону
+      </app-button>
+      <app-button class="creating-form__arbitrarily-btn" (click$)="arbitrarilyCreate$.next('')">
+        Произвольно
+      </app-button>
+    </div>
+  </form>
+</app-modal-window>

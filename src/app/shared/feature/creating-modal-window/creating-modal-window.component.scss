@@ -1,0 +1,29 @@
+:host {}
+
+.add-service {
+  &__form {
+    padding: 70px 118px 30px;
+    width: 570px;
+  }
+
+  &__title {
+    margin-bottom: 30px;
+  }
+
+  &__input {
+    margin-bottom: 40px;
+    width: 100%;
+  }
+
+  &__btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 25px;
+  }
+
+  &__submit-btn,
+  &__cancel-btn {
+    padding: 13px 30px;
+  }
+}
