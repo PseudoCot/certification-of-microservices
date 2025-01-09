@@ -20,14 +20,17 @@
   <form class="user-info__user-edit-form user-edit-form" [formGroup]="_form">
     <div class="user-edit-form__fields-wrapper">
       <div class="user-edit-form__field form__field">
+        <label class="user-info__data-label" for="name">Фамилия имя</label>
         <input class="user-edit-form__input form__input" name="name" type="text" id="name" placeholder="Фамилия имя"
           maxlength="100" formControlName="name">
       </div>
       <div class="user-edit-form__field form__field">
+        <label class="user-info__data-label" for="email">Почта</label>
         <input class="user-edit-form__input form__input" name="email" type="text" id="email" placeholder="Почта"
           maxlength="100" formControlName="email">
       </div>
       <div class="user-edit-form__field form__field">
+        <label class="user-info__data-label" for="nickname">Имя пользователя</label>
         <input class="user-edit-form__input form__input" name="nickname" type="text" id="nickname" maxlength="100"
           placeholder="Имя пользователя" formControlName="nickname">
       </div>
@@ -44,12 +47,15 @@
 
   <div class="user-info__fields-wrapper">
     <div class="user-info__field form__field">
+      <span class="user-info__data-label">Фамилия имя</span>
       <span class="user-info__data-value form__input">{{ userData.name }}</span>
     </div>
     <div class="user-info__field form__field">
+      <span class="user-info__data-label">Почта</span>
       <span class="user-info__data-value form__input">{{ userData.email }}</span>
     </div>
     <div class="user-info__field form__field">
+      <span class="user-info__data-label">Имя пользователя</span>
       <span class="user-info__data-value form__input">{{ userData.nickname }}</span>
     </div>
   </div>
