@@ -1,9 +1,9 @@
-import { AddServiceRequirementRequestDto } from "../service-add-requirement/add-service-requirement.request-dto";
+import { RawRequirementData } from "../data/raw-requirement.data"
 
 export type CreateServiceArbitrarilyRequestDto = {
   readonly service: {
     readonly name: string,
     readonly description: string,
-    readonly requirements: AddServiceRequirementRequestDto[]
+    readonly requirements: RawRequirementData[]
   }
 }

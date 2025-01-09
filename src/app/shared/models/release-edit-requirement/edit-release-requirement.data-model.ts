@@ -2,16 +2,16 @@ import { JsonValue } from '../../types/http/json-value.type';
 import { DataModel } from '../../types/models/data-model.type';
 import { GetRequirementDataModel } from '../__requirement-get/get-requirement.data-model';
 import { RequirementData } from '../data/requirement.data';
-import { EditServiceRequirementRequestDto } from './edit-service-requirement.request-dto';
-import { EditServiceRequirementResponseDto } from './edit-service-requirement.response-dto';
+import { EditReleaseRequirementRequestDto } from './edit-release-requirement.request-dto';
+import { EditReleaseRequirementResponseDto } from './edit-release-requirement.response-dto';
 
-export class EditServiceRequirementDataModel implements DataModel {
+export class EditReleaseRequirementDataModel implements DataModel {
   public requirementId!: string;
   public name!: string;
   public value!: string;
   // public responsibleId!: string;
 
-  public toRequestDTO(): EditServiceRequirementRequestDto {
+  public toRequestDTO(): EditReleaseRequirementRequestDto {
     return {
       requirement_id: this.requirementId,
       name: this.name,
@@ -21,7 +21,7 @@ export class EditServiceRequirementDataModel implements DataModel {
   }
 
   public getDataFromResponseDTO(responseData: JsonValue): RequirementData {
-    const dto = responseData as EditServiceRequirementResponseDto;
+    const dto = responseData as EditReleaseRequirementResponseDto;
     const model = new GetRequirementDataModel();
     return model.getDataFromResponseDTO(dto);
   }

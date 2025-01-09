@@ -5,11 +5,11 @@ import { DeleteServiceRequirementRequestDto } from './delete-service-requirement
 import { DeleteServiceRequirementResponseDto } from './delete-service-requirement.response-dto';
 
 export class DeleteServiceRequirementDataModel implements DataModel {
-  public reqRequirementId!: string;
+  public requirementId!: string;
 
   public toRequestDTO(): DeleteServiceRequirementRequestDto {
     return {
-      requirement_id: this.reqRequirementId,
+      requirement_id: this.requirementId,
     }
   }
 

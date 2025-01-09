@@ -8,12 +8,6 @@ import { ServiceData } from '../data/service.data';
 export class GetServiceDataModel implements DataModel {
   public id!: string;
 
-  constructor(responseData?: JsonValue) {
-    if (responseData) {
-      this.getDataFromResponseDTO(responseData);
-    }
-  }
-
   public toRequestDTO(): GetServiceRequestDto {
     return {
       service_id: this.id,
