@@ -1,0 +1,49 @@
+:host {}
+
+.create-requirement {
+  &__form {
+    padding: 70px 125px 30px;
+    width: 570px;
+  }
+
+  &__title {
+    margin-bottom: 35px;
+  }
+
+  &__input {
+    margin-bottom: 30px;
+    width: 100%;
+  }
+
+  &__radio-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 40px;
+  }
+
+  &__radio-input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  &__radio-label {
+    cursor: pointer;
+  }
+
+  &__radio-input:checked+&__radio-label {
+    color: #FFFFFF;
+    border: 1px solid #FFFFFFA7;
+    background-color: var(--checked-radio-btn-bg-color);
+  }
+
+  &__submit-btn {
+    padding: 13px 20px;
+    display: block;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,31 @@
+<app-modal-window>
+  <form class="create-requirement__form modal-card">
+    <button class="create-requirement__close-btn modal-card__close-btn btn-reset" type="button">
+      <app-svg-icon icon="cross" />
+    </button>
+    <label class="create-requirement__title modal-card__title" for="service-name">СОЗДАТЬ ТРЕБОВАНИЕ</label>
+    <input class="create-requirement__input modal-card__input" type="text" name="service-name" id="service-name"
+      placeholder="Название требования">
+    <div class="create-requirement__radio-btns">
+      <div class="create-requirement__radio-btn">
+        <input class="create-requirement__radio-input" type="radio" name="requirement-type" id="link-requirement"
+          value="link-requirement" checked>
+        <label class="create-requirement__radio-label requirement-entity requirement-entity--link"
+          for="link-requirement">Ссылка</label>
+      </div>
+      <div class="create-requirement__radio-btn">
+        <input class="create-requirement__radio-input" type="radio" name="requirement-type" id="file-requirement"
+          value="file-requirement">
+        <label class="create-requirement__radio-label requirement-entity requirement-entity--file"
+          for="file-requirement">Файл</label>
+      </div>
+      <div class="create-requirement__radio-btn">
+        <input class="create-requirement__radio-input" type="radio" name="requirement-type" id="text-requirement"
+          value="text-requirement">
+        <label class="create-requirement__radio-label requirement-entity requirement-entity--text"
+          for="text-requirement">Текст</label>
+      </div>
+    </div>
+    <button class="create-requirement__submit-btn modal-card__submit-btn btn btn-reset" type="submit">Сохранить</button>
+  </form>
+</app-modal-window>
