@@ -1,9 +1,9 @@
 :host {}
 
-.create-requirement {
+::ng-deep .create-requirement {
   &__form {
-    padding: 70px 125px 30px;
-    width: 570px;
+    padding: 67px 77px 30px;
+    width: 700px;
   }
 
   &__title {
@@ -20,7 +20,7 @@
     flex-direction: row;
     justify-content: center;
     gap: 25px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
 
   &__radio-input {
@@ -41,9 +41,19 @@
     background-color: var(--checked-radio-btn-bg-color);
   }
 
+  &__responsible-select {
+    padding-top: 5px !important;
+    padding-bottom: 6px !important;
+    margin-bottom: 40px;
+  }
+
+  &__btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
   &__submit-btn {
     padding: 13px 20px;
-    display: block;
-    margin: 0 auto;
   }
 }
