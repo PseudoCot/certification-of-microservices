@@ -1,17 +1,64 @@
 <app-modal-window [show$]="show$">
-  <form class="creating-form modal-card">
-    <button class="creating-form__close-btn modal-card__close-btn btn-reset" type="button">
-      <app-svg-icon icon="cross" size="20" />
-    </button>
+  <form class="creating-form">
     <label class="creating-form__title modal-card__title" for="service-name">{{ title }}</label>
-    <input class="creating-form__input modal-card__input" type="text" name="service-name" id="service-name"
-      [placeholder]="namePlaceholder">
+    <input class="creating-form__input modal-card__input" type="text" name="serviceName" id="serviceName"
+      [placeholder]="namePlaceholder" [formControl]="serviceNameControl">
+
     <div class="creating-form__btns">
-      <app-button class="creating-form__template-btn" (click$)="templateCreate$.next('')">
+      <app-button classes="creating-form__template-btn" [selected]="showTemplateSelect$ | async"
+        (click$)="handleTemplateButtonClick()" [disabled]="!serviceNameControl.valid">
         По шаблону
       </app-button>
-      <app-button class="creating-form__arbitrarily-btn" (click$)="arbitrarilyCreate$.next('')">
+      <app-button classes="creating-form__arbitrarily-btn" (click$)="handleArbitrarilyButtonClick()"
+        [disabled]="!serviceNameControl.valid">
         Произвольно
+      </app-button>
+    </div>
+
+    @if (showTemplateSelect$ | async) {
+    <select class="creating-form__service-select select" name="service-select" id="service-select">
+      <option value="" disabled selected hidden>Выберите шаблон</option>
+      @for (service of servicesData; track service.id) {
+      <option class="creating-form__service-select-option select-option" [value]="service.id">
+        {{ service.name }}
+      </option>
+      }
+    </select>
+    <app-button classes="creating-form__save-btn" (click$)="handleTemplateSaveClick()">Сохранить</app-button>
+    }
+  </form>
+</app-modal-window>
+
+<app-modal-window [show$]="showArbitrarilyForm$">
+  <form class="select-requirements-form">
+    <div class="select-requirements-form__head">
+      <h2 class="select-requirements-form__title title-reset">{{ serviceName$ | async }}</h2>
+    </div>
+    <div class="select-requirements-form__selected-requirements">
+      <!-- @for (selectedReq of selectedReqs; track selectedReq.id) {
+      <app-requirement-item classPrefix="select-requirements-form" [requirementItem]="selectedReq"
+        [editMode$]="false$" />
+      } -->
+    </div>
+    <div class="select-requirements-form__body">
+      <div class="select-requirements-form__search list-card__search-wrapper">
+        <input class="select-requirements-form__search-input list-card__search-input" type="text" name="service-search"
+          id="service-search" placeholder="Поиск требования" [formControl]="searchControl">
+      </div>
+      <div class="select-requirements-form__requirement-inputs">
+        @for (reqData of reqsData; track reqData.id) {
+        <app-requirement-check-input name="requirements" [id]="reqData.id" [label]="reqData.name"
+          [value]="reqData.value" />
+        }
+      </div>
+      <button class="select-requirements-form__add-new-btn list-card__add-btn btn-reset"
+        (click)="showRequirementForm$.next(false)">
+        <app-svg-icon icon="plus" width="19" height="20" />
+      </button>
+    </div>
+    <div class="select-requirements-form__bottom">
+      <app-button classes="select-requirements-form__save-btn" (click$)="handleArbitrarilySaveClick()">
+        Сохранить
       </app-button>
     </div>
   </form>

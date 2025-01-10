@@ -1,10 +1,11 @@
 :host {}
 
-.add-service {
-  &__form {
-    padding: 70px 118px 30px;
-    width: 570px;
-  }
+::ng-deep .creating-form {
+  padding: 70px 118px 30px;
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &__title {
     margin-bottom: 30px;
@@ -16,14 +17,92 @@
   }
 
   &__btns {
+    margin-bottom: 25px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 25px;
   }
 
-  &__submit-btn,
-  &__cancel-btn {
+  &__template-btn,
+  &__arbitrarily-btn {
     padding: 13px 30px;
+  }
+
+  &__service-select {
+    padding: 1px 8px 3px !important;
+    margin-bottom: 52px;
+    width: 370px !important;
+    font-size: 24px !important;
+  }
+
+  &__service-select-option {
+    font-size: 24px !important;
+  }
+
+  &__save-btn {
+    padding: 13px 20px;
+  }
+}
+
+::ng-deep .select-requirements-form {
+  width: 1044px;
+
+  &__head {
+    padding: 36px 30px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #4b4b4b;
+  }
+
+  &__title {
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: 40px;
+    color: #FFFFFF;
+  }
+
+  &__body {
+    padding: 0 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  &__search {
+    margin-bottom: 30px;
+  }
+
+  &__search::before {
+    top: calc(50% - 12px) !important;
+  }
+
+  &__search-input {
+    padding-top: 11px !important;
+    padding-bottom: 13px !important;
+    width: 630px;
+  }
+
+  &__requirement-inputs {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  &__add-new-btn {
+    margin-bottom: 30px;
+  }
+
+  &__bottom {
+    padding: 0 30px 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  &__save-btn {
+    padding: 12px 20px;
   }
 }
