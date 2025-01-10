@@ -88,7 +88,7 @@ export class HttpService {
     );
   }
 
-  public dataModelRequest<Res, Req>(dataModel: DataModel, apiRoute: ApiRoute) {
+  public dataModelRequest<Data, Res = null, Req = null>(dataModel: DataModel, apiRoute: ApiRoute): Observable<RequestState<Data>> {
     const reqBody = dataModel.toRequestDTO();
     return this.jsonRpcRequest<Res, Req>({
       url: `${API_URL}${apiRoute.Path}`,

@@ -18,7 +18,7 @@ export class GetAllReleaseRequirementsDataModel implements DataModel {
     }
   }
 
-  public static getDataFromResponseDTO(responseData: JsonValue): RequirementData[] {
+  public getDataFromResponseDTO(responseData: JsonValue): RequirementData[] {
     const dto = responseData as GetAllReleaseRequirementsResponseDto;
     const model = new GetRequirementDataModel();
     return dto?.map((requirementDto) => model.getDataFromResponseDTO(requirementDto)) || [];
