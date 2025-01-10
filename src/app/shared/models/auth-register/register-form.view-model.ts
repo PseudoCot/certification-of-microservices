@@ -11,9 +11,9 @@ export class RegisterFormViewModel {
 
   public toModel(): RegisterDataModel {
     const result = new RegisterDataModel();
-    result.name = this.form.get('login')?.value ?? ''
-    result.email = this.form.get('login')?.value ?? ''
-    result.nickname = this.form.get('login')?.value ?? ''
+    result.name = this.form.get('name')?.value ?? ''
+    result.email = this.form.get('email')?.value ?? ''
+    result.nickname = this.form.get('nickname')?.value ?? ''
     result.password = this.form.get('password')?.value ?? ''
 
     return result;

@@ -1,8 +1,8 @@
 import { HttpClient, HttpEventType, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable, isDevMode } from '@angular/core';
 import { merge, Observable, Subject } from 'rxjs';
-import { skipWhile, takeUntil, tap } from 'rxjs/operators';
-import { ContentTypes } from '../consts';
+import { map, shareReplay, skipWhile, takeUntil, tap } from 'rxjs/operators';
+import { API_URL, ContentTypes } from '../consts';
 import { RequestOptions } from '../types/http/request-options.type';
 import { JsonRpcRequestOptions } from '../types/json-rpc/json-rpc-request-options.type';
 import { ContentType } from '../types/http/content-type.type';
@@ -10,6 +10,11 @@ import { JsonRpcRequestMethod } from '../types/json-rpc/json-rpc-request-method.
 import { JsonRpcRequest } from '../types/json-rpc/json-rpc-request.type';
 import { v4 as uuidv4 } from 'uuid';
 import { HttpOptions } from '../types/http/http-options.type';
+import { JsonRpcUnverifiedResponce } from '../types/json-rpc/json-rpc-unverified-response.type';
+import { withRequestState } from './with-request-state/with-request-state';
+import { RequestState } from '../types/http/request-state.type';
+import { DataModel } from '../types/models/data-model.type';
+import { ApiRoute } from '../types/api-route.type';
 
 const JSON_RPC_VERSION = '2.0'; // TODO вынести в конфиг или env
 
@@ -66,7 +71,7 @@ export class HttpService {
       );
   }
 
-  public jsonRpcRequest<Res, Req = null>(requestParams: JsonRpcRequestOptions<Req>): Observable<HttpResponse<Res>> {
+  public jsonRpcRequest<Res, Req = null>(requestParams: JsonRpcRequestOptions<Req>): Observable<RequestState<Res>> {
     const jsonRpcRequestBody = this._createJsonRpcRequestBody<Req>(requestParams.jsonRpcMethod, requestParams.body as Req);
 
     const jsonRpcRequestParams: RequestOptions<Req> = {
@@ -76,7 +81,31 @@ export class HttpService {
       body: jsonRpcRequestBody as Req,
     };
 
-    return this.request(jsonRpcRequestParams);
+    return this.request<JsonRpcUnverifiedResponce<Res>, Req>(jsonRpcRequestParams).pipe(
+      this._handleJsonRpcResponseError<Res>,
+      map((res) => res.body?.result || {} as Res),
+      withRequestState(),
+    );
+  }
+
+  public dataModelRequest<Res, Req>(dataModel: DataModel, apiRoute: ApiRoute) {
+    const reqBody = dataModel.toRequestDTO();
+    return this.jsonRpcRequest<Res, Req>({
+      url: `${API_URL}${apiRoute.Path}`,
+      jsonRpcMethod: apiRoute.Method,
+      body: reqBody as Req
+    }).pipe(
+      shareReplay(),
+      map((reqState) => {
+        if (reqState.isSuccess && reqState.data) {
+          return {
+            ...reqState,
+            data: dataModel.getDataFromResponseDTO(reqState.data)
+          }
+        }
+        return reqState;
+      })
+    );
   }
 
   // private _createJsonRpcRequestBody<P extends JsonRpcParams>(method: JsonRpcRequestMethod, params: P): JsonRpcRequest<P> {
@@ -89,6 +118,17 @@ export class HttpService {
       method: method,
       params: params,
     };
+  }
+
+  private _handleJsonRpcResponseError<Res>(res: Observable<HttpResponse<JsonRpcUnverifiedResponce<Res>>>) {
+    return res.pipe(
+      map((res) => {
+        if (!res.body?.result && res.body?.error) {
+          throw new Error(`${res.body?.error?.code}: ${res.body?.error?.message}`);
+        }
+        return res;
+      })
+    );
   }
 
   private _convertContentType(contentType: ContentType): string {

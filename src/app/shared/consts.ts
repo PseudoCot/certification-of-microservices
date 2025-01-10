@@ -7,103 +7,103 @@ export const API_URL = !environment.production && environment.useProxy
 
 export const ApiRoutes = {
   Register: {
-    Path: 'v1/auth/register_user',
+    Path: 'v1/register_user',
     Method: 'register_user'
   },
   Login: {
-    Path: 'v1/auth/login',
+    Path: 'v1/login',
     Method: 'login'
   },
   RefreshSession: {
-    Path: 'v1/auth/refresh_session',
+    Path: 'v1/refresh_session',
     Method: 'refresh_session'
   },
   Logout: {
-    Path: 'v1/auth/logout',
+    Path: 'v1/logout',
     Method: 'logout'
   },
 
   GetUser: {
-    Path: 'v1/auth/get_current_user',
+    Path: 'v1/get_current_user',
     Method: 'get_current_user'
   },
   UpdateUser: {
-    Path: 'v1/auth/update_user_data',
+    Path: 'v1/update_user_data',
     Method: 'update_user_data'
   },
   DeleteUser: {
-    Path: 'v1/auth/delete_user',
+    Path: 'v1/delete_user',
     Method: 'delete_user'
   },
 
   CreateServiceArbitrarily: {
-    Path: 'v1/auth/create_service_arbitrarily',
+    Path: 'v1/create_service_arbitrarily',
     Method: 'create_service_arbitrarily'
   },
   CreateServiceByAnother: {
-    Path: 'v1/auth/create_service_by_another',
+    Path: 'v1/create_service_by_another',
     Method: 'create_service_by_another'
   },
   GetServices: {
-    Path: 'v1/auth/get_services',
+    Path: 'v1/get_services',
     Method: 'get_services'
   },
   GetService: {
-    Path: 'v1/auth/get_service',
+    Path: 'v1/get_service',
     Method: 'get_service'
   },
   GetServiceReleases: {
-    Path: 'v1/auth/get_service_releases',
+    Path: 'v1/get_service_releases',
     Method: 'get_service_releases'
   },
   AddServiceRequirement: {
-    Path: 'v1/auth/add_service_requirement',
+    Path: 'v1/add_service_requirement',
     Method: 'add_service_requirement'
   },
   EditServiceRequirement: {
-    Path: 'v1/auth/edit_service_requirement',
+    Path: 'v1/edit_service_requirement',
     Method: 'edit_service_requirement'
   },
   DeleteServiceRequirement: {
-    Path: 'v1/auth/delete_service_requirement',
+    Path: 'v1/delete_service_requirement',
     Method: 'delete_service_requirement'
   },
 
   CreateReleaseArbitrarily: {
-    Path: 'v1/auth/create_release_arbitrarily',
+    Path: 'v1/create_release_arbitrarily',
     Method: 'create_release_arbitrarily'
   },
   CreateReleaseByAnother: {
-    Path: 'v1/auth/create_release_by_another',
+    Path: 'v1/create_release_by_another',
     Method: 'create_release_by_another'
   },
   SearchReleases: {
-    Path: 'v1/auth/search_releases',
+    Path: 'v1/search_releases',
     Method: 'search_releases'
   },
   GetRelease: {
-    Path: 'v1/auth/get_release',
+    Path: 'v1/get_release',
     Method: 'get_release'
   },
   AddReleaseRequirement: {
-    Path: 'v1/auth/add_release_requirement',
+    Path: 'v1/add_release_requirement',
     Method: 'add_release_requirement'
   },
   EditReleaseRequirement: {
-    Path: 'v1/auth/edit_release_requirement',
+    Path: 'v1/edit_release_requirement',
     Method: 'edit_release_requirement'
   },
   DeleteReleaseRequirement: {
-    Path: 'v1/auth/delete_release_requirement',
+    Path: 'v1/delete_release_requirement',
     Method: 'delete_release_requirement'
   },
 
   GetAllServiceRequirements: {
-    Path: 'v1/auth/get_all_service_requirements',
+    Path: 'v1/get_all_service_requirements',
     Method: 'get_all_service_requirements'
   },
   GetAllReleaseRequirements: {
-    Path: 'v1/auth/get_all_release_requirements',
+    Path: 'v1/get_all_release_requirements',
     Method: 'get_all_release_requirements'
   },
 } as const;

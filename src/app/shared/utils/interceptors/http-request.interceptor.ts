@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { AuthService } from '../data-access/auth.service';
-import { EventBusService } from '../data-access/event-bus.service';
-import { StorageService } from '../data-access/storage.service';
+import { AuthService } from '../../data-access/auth.service';
+import { EventBusService } from '../../data-access/event-bus.service';
+import { StorageService } from '../../data-access/storage.service';
 
 @Injectable()
 export class HttpRequestInterceptor implements HttpInterceptor {
@@ -31,7 +31,7 @@ export class HttpRequestInterceptor implements HttpInterceptor {
       catchError((error) => {
         if (
           error instanceof HttpErrorResponse &&
-          !req.url.includes('auth/signin') &&
+          !req.url.includes('login') &&
           error.status === 401
         ) {
           return this._handle401Error(req, next);
