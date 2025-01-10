@@ -1,1 +1,19 @@
-.select {}
+.select {
+  padding: 9px 10px;
+  width: 540px;
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 28px;
+  color: #FFFFFF80;
+  background-color: #4C4C4C;
+  border: 1px solid #588742;
+  border-radius: 8px;
+
+  &__option {
+    font-family: var(--font-family);
+    font-weight: 300;
+    font-size: 28px;
+    color: #FFFFFFE6;
+    background-color: #DCDCDC;
+  }
+}

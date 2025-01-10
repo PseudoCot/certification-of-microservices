@@ -213,20 +213,26 @@ export const AppRoutes = {
   },
 } as const;
 
-export const HiddenNavRoutes: { Path: string, Title: string }[] = [
-  {
-    Path: AppRoutes.Services.Path,
-    Title: AppRoutes.Services.Title
-  },
-  {
-    Path: `${AppRoutes.Requirements.Path}?type=services`,
-    Title: `${AppRoutes.Requirements.Title} сервисов`
-  },
-  {
-    Path: `${AppRoutes.Requirements.Path}?type=releases`,
-    Title: `${AppRoutes.Requirements.Title} релизов`
-  },
-];
+export const HiddenNavRoutes: {
+  Path: string,
+  Title: string,
+  QueryParams?: Record<string, string>
+}[] = [
+    {
+      Path: AppRoutes.Services.Path,
+      Title: AppRoutes.Services.Title
+    },
+    {
+      Path: AppRoutes.Requirements.Path,
+      Title: `${AppRoutes.Requirements.Title} сервисов`,
+      QueryParams: { type: 'services' }
+    },
+    {
+      Path: AppRoutes.Requirements.Path,
+      Title: `${AppRoutes.Requirements.Title} релизов`,
+      QueryParams: { type: 'releases' }
+    },
+  ];
 
 
 export const AuthStatuses = {

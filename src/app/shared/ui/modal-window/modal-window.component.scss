@@ -20,6 +20,10 @@
   overflow-y: auto;
 }
 
+.modal-card {
+  z-index: 105;
+}
+
 // .modal-overlay {
 //   position: fixed;
 //   top: 0;

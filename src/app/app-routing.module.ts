@@ -42,7 +42,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: AppRoutes.Auth.Path,
+    redirectTo: AppRoutes.Services.Path,
   },
   {
     path: '**',

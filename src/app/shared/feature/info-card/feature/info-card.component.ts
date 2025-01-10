@@ -11,7 +11,7 @@ import { RequirementData } from '../../../models/data/requirement.data';
   standalone: true,
   imports: [SvgIconComponent, CommonModule, ButtonComponent, RequirementItemComponent],
   templateUrl: './info-card.component.html',
-  styleUrls: ['./info-card.component.scss'],
+  styleUrls: ['./info-card.component.scss', '../../../ui/card/card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InfoCardComponent {

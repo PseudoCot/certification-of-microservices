@@ -13,7 +13,7 @@ export class ButtonComponent {
   @Input() classes = '';
   @Input() type = 'button';
   @Input() disabled = false;
-  @Input() selected = false;
+  @Input() selected: boolean | null = false;
 
   @Output() click$ = new EventEmitter<void>();
 }

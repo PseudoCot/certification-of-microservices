@@ -7,10 +7,13 @@
     <app-svg-icon icon="cross" size="20" />
   </button>
   <ul class="hidden-nav__list list-reset">
-    <li class="hidden-nav__item" *ngFor="let route of routes">
-      <a class="hidden-nav__item-link" [routerLink]="[route.Path]" routerLinkActive="hidden-nav__item-link--active">
+    @for (route of routes; track route.Title) {
+    <li class="hidden-nav__item">
+      <a class="hidden-nav__item-link" [routerLink]="[route.Path]" [queryParams]="route.QueryParams"
+        routerLinkActive="hidden-nav__item-link--active" (click)="closeButtonClick.next()">
         {{ route.Title | uppercase }}
       </a>
     </li>
+    }
   </ul>
 </div>

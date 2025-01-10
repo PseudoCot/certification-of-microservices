@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, switchMap } from 'rxjs/operators';
-import { AuthService } from '../../auth/data-access/auth.service';
+import { catchError } from 'rxjs/operators';
+import { AuthService } from '../data-access/auth.service';
 import { EventBusService } from '../data-access/event-bus.service';
 import { StorageService } from '../data-access/storage.service';
 
@@ -48,22 +48,22 @@ export class HttpRequestInterceptor implements HttpInterceptor {
       this.isRefreshing = true;
 
       // if (this.storageService.isLoggedIn()) {
-      return this.authService.refreshToken().pipe(
-        switchMap(() => {
-          this.isRefreshing = false;
+      // return this.authService.refreshToken().pipe(
+      //   switchMap(() => {
+      //     this.isRefreshing = false;
 
-          return next.handle(request);
-        }),
-        catchError((error) => {
-          this.isRefreshing = false;
+      //     return next.handle(request);
+      //   }),
+      //   catchError((error) => {
+      //     this.isRefreshing = false;
 
-          if (error.status == '403') {
-            this.eventBusService.emit({ name: 'logout' });
-          }
+      //     if (error.status == '403') {
+      //       this.eventBusService.emit({ name: 'logout' });
+      //     }
 
-          return throwError(() => error);
-        })
-      );
+      //     return throwError(() => error);
+      //   })
+      // );
     }
     // }
 
