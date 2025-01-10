@@ -1,64 +1,72 @@
-<section class="user__user-info user-info card">
-  <h1 class="user-info__title card__title title-reset">Личный кабинет</h1>
+@let userData = userService.currentUserData$ | async;
 
-  <div class="user-info__controls">
-    @if (editMode$ | async) {
-    <button class="user-info__cancel-edit-btn btn-reset" (click)="cancelChangesClick$.next()">
-      <app-svg-icon icon="cross" size="20" />
-    </button>
+@if (userData?.isDone) {
+
+  <section class="user__user-info user-info card">
+    <h1 class="user-info__title card__title title-reset">Личный кабинет</h1>
+    <div class="user-info__controls">
+      @if (editMode$ | async) {
+        <button class="user-info__cancel-edit-btn btn-reset" (click)="editMode$.next(false)">
+          <app-svg-icon icon="cross" size="20" />
+        </button>
+        } @else {
+        <button class="user-info__edit-btn btn-reset" (click)="editMode$.next(true)">
+          <app-svg-icon icon="pen" width="20" height="21" />
+        </button>
+        <button class="user-info__delete-btn btn-reset" (click)="showModal$.next(true)">
+          <app-svg-icon icon="bin" width="21" height="24" />
+        </button>
+      }
+    </div>
+
+    @if (editMode$| async) {
+      <form class="user-info__user-edit-form user-edit-form" [formGroup]="form">
+        <div class="user-edit-form__fields-wrapper">
+          <div class="user-edit-form__field form__field">
+            <label class="user-info__data-label" for="name">Фамилия имя</label>
+            <input class="user-edit-form__input form__input" name="name" type="text" id="name" placeholder="Фамилия имя"
+              maxlength="100" formControlName="name">
+          </div>
+          <div class="user-edit-form__field form__field">
+            <label class="user-info__data-label" for="email">Почта</label>
+            <input class="user-edit-form__input form__input" name="email" type="text" id="email" placeholder="Почта"
+              maxlength="100" formControlName="email">
+          </div>
+          <div class="user-edit-form__field form__field">
+            <label class="user-info__data-label" for="nickname">Имя пользователя</label>
+            <input class="user-edit-form__input form__input" name="nickname" type="text" id="nickname" maxlength="100"
+              placeholder="Имя пользователя" formControlName="nickname">
+          </div>
+        </div>
+        <div class="user-edit-form__btns-wrapper">
+          <app-button classes="user-edit-form__btn" [disabled]="!form.valid" (click)="saveChanges()">
+            Сохранить
+          </app-button>
+        </div>
+      </form>
+
     } @else {
-    <button class="user-info__edit-btn btn-reset" (click)="editClick$.next()">
-      <app-svg-icon icon="pen" width="20" height="21" />
-    </button>
-    <button class="user-info__delete-btn btn-reset" (click)="deleteClick$.next()">
-      <app-svg-icon icon="bin" width="21" height="24" />
-    </button>
+
+      <div class="user-info__fields-wrapper">
+        <div class="user-info__field form__field">
+          <span class="user-info__data-label">Фамилия имя</span>
+          <span class="user-info__data-value form__input">{{ userData?.data?.name }}</span>
+        </div>
+        <div class="user-info__field form__field">
+          <span class="user-info__data-label">Почта</span>
+          <span class="user-info__data-value form__input">{{ userData?.data?.email }}</span>
+        </div>
+        <div class="user-info__field form__field">
+          <span class="user-info__data-label">Имя пользователя</span>
+          <span class="user-info__data-value form__input">{{ userData?.data?.nickname }}</span>
+        </div>
+      </div>
     }
-  </div>
+  </section>
 
-  @if (editMode$| async) {
-  <form class="user-info__user-edit-form user-edit-form" [formGroup]="_form">
-    <div class="user-edit-form__fields-wrapper">
-      <div class="user-edit-form__field form__field">
-        <label class="user-info__data-label" for="name">Фамилия имя</label>
-        <input class="user-edit-form__input form__input" name="name" type="text" id="name" placeholder="Фамилия имя"
-          maxlength="100" formControlName="name">
-      </div>
-      <div class="user-edit-form__field form__field">
-        <label class="user-info__data-label" for="email">Почта</label>
-        <input class="user-edit-form__input form__input" name="email" type="text" id="email" placeholder="Почта"
-          maxlength="100" formControlName="email">
-      </div>
-      <div class="user-edit-form__field form__field">
-        <label class="user-info__data-label" for="nickname">Имя пользователя</label>
-        <input class="user-edit-form__input form__input" name="nickname" type="text" id="nickname" maxlength="100"
-          placeholder="Имя пользователя" formControlName="nickname">
-      </div>
-    </div>
+} @else {
+  <app-loader />
+}
 
-    <div class="user-edit-form__btns-wrapper">
-      <app-button classes="user-edit-form__btn" [disabled]="!_form.valid" (click)="saveChangesClick$.next()">
-        Сохранить
-      </app-button>
-    </div>
-  </form>
-
-  } @else {
-
-  <div class="user-info__fields-wrapper">
-    <div class="user-info__field form__field">
-      <span class="user-info__data-label">Фамилия имя</span>
-      <span class="user-info__data-value form__input">{{ userData.name }}</span>
-    </div>
-    <div class="user-info__field form__field">
-      <span class="user-info__data-label">Почта</span>
-      <span class="user-info__data-value form__input">{{ userData.email }}</span>
-    </div>
-    <div class="user-info__field form__field">
-      <span class="user-info__data-label">Имя пользователя</span>
-      <span class="user-info__data-value form__input">{{ userData.nickname }}</span>
-    </div>
-  </div>
-  }
-
-</section>
+<app-submiting-modal-window question="Вы действительно хотите безвозвратно удалить этот аккаунт?" [show$]="showModal$"
+  (submitClick$)="deleteUser()" (dismissClick$)="showModal$.next(false)" />

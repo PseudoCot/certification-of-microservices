@@ -4,12 +4,12 @@ import { UserPage } from './user.page';
 
 const routes: Routes = [
   {
-    path: '/',
+    path: '',
     component: UserPage,
   },
   {
     path: '**',
-    redirectTo: '/',
+    redirectTo: '',
     pathMatch: 'full'
   }
 ];

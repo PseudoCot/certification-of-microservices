@@ -2,8 +2,12 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ButtonComponent } from '../../shared/ui/button/button.component';
-import { from, map, merge, startWith, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { SvgIconComponent } from "../../shared/ui/svg-icon/svg-icon.component";
+import { SubmitingModalWindowComponent } from "../../shared/ui/submiting-modal-window/submiting-modal-window.component";
+import { UserService } from '../../shared/data-access/user.service';
+import { GetUserDataModel } from '../../shared/models/user-get/get-user.data-model';
+import { LoaderComponent } from "../../shared/ui/loader/loader.component";
 
 @Component({
   selector: 'app-user-page',
@@ -13,51 +17,53 @@ import { SvgIconComponent } from "../../shared/ui/svg-icon/svg-icon.component";
     CommonModule,
     ReactiveFormsModule,
     ButtonComponent,
-    SvgIconComponent
-  ],
+    SvgIconComponent,
+    SubmitingModalWindowComponent,
+    LoaderComponent
+],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserPage {
-  protected _form: FormGroup;
-  protected userData = { name: 'Ivan', email: 'ivan.ivanov@urfu.me', nickname: 'Ivanidze99' };
+  protected form: FormGroup;
 
-  protected deleteClick$ = new Subject<void>();
+  protected editMode$ = new BehaviorSubject(false);
+  protected showModal$ = new BehaviorSubject(false);
 
-  protected editClick$ = new Subject<void>();
-  protected cancelChangesClick$ = new Subject<void>();
-  protected saveChangesClick$ = new Subject<void>();
-
-  protected editMode$ = merge(
-    from(this.editClick$)
-      .pipe(map(() => true)),
-    from(this.cancelChangesClick$)
-      .pipe(map(() => false)),
-    from(this.saveChangesClick$)
-      .pipe(map(() => false))
-  ).pipe(
-    startWith(false)
-  );
 
   constructor(
     private fb: FormBuilder,
+    protected userService: UserService
   ) {
-    this._form = this.fb.group({
+    this.form = this.fb.group({
       name: ['', Validators.required],
-      email: ['', Validators.required, Validators.email],
+      email: ['', Validators.required],
       nickname: ['', Validators.required],
     });
+
+    if (!userService.currentUserData$.value) {
+      const model = new GetUserDataModel();
+      userService.getCurrentUser(model);
+    }
   }
 
-  protected _saveChanges() {
-    const val = this._form.value;
+  protected deleteUser() {
+    // this.authService.login(val.email, val.password)
+    //   .subscribe(() => {
+    //     console.log("User is logged in");
+    //     this.router.navigateByUrl('/');
+    //   });
+    this.showModal$.next(false);
+  }
 
-    if (val.email && val.password) {
+  protected saveChanges() {
+    if (this.form.valid) {
       // this.authService.login(val.email, val.password)
       //   .subscribe(() => {
       //     console.log("User is logged in");
       //     this.router.navigateByUrl('/');
       //   });
+      this.editMode$.next(false);
     }
   }
 }
