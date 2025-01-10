@@ -12,5 +12,5 @@ import { RouterModule } from '@angular/router';
 export class TextLinkComponent {
   @Input() classes = '';
   @Input({ required: true }) linkPath!: string;
-
+  @Input() highlight = false;
 }

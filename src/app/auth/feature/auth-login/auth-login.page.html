@@ -12,8 +12,12 @@
     </div>
   </div>
 
-  <div class="login-form__btns-wrapper">
-    <app-button classes="login-form__btn" type="submit" [disabled]="!formModel.form.valid"
-      (click)="login()">Войти</app-button>
+  <div class="login-form__bottom">
+    <app-button classes="login-form__btn" type="submit" [disabled]="!formModel.form.valid" (click)="login()">
+      Войти
+    </app-button>
+    <app-text-link classes="login-form__register-link" [highlight]="true" [linkPath]="registerPath">
+      Зерегистрироваться
+    </app-text-link>
   </div>
 </form>

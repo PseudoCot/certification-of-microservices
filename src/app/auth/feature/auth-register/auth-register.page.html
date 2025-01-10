@@ -1,4 +1,4 @@
-<form class="auth__register-form register-form card" [formGroup]="_form">
+<form class="auth__register-form register-form card" [formGroup]="formModel.form">
   <h1 class="register-form__title card__title title-reset">Регистрация</h1>
 
   <div class="register-form__fields-wrapper">
@@ -20,8 +20,12 @@
     </div>
   </div>
 
-  <div class="register-form__btns-wrapper">
-    <app-button classes="register-form__btn" [disabled]="!_form.valid"
-      (click)="_register()">Зарегистрироваться</app-button>
+  <div class="register-form__bottom">
+    <app-button classes="register-form__btn" [disabled]="!formModel.form.valid" (click)="_register()">
+      Зарегистрироваться
+    </app-button>
+    <app-text-link classes="register-form__login-link" [highlight]="true" [linkPath]="loginPath">
+      Войти
+    </app-text-link>
   </div>
 </form>

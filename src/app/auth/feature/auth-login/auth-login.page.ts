@@ -3,6 +3,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonComponent } from "../../../shared/ui/button/button.component";
 import { LoginFormViewModel } from '../../../shared/models/auth-login/login-form.view-model';
+import { AuthService } from '../../../shared/data-access/auth.service';
+import { TextLinkComponent } from "../../../shared/ui/text-link/text-link.component";
 
 @Component({
   selector: 'app-login-page',
@@ -12,28 +14,28 @@ import { LoginFormViewModel } from '../../../shared/models/auth-login/login-form
     CommonModule,
     ReactiveFormsModule,
     ButtonComponent,
+    TextLinkComponent
   ],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthLoginPage {
+  protected registerPath = 'auth/register';
+
   protected formModel: LoginFormViewModel;
 
   constructor(
-    // private authService: AuthService,
+    protected authService: AuthService,
   ) {
     this.formModel = new LoginFormViewModel();
   }
 
   protected login() {
-    const val = this.formModel.form.value;
+    if (this.formModel.form.valid) {
+      const dataModel = this.formModel.toModel();
 
-    if (val.email && val.password) {
-      // this.authService.login(val.email, val.password)
-      //   .subscribe(() => {
-      //     console.log("User is logged in");
-      //     this.router.navigateByUrl('/');
-      //   });
+      this.authService.login(dataModel)
+        .subscribe((res) => console.log(res));
     }
   }
 }

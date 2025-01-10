@@ -189,10 +189,6 @@ export const AppRoutes = {
         Path: 'releases',
         Title: 'Релизы',
         Children: {
-          List: {
-            Path: '',
-            Title: 'Список релизов',
-          },
           Info: {
             Path: ':id',
             Title: 'Информация о релизе',

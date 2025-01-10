@@ -7,7 +7,8 @@
   word-wrap: break-word;
   color: #FFFFFF99;
 
-  &:hover {
+  &:hover,
+  &--highlight {
     text-decoration: underline;
     text-decoration-skip-ink: none;
     color: var(--green-color);
