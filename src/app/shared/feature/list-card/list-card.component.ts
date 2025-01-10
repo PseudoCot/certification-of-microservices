@@ -11,7 +11,11 @@ import { Subject } from 'rxjs';
   standalone: true,
   imports: [SvgIconComponent, CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './list-card.component.html',
-  styleUrls: ['./list-card.component.scss', '../../../shared/ui/card/card.component.scss'],
+  styleUrls: [
+    './list-card.component.scss',
+    '../../../shared/ui/card/card.component.scss',
+    '../../../services/feature/services-list/services-list.page.scss',
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListCardComponent {

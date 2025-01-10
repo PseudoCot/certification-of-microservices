@@ -1,3 +1,4 @@
+import { StorageService } from './storage.service';
 import { Injectable } from "@angular/core";
 import { AuthStatus } from "../types/auth-status.type";
 import { ApiRoutes, AuthStatuses } from "../consts";
@@ -6,8 +7,10 @@ import { RegisterDataModel } from "../models/auth-register/register.data-model";
 import { LoginDataModel } from "../models/auth-login/login.data-model";
 import { UserData } from "../models/data/user.data";
 import { LoginData } from "../models/data/login.data";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, tap } from "rxjs";
 import { RequestState } from "../types/http/request-state.type";
+import { Router } from "@angular/router";
+import { LogoutDataModel } from '../models/__auth-logout/logout.data-model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,16 +21,27 @@ export class AuthService {
   public registerData$ = new BehaviorSubject<RequestState<UserData> | null>(null);
   public loginData$ = new BehaviorSubject<RequestState<LoginData> | null>(null);
 
-  constructor(private http: HttpService) { }
+  constructor(
+    private http: HttpService,
+    private router: Router,
+    private storageService: StorageService
+  ) { }
 
   public isAuthenticated() {
-    return this._authStatus === AuthStatuses.Auth;
+    // return this._authStatus === AuthStatuses.Auth;
+    return !!this.storageService.getSessionData();
   }
 
   public register(dataModel: RegisterDataModel) {
     const req = this.http.dataModelRequest<UserData>(
       dataModel,
       ApiRoutes.Register
+    ).pipe(
+      tap((reqState) => {
+        if (reqState.isSuccess) {
+          this.router.navigateByUrl('auth/login');
+        }
+      })
     );
     req.subscribe(this.registerData$);
     return req;
@@ -37,6 +51,13 @@ export class AuthService {
     const req = this.http.dataModelRequest<LoginData>(
       dataModel,
       ApiRoutes.Login
+    ).pipe(
+      tap((reqState) => {
+        if (reqState.isSuccess && reqState.data?.accessToken) {
+          this.storageService.setSessionData({ token: reqState.data?.accessToken })
+          this.router.navigateByUrl('services');
+        }
+      })
     );
     req.subscribe(this.loginData$);
     return req;
@@ -50,11 +71,19 @@ export class AuthService {
   //     );
   // }
 
-  // public logout() {
-  //   return this.http.post(`${API_URL}/logout`,
-  //     {})
-  //     .pipe(
-  //       shareReplay()
-  //     );
-  // }
+  public logout(dataModel: LogoutDataModel) {
+    const req = this.http.dataModelRequest<LogoutDataModel>(
+      dataModel,
+      ApiRoutes.Logout
+    ).pipe(
+      tap((reqState) => {
+        if (reqState.isSuccess) {
+          this.storageService.removeSession();
+          this.loginData$ = new BehaviorSubject<RequestState<LoginData> | null>(null);
+          this.router.navigateByUrl('auth/login');
+        }
+      })
+    );
+    return req;
+  }
 }

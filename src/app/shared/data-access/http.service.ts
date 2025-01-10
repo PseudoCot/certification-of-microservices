@@ -15,8 +15,10 @@ import { withRequestState } from './with-request-state/with-request-state';
 import { RequestState } from '../types/http/request-state.type';
 import { DataModel } from '../types/models/data-model.type';
 import { ApiRoute } from '../types/api-route.type';
+import { StorageService } from './storage.service';
 
 const JSON_RPC_VERSION = '2.0'; // TODO вынести в конфиг или env
+const REQUEST_TOKEN_HEADER = 'X-Service-Cert-Id';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +28,8 @@ export class HttpService {
   private _takeUntil: Subject<void> = new Subject<void>();
 
   constructor(
-    protected http: HttpClient
+    protected http: HttpClient,
+    private storageService: StorageService,
   ) { }
 
   // TODO реализовать отбрасывание запроса при таймауте, приписывание параметров, прогресс
@@ -35,17 +38,24 @@ export class HttpService {
       headers: requestParams.headers || new HttpHeaders(),
       reportProgress: false,
       responseType: requestParams.responseType,
-      withCredentials: requestParams.withCredentials
+      withCredentials: requestParams.withCredentials,
     };
 
     if (!requestParams.contentType) {
       requestParams.contentType = ContentTypes.Json;
     }
 
-    if (httpOptions.headers && !httpOptions.headers.has('Content-Type') &&
-      requestParams.contentType !== ContentTypes.MultipartFormData &&
-      requestParams.contentType !== ContentTypes.TextXml) {
-      httpOptions.headers = httpOptions.headers.set('Content-Type', this._convertContentType(requestParams.contentType));
+    if (httpOptions.headers) {
+      if (!httpOptions.headers.has('Content-Type')
+        && requestParams.contentType !== ContentTypes.MultipartFormData
+        && requestParams.contentType !== ContentTypes.TextXml) {
+        httpOptions.headers = httpOptions.headers.set('Content-Type', this._convertContentType(requestParams.contentType));
+      }
+
+      const jwtSession = this.storageService.getSessionData();
+      if (jwtSession) {
+        httpOptions.headers = httpOptions.headers.set(REQUEST_TOKEN_HEADER, `${jwtSession.token}`);
+      }
     }
 
     if (!requestParams.method) {
@@ -62,11 +72,21 @@ export class HttpService {
     return (this.http.request<Res>(request) as Observable<HttpResponse<Res>>)
       .pipe(
         skipWhile((event: HttpResponse<Res>) => event.type !== HttpEventType.Response),
-        tap((response: HttpResponse<Res>) => {
+        tap((response) => {
           if (isDevMode()) {
             this._logRequest(requestParams, httpOptions, response);
           }
         }),
+        // tap((response) => {
+        //   if (response.url?.includes('login')) {
+        //     const jwtToken = response.headers.get('Authorization');
+        //     if (jwtToken) {
+        //       this.storageService.setSessionData({
+        //         token: jwtToken
+        //       });
+        //     }
+        //   }
+        // }),
         takeUntil(requestParams.unsubscriber ? merge(this._takeUntil, requestParams.unsubscriber) : this._takeUntil)
       );
   }

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpService } from "./http.service";
 import { ServiceData } from "../models/data/service.data";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, tap } from "rxjs";
 import { RequestState } from "../types/http/request-state.type";
 import { GetServicesDataModel } from "../models/services-get/get-services.data-model";
 import { ApiRoutes } from "../consts";
@@ -10,6 +10,7 @@ import { CreateServiceArbitrarilyDataModel } from "../models/service-create-arbi
 import { CreateServiceByAnotherDataModel } from "../models/service-create-by-another/create-service-by-another.data-model";
 import { RequirementData } from "../models/data/requirement.data";
 import { EmptyData } from "../models/data/empty.data";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root',
@@ -19,13 +20,22 @@ export class ServicesService {
   public serviceData$ = new BehaviorSubject<RequestState<ServiceData> | null>(null);
   public serviceReleasesData$ = new BehaviorSubject<RequestState<ReleaseData[]> | null>(null);
 
-  constructor(private http: HttpService) { }
+  constructor(
+    private http: HttpService,
+    private router: Router
+  ) { }
 
 
   public createServiceArbitrarily(dataModel: CreateServiceArbitrarilyDataModel) {
     return this.http.dataModelRequest<ServiceData>(
       dataModel,
       ApiRoutes.CreateServiceArbitrarily
+    ).pipe(
+      tap((res) => {
+        if (res.isSuccess && res.data?.id) {
+          this.router.navigate(['services', { id: res.data.id }])
+        }
+      })
     );
   }
 
@@ -33,6 +43,12 @@ export class ServicesService {
     return this.http.dataModelRequest<ServiceData>(
       dataModel,
       ApiRoutes.CreateServiceByAnother
+    ).pipe(
+      tap((res) => {
+        if (res.isSuccess && res.data?.id) {
+          this.router.navigate(['services', { id: res.data.id }])
+        }
+      })
     );
   }
 

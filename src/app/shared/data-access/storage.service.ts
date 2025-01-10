@@ -7,10 +7,11 @@ const SESSION_KEY = 'session';
   providedIn: 'root'
 })
 export class StorageService {
-
   private _sessionData!: JWTSession | null;
 
   public getSessionData(): JWTSession | null {
+    console.log('sess', this._sessionData);
+
     if (this._sessionData) {
       return this._sessionData;
     } else {
@@ -24,7 +25,8 @@ export class StorageService {
     }
   }
 
-  public setSessionData(data: JWTSession): void {
+  public setSessionData(data: JWTSession) {
+    console.log('set');
     localStorage.setItem(SESSION_KEY, JSON.stringify(data));
     this._sessionData = data;
   }

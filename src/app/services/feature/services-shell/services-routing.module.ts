@@ -11,17 +11,17 @@ const routes: Routes = [
     component: ServicesListPage,
   },
   {
-    path: AppRoutes.Services.Children.Releases.Path,
-    title: AppRoutes.Services.Children.Releases.Title,
+    path: AppRoutes.Services.Children.Info.Path,
+    title: AppRoutes.Services.Children.Info.Title,
+    component: ServicesInfoPage,
+  },
+  {
+    path: AppRoutes.Services.Children.Info.Children.Releases.Path,
+    title: AppRoutes.Services.Children.Info.Children.Releases.Title,
     loadChildren: () =>
       import('../../../releases/feature/releases-shell/releases.module').then(
         (m) => m.ReleasesModule
       ),
-  },
-  {
-    path: AppRoutes.Services.Children.Info.Path,
-    title: AppRoutes.Services.Children.Info.Title,
-    component: ServicesInfoPage,
   },
   {
     path: '**',

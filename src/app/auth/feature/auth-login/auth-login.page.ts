@@ -5,6 +5,7 @@ import { ButtonComponent } from "../../../shared/ui/button/button.component";
 import { LoginFormViewModel } from '../../../shared/models/auth-login/login-form.view-model';
 import { AuthService } from '../../../shared/data-access/auth.service';
 import { TextLinkComponent } from "../../../shared/ui/text-link/text-link.component";
+import { ServicesService } from '../../../shared/data-access/services.service';
 
 @Component({
   selector: 'app-login-page',
@@ -26,6 +27,7 @@ export class AuthLoginPage {
 
   constructor(
     protected authService: AuthService,
+    protected servicesService: ServicesService,
   ) {
     this.formModel = new LoginFormViewModel();
   }
@@ -34,8 +36,7 @@ export class AuthLoginPage {
     if (this.formModel.form.valid) {
       const dataModel = this.formModel.toModel();
 
-      this.authService.login(dataModel)
-        .subscribe((res) => console.log(res));
+      this.authService.login(dataModel);
     }
   }
 }

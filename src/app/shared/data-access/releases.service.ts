@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ReleaseData } from "../models/data/release.data";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, tap } from "rxjs";
 import { ApiRoutes } from "../consts";
 import { EmptyData } from "../models/data/empty.data";
 import { RequirementData } from "../models/data/requirement.data";
@@ -9,6 +9,7 @@ import { CreateReleaseArbitrarilyDataModel } from "../models/release-create-arbi
 import { CreateReleaseByAnotherDataModel } from "../models/release-create-by-another/create-release-by-another.data-model";
 import { GetReleasesDataModel } from "../models/releases-search/search-releases.data-model";
 import { HttpService } from "./http.service";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root',
@@ -17,13 +18,23 @@ export class ReleasesRelease {
   public releasesData$ = new BehaviorSubject<RequestState<ReleaseData[]> | null>(null);
   public releaseData$ = new BehaviorSubject<RequestState<ReleaseData> | null>(null);
 
-  constructor(private http: HttpService) { }
+  constructor(
+    private http: HttpService,
+    private router: Router
+  ) { }
 
 
   public createReleaseArbitrarily(dataModel: CreateReleaseArbitrarilyDataModel) {
     return this.http.dataModelRequest<ReleaseData>(
       dataModel,
       ApiRoutes.CreateReleaseArbitrarily
+    ).pipe(
+      tap((res) => {
+        if (res.isSuccess && res.data?.id) {
+          this.router.navigate(['services', { serviceId: res.data.service_id },
+            'releases', { releaseId: res.data.id }])
+        }
+      })
     );
   }
 
@@ -31,6 +42,13 @@ export class ReleasesRelease {
     return this.http.dataModelRequest<ReleaseData>(
       dataModel,
       ApiRoutes.CreateReleaseByAnother
+    ).pipe(
+      tap((res) => {
+        if (res.isSuccess && res.data?.id) {
+          this.router.navigate(['services', { serviceId: res.data.service_id },
+            'releases', { releaseId: res.data.id }])
+        }
+      })
     );
   }
 

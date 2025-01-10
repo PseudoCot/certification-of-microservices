@@ -19,6 +19,8 @@ export class LoginDataModel implements DataModel {
 
   public getDataFromResponseDTO(responseDto: JsonValue): LoginData {
     const dto = responseDto as LoginResponseDto;
-    return dto;
+    return {
+      accessToken: dto.access_token
+    };
   }
 }

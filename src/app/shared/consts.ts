@@ -182,16 +182,18 @@ export const AppRoutes = {
         Title: 'Список сервисов',
       },
       Info: {
-        Path: ':id',
+        Path: ':serviceId',
         Title: 'Информация о сервисе',
-      },
-      Releases: {
-        Path: 'releases',
-        Title: 'Релизы',
         Children: {
-          Info: {
-            Path: ':id',
-            Title: 'Информация о релизе',
+          Releases: {
+            Path: 'releases',
+            Title: 'Релизы',
+            Children: {
+              Info: {
+                Path: ':releaseId',
+                Title: 'Информация о релизе',
+              },
+            }
           },
         }
       },

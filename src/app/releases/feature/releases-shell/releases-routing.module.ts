@@ -5,8 +5,8 @@ import { ReleasesInfoPage } from '../releases-info/releases-info.page';
 
 const routes: Routes = [
   {
-    path: AppRoutes.Services.Children.Releases.Children.Info.Path,
-    title: AppRoutes.Services.Children.Releases.Children.Info.Title,
+    path: AppRoutes.Services.Children.Info.Children.Releases.Children.Info.Path,
+    title: AppRoutes.Services.Children.Info.Children.Releases.Children.Info.Title,
     component: ReleasesInfoPage,
   }
 ];

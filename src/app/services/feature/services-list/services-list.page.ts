@@ -9,7 +9,7 @@ import { ServiceDataMocks } from '../../../shared/models/mock-data/services.data
 @Component({
   selector: 'app-services-list-page',
   templateUrl: './services-list.page.html',
-  styleUrls: ['./services-list.page.scss', '../../../shared/ui/card/card.component.scss'],
+  styleUrls: ['./services-list.page.scss'],
   encapsulation: ViewEncapsulation.None,
   imports: [
     CommonModule,
