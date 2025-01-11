@@ -1,15 +1,17 @@
-import { ChangeDetectionStrategy, Component, Input, Output } from '@angular/core';
+import { ServicesService } from './../../data-access/services.service';
+import { DestroyService } from './../../data-access/destroy.service';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { SvgIconComponent } from "../../ui/svg-icon/svg-icon.component";
 import { CommonModule } from '@angular/common';
-import { DataItem } from '../../types/models/data-item.type';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { CreatingModalWindowComponent } from "../creating-modal-window/creating-modal-window.component";
 
 @Component({
   selector: 'app-list-card',
   standalone: true,
-  imports: [SvgIconComponent, CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [SvgIconComponent, CommonModule, ReactiveFormsModule, RouterModule, CreatingModalWindowComponent],
   templateUrl: './list-card.component.html',
   styleUrls: [
     './list-card.component.scss',
@@ -19,13 +21,35 @@ import { Subject } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListCardComponent {
+  protected searchInput = new FormControl('');
+
   @Input({ required: true }) classPrefix!: string;
   @Input({ required: true }) title!: string;
-  @Input({ required: true }) items!: readonly DataItem[];
+  // @Input({ required: true }) items$!: BehaviorSubject<RequestState<DataItem[]> | null>;
+  // protected filteredItems$ = new BehaviorSubject<DataItem[] | null>(null);
 
-  protected addClick$ = new Subject<void>();
-  @Output() add$ = this.addClick$.asObservable();
+  protected showCreatingModal$ = new BehaviorSubject(false);
 
-  protected searchInput = new FormControl('');
-  @Output() searchInputChanges$ = this.searchInput.valueChanges;
+
+  constructor(
+    private destroyService: DestroyService,
+    protected servicesService: ServicesService
+  ) {}
+
+  // ngAfterViewInit(): void {
+  //   combineLatest([
+  //     this.items$,
+  //     this.searchInput.valueChanges.pipe(startWith('')),
+  //   ]).pipe(
+  //     map(([itemsState, searchTerm]) => {
+  //       if (itemsState?.data) {
+  //         return itemsState.data.filter((item) => item.name.toLowerCase().includes((searchTerm?.toLowerCase() ?? '')) );
+  //       }
+  //       return [];
+  //     }),
+  //     takeUntil(this.destroyService.onDestroy)
+  //   ).subscribe((filteredItems) => {
+  //     this.filteredItems$.next(filteredItems);
+  //   });
+  // }
 }

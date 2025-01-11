@@ -1,3 +1,9 @@
+
+@let requirementsData = (parentService
+  ? requirementsService.releasesRequirementData$
+  : requirementsService.servicesRequirementData$) | async;
+
+
 <app-modal-window [show]="show" (close$)="close$.next()">
   <form class="creating-form">
     <label class="creating-form__title modal-card__title" for="service-name">{{ title }}</label>
@@ -16,15 +22,22 @@
     </div>
 
     @if (showTemplateSelect$ | async) {
-      <select class="creating-form__service-select select" name="service-select" id="service-select">
-        <option value="" disabled selected hidden>Выберите шаблон</option>
-        @for (service of servicesData; track service.id) {
-        <option class="creating-form__service-select-option select-option" [value]="service.id">
-          {{ service.name }}
-        </option>
+      <select class="creating-form__service-select select" name="service-select" id="service-select"
+        [formControl]="sourseSelectControl">
+        <option [ngValue]="null" disabled selected hidden>Выберите шаблон</option>
+        @for (dataItem of sourcesDataItems?.data; track dataItem.id) {
+          <option class="creating-form__service-select-option select-option" [ngValue]="dataItem.id">
+            {{ dataItem.name }}
+          </option>
+        } @empty {
+          <div class="creating-form__empty-list-message">
+            Нет доступных шаблонов
+          </div>
         }
       </select>
-      <app-button classes="creating-form__save-btn" (click$)="handleTemplateSaveClick()">Сохранить</app-button>
+      <app-button classes="creating-form__save-btn" (click$)="handleTemplateSaveClick()">
+        Сохранить
+      </app-button>
     }
   </form>
 </app-modal-window>
@@ -32,7 +45,7 @@
 <app-modal-window [show]="!!(showArbitrarilyForm$ | async)" (close$)="showArbitrarilyForm$.next(false)">
   <form class="select-requirements-form">
     <div class="select-requirements-form__head">
-      <h2 class="select-requirements-form__title title-reset">{{ serviceName$ | async }}</h2>
+      <h2 class="select-requirements-form__title title-reset">{{ serviceNameControl.value }}</h2>
     </div>
     <div class="select-requirements-form__selected-requirements">
       <!-- @for (selectedReq of selectedReqs; track selectedReq.id) {
@@ -43,16 +56,19 @@
     <div class="select-requirements-form__body">
       <div class="select-requirements-form__search list-card__search-wrapper">
         <input class="select-requirements-form__search-input list-card__search-input" type="text" name="service-search"
-          id="service-search" placeholder="Поиск требования" [formControl]="searchControl">
+          id="service-search" placeholder="Поиск требования" [formControl]="requirementsSearchControl">
       </div>
-      <div class="select-requirements-form__requirement-inputs">
-        @for (requirementData of requirementsData; track requirementData.id) {
-          <app-requirement-check-input name="requirements" [id]="requirementData.id" [label]="requirementData.name"
-            [value]="requirementData.id" />
+      <div class="select-requirements-form__requirement-inputs" [formGroup]="requirementsCheckboxGroup">
+        @for (requirementData of requirementsData?.data; track requirementData.id; let i = $index) {
+          <label class="check-input__label" [for]="requirementData.name" formArrayName="requirements" >
+            <input class="check-input__input" type="checkbox" [name]="requirementData.name" [id]="requirementData.id"
+              [value]="requirementData.id" multiple [formControlName]="i">
+            <span class="check-input__text">{{ requirementData.name }}</span>
+          </label>
         }
       </div>
       <button class="select-requirements-form__add-new-btn list-card__add-btn btn-reset"
-        (click)="showRequirementForm$.next(false)">
+        (click)="showRequirementForm$.next(true)">
         <app-svg-icon icon="plus" width="19" height="20" />
       </button>
     </div>
@@ -63,3 +79,5 @@
     </div>
   </form>
 </app-modal-window>
+
+<app-creating-requirement-form [show]="!!(showRequirementForm$ | async)" (close$)="showRequirementForm$.next(false)" />

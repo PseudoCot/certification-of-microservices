@@ -14,7 +14,7 @@ import { Router } from "@angular/router";
 @Injectable({
   providedIn: 'root',
 })
-export class ReleasesRelease {
+export class ReleasesService {
   public releasesData$?: BehaviorSubject<RequestState<ReleaseData[]> | null>;
   public releaseData$?: BehaviorSubject<RequestState<ReleaseData> | null>;
 

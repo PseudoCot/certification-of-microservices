@@ -6,8 +6,8 @@ import { GetAllReleaseRequirementsResponseDto } from './get-all-release-requirem
 import { RequirementData } from '../data/requirement.data';
 
 export class GetAllReleaseRequirementsDataModel implements DataModel {
-  public limit!: number;
-  public offset!: number;
+  public limit = 10;
+  public offset = 0;
 
   public toRequestDTO(): GetAllReleaseRequirementsRequestDto {
     return {

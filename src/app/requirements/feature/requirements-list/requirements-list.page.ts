@@ -10,8 +10,7 @@ import { CreatingRequirementFormComponent } from "../creating-requirement-form/c
 import { SubmitingModalWindowComponent } from "../../../shared/ui/submiting-modal-window/submiting-modal-window.component";
 import { LoaderComponent } from "../../../shared/ui/loader/loader.component";
 import { DestroyService } from '../../../shared/data-access/destroy.service';
-
-type RequirementsListType = 'services' | 'releases';
+import { ItemsType } from '../../../shared/types/items-type.type';
 
 @Component({
   selector: 'app-requirements-list-page',
@@ -29,10 +28,10 @@ type RequirementsListType = 'services' | 'releases';
     LoaderComponent
 ],
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RequirementsListPage {
-  protected listType = new BehaviorSubject<RequirementsListType>('services');
+  protected listType = new BehaviorSubject<ItemsType>('services');
 
   protected showCreatingModal$ = new BehaviorSubject(false);
 

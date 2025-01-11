@@ -6,8 +6,8 @@ import { GetAllServiceRequirementsResponseDto } from './get-all-service-requirem
 import { RequirementData } from '../data/requirement.data';
 
 export class GetAllServiceRequirementsDataModel implements DataModel {
-  public limit!: number;
-  public offset!: number;
+  public limit = 10;
+  public offset = 0;
 
   public toRequestDTO(): GetAllServiceRequirementsRequestDto {
     return {

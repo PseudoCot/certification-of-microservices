@@ -48,4 +48,12 @@
     line-height: 100%;
     color: var(--text-light-color);
   }
+
+  &__empty-list-message {
+    font-family: var(--font-family);
+    font-weight: 300;
+    font-size: 28px;
+    text-align: center;
+    color: var(--text-light-color);
+  }
 }

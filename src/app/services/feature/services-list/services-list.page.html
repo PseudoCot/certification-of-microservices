@@ -1,8 +1,10 @@
-@if (servicesData) {
-<app-list-card classPrefix="services-list" title="Сервисы" [items]="servicesData" (addClick$)="openAddServiceModal()"
-  (searchInputChanges$)="searchServices($event)" />
-}
+<!-- @let servicesData = servicesService.servicesData$ | async; -->
+<!-- @let releasesData = releasesService.releasesData$ | async; -->
 
+<!-- @if (servicesData?.isDone) { -->
+  <app-list-card classPrefix="services-list" title="Сервисы"
+    (addClick$)="showCreateServiceModal$.next(true)" />
+<!-- }
 @else {
-<app-loader />
-}
+  <app-loader />
+} -->

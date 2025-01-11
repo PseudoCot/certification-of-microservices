@@ -1,7 +1,6 @@
 import { StorageService } from './storage.service';
 import { Injectable } from "@angular/core";
-import { AuthStatus } from "../types/auth-status.type";
-import { ApiRoutes, AuthStatuses } from "../consts";
+import { ApiRoutes } from "../consts";
 import { HttpService } from "./http.service";
 import { RegisterDataModel } from "../models/auth-register/register.data-model";
 import { LoginDataModel } from "../models/auth-login/login.data-model";
@@ -16,7 +15,7 @@ import { LogoutDataModel } from '../models/__auth-logout/logout.data-model';
   providedIn: 'root'
 })
 export class AuthService {
-  private _authStatus: AuthStatus = AuthStatuses.Unknown;
+  // private _authStatus: AuthStatus = AuthStatuses.Unknown;
 
   public registerData$ = new BehaviorSubject<RequestState<UserData> | null>(null);
   public loginData$ = new BehaviorSubject<RequestState<LoginData> | null>(null);
@@ -25,7 +24,11 @@ export class AuthService {
     private http: HttpService,
     private router: Router,
     private storageService: StorageService
-  ) { }
+  ) {
+    if (!storageService.getSessionData()?.token) {
+      this.router.navigateByUrl('auth/login');
+    }
+  }
 
   public isAuthenticated() {
     // return this._authStatus === AuthStatuses.Auth;

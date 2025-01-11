@@ -6,8 +6,8 @@ import { GetServicesRequestDto } from './get-services.request-dto';
 import { GetServicesResponseDto } from './get-services.response-dto';
 
 export class GetServicesDataModel implements DataModel {
-  public limit!: number;
-  public offset!: number;
+  public limit = 10;
+  public offset = 0;
 
   public toRequestDTO(): GetServicesRequestDto {
     return {

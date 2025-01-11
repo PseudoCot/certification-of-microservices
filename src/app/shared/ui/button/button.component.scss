@@ -11,12 +11,16 @@
   border-radius: 35px;
 }
 
-.btn:focus,
-.btn:hover,
-.btn:active {
+.btn:not(:disabled):focus,
+.btn:not(:disabled):hover,
+.btn:not(:disabled):active {
   box-shadow: 0 0 16px 0 rgba(137, 217, 99, 0.25);
 }
 
-.btn--selected {
+.btn:not(:disabled)--selected {
   background-color: #616161;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
 }

@@ -1,9 +1,12 @@
+@let servicesData = servicesService.servicesData$ | async;
+<!-- @let filteredItems = filteredItems$ | async; -->
+
 <section class="{{classPrefix}} card">
   <div class="{{classPrefix}}__head card__head">
     <h1 class="{{classPrefix}}__title card__title title-reset">
       {{ title }}
     </h1>
-    <button class="{{classPrefix}}__add-btn list-card__add-btn btn-reset" (click)="addClick$.next()">
+    <button class="{{classPrefix}}__add-btn list-card__add-btn btn-reset" (click)="showCreatingModal$.next(true)">
       <app-svg-icon icon="plus" width="19" height="20" />
     </button>
   </div>
@@ -14,18 +17,19 @@
   </div>
 
   <ul class="{{classPrefix}}__list list-card__list list-reset">
-    @for (item of items; track item.id) {
-    <li class="{{classPrefix}}__item list-card__list-item">
-      <a class="{{classPrefix}}__item-link list-card__item-link" [routerLink]="item.id">
-        {{ item.name }}
-      </a>
-    </li>
+    @for (item of servicesData?.data; track item.id) {
+      <li class="{{classPrefix}}__item list-card__list-item">
+        <a class="{{classPrefix}}__item-link list-card__item-link" [routerLink]="item.id">
+          {{ item.name }}
+        </a>
+      </li>
+    } @empty {
+      <div class="{{classPrefix}}__empty-message list-card__empty-list-message">
+        {{ title }} не найдены
+      </div>
     }
   </ul>
-
-  @if (!items.length) {
-  <p class="{{classPrefix}}__empty-message list-card__empty-message paragraph-reset">
-    {{ title }} не найдены
-  </p>
-  }
 </section>
+
+<app-creating-modal-window title="Добавить сервис" namePlaceholder="Название сервиса" type="services"
+  [sourcesDataItems]="servicesData" [show]="!!(showCreatingModal$ | async)" (close$)="showCreatingModal$.next(false)" />
