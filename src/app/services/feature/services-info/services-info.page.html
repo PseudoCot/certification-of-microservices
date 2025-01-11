@@ -4,7 +4,7 @@
 
     <app-services-releases-list class="service-releases" [releasesData]="serviceReleasesData" />
 
-    <app-info-card class="service-info" classPrefix="service-info" [title]="serviceData.name" [requirementItems]="serviceData.requirements"
+    <app-info-card class="service-info" classPrefix="service-info" [title]="serviceData.name"
       (delete$)="deleteService()" (saveChanges$)="editService()" (addRequirement$)="addRequirement()"
       (deleteRequirement$)="deleteRequirement()" />
     }
