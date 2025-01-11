@@ -10,11 +10,12 @@ import { RequestState } from "../types/http/request-state.type";
   providedIn: 'root',
 })
 export class UserService {
-  public currentUserData$ = new BehaviorSubject<RequestState<UserData> | null>(null);
+  public currentUserData$?: BehaviorSubject<RequestState<UserData> | null>;
 
   constructor(private http: HttpService) { }
 
   public getCurrentUser(dataModel: GetUserDataModel) {
+    this.currentUserData$ = new BehaviorSubject<RequestState<UserData> | null>(null);
     const req = this.http.dataModelRequest<UserData>(
       dataModel,
       ApiRoutes.GetUser

@@ -30,14 +30,15 @@ export class CreatingModalWindowComponent {
   private _searchInputChanges$ = this.searchControl.valueChanges;
 
   protected servicesData = ServiceDataMocks;
-  protected reqsData = RequirementDataMocks;
+  protected requirementsData = RequirementDataMocks;
   // @Input({ required: true }) servicesData!: ServiceData[];
   // @Input({ required: true }) reqsData!: RequirementData[];
 
   @Input({ required: true }) title!: string;
   @Input({ required: true }) namePlaceholder!: string;
 
-  @Input({ required: true }) show$!: BehaviorSubject<boolean>;
+  @Input({ required: true }) show!: boolean;
+  @Output() close$ = new EventEmitter<void>();
 
   protected templateClick$ = new Subject<void>();
   protected showTemplateSelect$ = new BehaviorSubject(false);

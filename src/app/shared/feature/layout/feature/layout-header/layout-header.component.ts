@@ -6,6 +6,8 @@ import { BehaviorSubject, delayWhen, interval, map, of, throttleTime } from 'rxj
 import { HiddenNavComponent } from "../../ui/hidden-nav/hidden-nav.component";
 import { AppRoutes } from '../../../../consts';
 import { IconLinkComponent } from "../../../../ui/icon-link/icon-link.component";
+import { AuthService } from '../../../../data-access/auth.service';
+import { LogoutDataModel } from '../../../../models/__auth-logout/logout.data-model';
 
 @Component({
   selector: 'app-layout-header',
@@ -27,7 +29,11 @@ export class LayoutHeaderComponent {
     map((opened) => !opened),
   );
 
-  protected handleLogoutButtonClick() {
-    console.log('logout');
+
+  constructor(private authService: AuthService) { }
+
+  protected logout() {
+    const model = new LogoutDataModel();
+    this.authService.logout(model);
   }
 }

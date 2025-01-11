@@ -1,1 +1,55 @@
-<p>requirements-list works!</p>
+@let requirementsData = ((listType | async) === 'services'
+  ? requirementsService.servicesRequirementData$
+  : requirementsService.releasesRequirementData$) | async;
+
+
+<section class="requirements-list">
+  @if (requirementsData?.isDone) {
+    <div class="requirements-list__title-wrapper">
+      <h1 class="requirements-list__title card__title title-reset">
+        Требования {{ (listType | async) === 'services' ? 'сервисов' : 'релизов' }}
+      </h1>
+      <button class="requirements-list__add-btn btn-reset" (click)="showCreatingModal$.next(true)">
+        <app-svg-icon icon="plus" width="19" height="20" />
+      </button>
+    </div>
+
+    <ul class="requirements-list__self card list-reset">
+      @for (requirementData of requirementsData?.data; track requirementData.id) {
+        <li class="requirements-list__requirement-item">
+          <div class="requirements-list__requirement-name">
+            {{ requirementData.name }}
+          </div>
+          <div class="requirements-list__requirement-content">
+            <button class="requirements-list__requirement-entity requirement-entity requirement-entity--text btn-reset"
+              (click)="editReqId$.next(requirementData.id)">
+              @switch (requirementData.type) {
+                @case ('text') {Текст}
+                @case ('link') {Ссылка}
+                @case ('file') {Файл}
+                @default {Текст}
+              }
+            </button>
+            <button class="requirements-list__requirement-delete-btn btn-reset"
+              (click)="deleteReqId$.next(requirementData.id)">
+              <app-svg-icon icon="bin" width="21" height="24" />
+            </button>
+          </div>
+        </li>
+      } @empty {
+        <div class="requirements-list__empty-list-message">Требований ещё нет</div>
+      }
+    </ul>
+  } @else {
+    <app-loader />
+  }
+</section>
+
+
+<app-creating-requirement-form [show]="!!(showCreatingModal$ | async)" (close$)="showCreatingModal$.next(false)" />
+
+<app-creating-requirement-form [show]="!!(showEditModal$ | async)" (close$)="editReqId$.next(null)" />
+
+<app-submiting-modal-window question="Вы действительно хотите безвозвратно удалить это требование?"
+  [show]="!!(showDeleteModal$ | async)" (close$)="deleteReqId$.next(null)" (submit$)="deleteRequirement()"
+  (dismiss$)="deleteReqId$.next(null)" />

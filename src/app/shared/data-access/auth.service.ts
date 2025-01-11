@@ -72,18 +72,21 @@ export class AuthService {
   // }
 
   public logout(dataModel: LogoutDataModel) {
-    const req = this.http.dataModelRequest<LogoutDataModel>(
-      dataModel,
-      ApiRoutes.Logout
-    ).pipe(
-      tap((reqState) => {
-        if (reqState.isSuccess) {
-          this.storageService.removeSession();
-          this.loginData$ = new BehaviorSubject<RequestState<LoginData> | null>(null);
-          this.router.navigateByUrl('auth/login');
-        }
-      })
-    );
-    return req;
+    // const req = this.http.dataModelRequest<LogoutDataModel>(
+    //   dataModel,
+    //   ApiRoutes.Logout
+    // ).pipe(
+    //   tap((reqState) => {
+    //     if (reqState.isSuccess) {
+    //       this.storageService.removeSession();
+    //       this.loginData$ = new BehaviorSubject<RequestState<LoginData> | null>(null);
+    //       this.router.navigateByUrl('auth/login');
+    //     }
+    //   })
+    // );
+    this.storageService.removeSession();
+    this.loginData$ = new BehaviorSubject<RequestState<LoginData> | null>(null);
+    this.router.navigateByUrl('auth/login');
+    return dataModel.getDataFromResponseDTO(undefined);
   }
 }

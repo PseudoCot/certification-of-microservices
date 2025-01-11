@@ -16,9 +16,9 @@ import { Router } from "@angular/router";
   providedIn: 'root',
 })
 export class ServicesService {
-  public servicesData$ = new BehaviorSubject<RequestState<ServiceData[]> | null>(null);
-  public serviceData$ = new BehaviorSubject<RequestState<ServiceData> | null>(null);
-  public serviceReleasesData$ = new BehaviorSubject<RequestState<ReleaseData[]> | null>(null);
+  public servicesData$?: BehaviorSubject<RequestState<ServiceData[]> | null>;
+  public serviceData$?: BehaviorSubject<RequestState<ServiceData> | null>;
+  public serviceReleasesData$?: BehaviorSubject<RequestState<ReleaseData[]> | null>;
 
   constructor(
     private http: HttpService,
@@ -53,6 +53,7 @@ export class ServicesService {
   }
 
   public getServices(dataModel: GetServicesDataModel) {
+    this.servicesData$ = new BehaviorSubject<RequestState<ServiceData[]> | null>(null);
     const req = this.http.dataModelRequest<ServiceData[]>(
       dataModel,
       ApiRoutes.GetServices
@@ -62,6 +63,7 @@ export class ServicesService {
   }
 
   public getService(dataModel: GetServicesDataModel) {
+    this.serviceData$ = new BehaviorSubject<RequestState<ServiceData> | null>(null);
     const req = this.http.dataModelRequest<ServiceData>(
       dataModel,
       ApiRoutes.GetService
@@ -71,6 +73,7 @@ export class ServicesService {
   }
 
   public getServiceReleases(dataModel: GetServicesDataModel) {
+    this.serviceReleasesData$ = new BehaviorSubject<RequestState<ReleaseData[]> | null>(null);
     const req = this.http.dataModelRequest<ReleaseData[]>(
       dataModel,
       ApiRoutes.GetServiceReleases

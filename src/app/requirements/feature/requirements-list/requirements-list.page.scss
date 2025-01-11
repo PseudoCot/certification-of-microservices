@@ -1,3 +1,78 @@
-:host {
-  display: block;
+:host {}
+
+.requirements-list {
+  margin: 0 auto;
+  width: fit-content;
+
+  &__title-wrapper {
+    position: relative;
+    margin: 0 auto 40px;
+    width: fit-content;
+  }
+
+  &__title {
+    font-size: 64px;
+  }
+
+  &__add-btn {
+    position: absolute;
+    top: 5px;
+    right: -55px;
+    padding: 5px;
+  }
+
+  &__requirement-item {
+    display: flex;
+    flex-direction: row;
+    border-top: var(--info-table-border);
+  }
+
+  &__requirement-item:first-of-type {
+    border-top: none;
+  }
+
+  &__requirement-name {
+    padding: 14px 30px;
+    min-width: 250px;
+    max-width: 400px;
+    font-family: var(--font-family);
+    font-weight: 300;
+    font-size: 24px;
+    color: var(--text-light-color);
+    border-right: var(--info-table-border);
+  }
+
+  &__requirement-content {
+    padding: 15px 18px 17px;
+    min-width: 300px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__requirement-row-text {
+    font-family: var(--font-family);
+    font-weight: 300;
+    font-size: 28px;
+    color: var(--text-light-color);
+  }
+
+  &__requirement-entity {
+    margin: -7px 0;
+  }
+
+  &__requirement-delete-btn {
+    padding: 5px;
+    margin: -5px;
+  }
+
+  &__empty-list-message {
+    font-family: var(--font-family);
+    font-weight: 300;
+    font-size: 28px;
+    text-align: center;
+    color: var(--text-light-color);
+  }
 }

@@ -1,4 +1,4 @@
-<app-modal-window [show$]="show$">
+<app-modal-window [show]="show" (close$)="close$.next()">
   <form class="create-requirement__form">
     <label class="create-requirement__title modal-card__title" for="serviceName">Создать требование</label>
     <input class="create-requirement__input modal-card__input" type="text" name="serviceName" id="serviceName"
@@ -25,17 +25,19 @@
       </div>
     </div>
 
-    <select class="create-requirement__responsible-select select" name="responsible-select" id="responsible-select">
-      <option value="" disabled selected hidden>Выберите ответственного</option>
-      @for (userData of usersData; track userData.id) {
-      <option class="create-requirement__responsible-select-option select-option" [value]="userData.id">
-        {{ userData.name }}
-      </option>
-      }
-    </select>
+    @if (!shortFormat) {
+      <select class="create-requirement__responsible-select select" name="responsible-select" id="responsible-select">
+        <option value="" disabled selected hidden>Выберите ответственного</option>
+        @for (userData of usersData; track userData.id) {
+        <option class="create-requirement__responsible-select-option select-option" [value]="userData.id">
+          {{ userData.name }}
+        </option>
+        }
+      </select>
+    }
 
     <div class="create-requirement__btns">
-      <app-button classes="create-requirement__submit-btn" type="submit">
+      <app-button classes="create-requirement__submit-btn" type="submit" (click$)="submit()">
         Сохранить
       </app-button>
     </div>

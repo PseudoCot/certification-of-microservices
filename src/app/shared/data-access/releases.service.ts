@@ -15,8 +15,8 @@ import { Router } from "@angular/router";
   providedIn: 'root',
 })
 export class ReleasesRelease {
-  public releasesData$ = new BehaviorSubject<RequestState<ReleaseData[]> | null>(null);
-  public releaseData$ = new BehaviorSubject<RequestState<ReleaseData> | null>(null);
+  public releasesData$?: BehaviorSubject<RequestState<ReleaseData[]> | null>;
+  public releaseData$?: BehaviorSubject<RequestState<ReleaseData> | null>;
 
   constructor(
     private http: HttpService,
@@ -53,6 +53,7 @@ export class ReleasesRelease {
   }
 
   public getReleases(dataModel: GetReleasesDataModel) {
+    this.releasesData$ = new BehaviorSubject<RequestState<ReleaseData[]> | null>(null);
     const req = this.http.dataModelRequest<ReleaseData[]>(
       dataModel,
       ApiRoutes.SearchReleases
@@ -62,6 +63,7 @@ export class ReleasesRelease {
   }
 
   public getRelease(dataModel: GetReleasesDataModel) {
+    this.releaseData$ = new BehaviorSubject<RequestState<ReleaseData> | null>(null)
     const req = this.http.dataModelRequest<ReleaseData>(
       dataModel,
       ApiRoutes.GetRelease

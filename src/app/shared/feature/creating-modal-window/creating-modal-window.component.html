@@ -1,4 +1,4 @@
-<app-modal-window [show$]="show$">
+<app-modal-window [show]="show" (close$)="close$.next()">
   <form class="creating-form">
     <label class="creating-form__title modal-card__title" for="service-name">{{ title }}</label>
     <input class="creating-form__input modal-card__input" type="text" name="serviceName" id="serviceName"
@@ -16,20 +16,20 @@
     </div>
 
     @if (showTemplateSelect$ | async) {
-    <select class="creating-form__service-select select" name="service-select" id="service-select">
-      <option value="" disabled selected hidden>Выберите шаблон</option>
-      @for (service of servicesData; track service.id) {
-      <option class="creating-form__service-select-option select-option" [value]="service.id">
-        {{ service.name }}
-      </option>
-      }
-    </select>
-    <app-button classes="creating-form__save-btn" (click$)="handleTemplateSaveClick()">Сохранить</app-button>
+      <select class="creating-form__service-select select" name="service-select" id="service-select">
+        <option value="" disabled selected hidden>Выберите шаблон</option>
+        @for (service of servicesData; track service.id) {
+        <option class="creating-form__service-select-option select-option" [value]="service.id">
+          {{ service.name }}
+        </option>
+        }
+      </select>
+      <app-button classes="creating-form__save-btn" (click$)="handleTemplateSaveClick()">Сохранить</app-button>
     }
   </form>
 </app-modal-window>
 
-<app-modal-window [show$]="showArbitrarilyForm$">
+<app-modal-window [show]="!!(showArbitrarilyForm$ | async)" (close$)="showArbitrarilyForm$.next(false)">
   <form class="select-requirements-form">
     <div class="select-requirements-form__head">
       <h2 class="select-requirements-form__title title-reset">{{ serviceName$ | async }}</h2>
@@ -46,9 +46,9 @@
           id="service-search" placeholder="Поиск требования" [formControl]="searchControl">
       </div>
       <div class="select-requirements-form__requirement-inputs">
-        @for (reqData of reqsData; track reqData.id) {
-        <app-requirement-check-input name="requirements" [id]="reqData.id" [label]="reqData.name"
-          [value]="reqData.value" />
+        @for (requirementData of requirementsData; track requirementData.id) {
+          <app-requirement-check-input name="requirements" [id]="requirementData.id" [label]="requirementData.name"
+            [value]="requirementData.id" />
         }
       </div>
       <button class="select-requirements-form__add-new-btn list-card__add-btn btn-reset"

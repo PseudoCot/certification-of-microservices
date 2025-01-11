@@ -11,6 +11,7 @@
   border-top-right-radius: 14px;
   border-bottom-right-radius: 14px;
   transition: left 0.3s ease-in-out;
+  z-index: 95;
 
   &--opened {
     left: 0;

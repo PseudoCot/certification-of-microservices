@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { SvgIconComponent } from "../svg-icon/svg-icon.component";
-import { BehaviorSubject } from 'rxjs';
 import { ModalCloseDirective } from '../../utils/directives/modal-close.directive';
 
 @Component({
@@ -13,5 +12,7 @@ import { ModalCloseDirective } from '../../utils/directives/modal-close.directiv
   imports: [CommonModule, SvgIconComponent, ModalCloseDirective],
 })
 export class ModalWindowComponent {
-  @Input({ required: true }) show$!: BehaviorSubject<boolean>;
+  @Input({ required: true }) show!: boolean;
+
+  @Output() close$ = new EventEmitter<void>();
 }

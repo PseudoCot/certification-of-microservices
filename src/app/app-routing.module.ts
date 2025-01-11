@@ -34,7 +34,7 @@ const routes: Routes = [
     path: AppRoutes.Requirements.Path,
     title: AppRoutes.Requirements.Title,
     loadChildren: () =>
-      import('./services/feature/services-shell/services.module').then(
+      import('./requirements/feature/requirements-shell/requirements.module').then(
         (m) => m.ServicesModule
       ),
     // canActivate: [AuthGuard]

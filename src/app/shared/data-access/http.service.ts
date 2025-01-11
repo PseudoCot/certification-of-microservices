@@ -110,6 +110,8 @@ export class HttpService {
 
   public dataModelRequest<Data, Res = null, Req = null>(dataModel: DataModel, apiRoute: ApiRoute): Observable<RequestState<Data>> {
     const reqBody = dataModel.toRequestDTO();
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     return this.jsonRpcRequest<Res, Req>({
       url: `${API_URL}${apiRoute.Path}`,
       jsonRpcMethod: apiRoute.Method,
@@ -120,7 +122,8 @@ export class HttpService {
         if (reqState.isSuccess && reqState.data) {
           return {
             ...reqState,
-            data: dataModel.getDataFromResponseDTO(reqState.data)
+            data: dataModel.getDataFromResponseDTO(reqState.data),
+            time: (new Date()).getUTCSeconds()
           }
         }
         return reqState;

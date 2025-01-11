@@ -11,12 +11,13 @@ import { RequestState } from "../types/http/request-state.type";
   providedIn: 'root',
 })
 export class RequirementsService {
-  public servicesRequirementData$ = new BehaviorSubject<RequestState<RequirementData[]> | null>(null);
-  public releasesRequirementData$ = new BehaviorSubject<RequestState<RequirementData[]> | null>(null);
+  public servicesRequirementData$?: BehaviorSubject<RequestState<RequirementData[]> | null>;
+  public releasesRequirementData$?: BehaviorSubject<RequestState<RequirementData[]> | null>;
 
   constructor(private http: HttpService) { }
 
   public getAllServicesRequirements(dataModel: GetAllServiceRequirementsDataModel) {
+    this.servicesRequirementData$ = new BehaviorSubject<RequestState<RequirementData[]> | null>(null);
     const req = this.http.dataModelRequest<RequirementData[]>(
       dataModel,
       ApiRoutes.GetAllServiceRequirements
@@ -25,6 +26,7 @@ export class RequirementsService {
     return req;
   }
   public getAllReleasesRequirements(dataModel: GetAllReleaseRequirementsDataModel) {
+    this.releasesRequirementData$ = new BehaviorSubject<RequestState<RequirementData[]> | null>(null);
     const req = this.http.dataModelRequest<RequirementData[]>(
       dataModel,
       ApiRoutes.GetAllReleaseRequirements

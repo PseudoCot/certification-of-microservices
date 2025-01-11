@@ -7,15 +7,15 @@
   word-wrap: break-word;
   color: #FFFFFF99;
 
-  &:hover,
-  &--highlight {
+  &:hover {
     text-decoration: underline;
     text-decoration-skip-ink: none;
     color: var(--green-color);
   }
 
   &:focus,
-  &:active {
+  &:active,
+  &--highlight {
     text-decoration: underline;
     text-decoration-skip-ink: none;
   }

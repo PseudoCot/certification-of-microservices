@@ -68,5 +68,5 @@
   <app-loader />
 }
 
-<app-submiting-modal-window question="Вы действительно хотите безвозвратно удалить этот аккаунт?" [show$]="showModal$"
-  (submitClick$)="deleteUser()" (dismissClick$)="showModal$.next(false)" />
+<app-submiting-modal-window question="Вы действительно хотите безвозвратно удалить этот аккаунт?" [show]="!!(showModal$ | async)"
+  (submit$)="deleteUser()" (dismiss$)="showModal$.next(false)" />

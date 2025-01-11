@@ -41,10 +41,8 @@ export class UserPage {
       nickname: ['', Validators.required],
     });
 
-    if (!userService.currentUserData$.value) {
-      const model = new GetUserDataModel();
-      userService.getCurrentUser(model);
-    }
+    const model = new GetUserDataModel();
+    userService.getCurrentUser(model);
   }
 
   protected deleteUser() {
