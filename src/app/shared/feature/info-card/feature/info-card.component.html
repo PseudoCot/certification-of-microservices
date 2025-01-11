@@ -1,43 +1,43 @@
-<section class="{{classPrefix}} info-card card">
-  <div class="{{classPrefix}}__head info-card__head card__head">
-    <h1 class="{{classPrefix}}__title info-card__title card__small-title title-reset">
+<section class="info-card card">
+  <div class="info-card__head card__head">
+    <h1 class="info-card__title card__small-title title-reset">
       {{ title }}
     </h1>
 
     @if (editMode$ | async) {
-    <button class="{{classPrefix}}__cancel-edit-btn info-card__cancel-edit-btn btn-reset"
-      (click)="cancelChangesClick$.next()">
-      <app-svg-icon icon="cross" size="20" />
-    </button>
+      <button class="info-card__cancel-edit-btn btn-reset"
+        (click)="cancelChangesClick$.next()">
+        <app-svg-icon icon="cross" size="20" />
+      </button>
     }
 
     @else {
-    <button class="{{classPrefix}}__edit-btn info-card__edit-btn btn-reset" (click)="editClick$.next()">
-      <app-svg-icon icon="pen" width="20" height="21" />
-    </button>
-    <button class="{{classPrefix}}__delete-btn info-card__delete-btn btn-reset" (click)="delete$.next()">
-      <app-svg-icon icon="bin" width="21" height="24" />
-    </button>
+      <button class="info-card__edit-btn btn-reset" (click)="editClick$.next()">
+        <app-svg-icon icon="pen" width="20" height="21" />
+      </button>
+      <button class="info-card__delete-btn btn-reset" (click)="delete$.next()">
+        <app-svg-icon icon="bin" width="21" height="24" />
+      </button>
     }
   </div>
 
-  <ul class="{{classPrefix}}__requirements-list info-card__requirements-list list-reset">
-    @for (requirementItem of requirementItems; track requirementItem.id) {
-    <app-requirement-item [classPrefix]="classPrefix" [requirementItem]="requirementItem" [editMode$]="editMode$"
-      (deleteRequirement$)="deleteRequirement$.next($event)" />
-    }
+  <ul class="info-card__requirements-list list-reset">
+    <!-- @for (requirementItem of requirementItems; track requirementItem.id) {
+      <app-requirement-item [requirementItem]="requirementItem" [editMode$]="editMode$"
+        (deleteRequirement$)="deleteRequirement$.next($event)" />
+    } -->
   </ul>
 
-  <div class="{{classPrefix}}__footer info-card__footer">
-    <button class="{{classPrefix}}__add-requirement-btn info-card__add-requirement-btn btn-reset"
+  <div class="info-card__footer">
+    <button class="info-card__add-requirement-btn btn-reset"
       (click)="addRequirement$.next()">
       <app-svg-icon icon="plus" width="19" height="20" />
     </button>
 
     @if (editMode$ | async) {
-    <app-button classes="{{classPrefix}}__save-changes-btn info-card__save-changes-btn" (click)="saveChanges$.next()">
-      Сохранить
-    </app-button>
+      <app-button classes="info-card__save-changes-btn" (click)="saveChanges$.next()">
+        Сохранить
+      </app-button>
     }
   </div>
 </section>

@@ -17,7 +17,6 @@ import { RequirementData } from '../../../../models/data/requirement.data';
 export class RequirementItemComponent {
   protected _requirementTypes = RequirementTypes;
 
-  @Input({ required: true }) classPrefix!: string;
   @Input({ required: true }) requirementItem!: RequirementData;
 
   @Input({ required: true }) editMode$!: Observable<boolean>;

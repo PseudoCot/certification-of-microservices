@@ -1,43 +1,41 @@
-<li class="{{classPrefix}}__requirement-item info-card__requirement-item">
-  <div class="{{classPrefix}}__requirement-name info-card__requirement-name">
+<li class="info-card__requirement-item">
+  <div class="info-card__requirement-name">
     @if (editMode$ | async) {
-    <!-- TODO drag and drop -->
-    <app-dnd-button />
+      <app-dnd-button />
     }
 
     {{ requirementItem.name }}
   </div>
-  <div class="{{classPrefix}}__requirement-content info-card__requirement-content">
+  <div class="info-card__requirement-content">
     @if (editMode$ | async) {
-    <input type="text" [name]="requirementItem.name" [id]="requirementItem.id" [value]="requirementItem.value">
-    <button class="{{classPrefix}}__requirement-delete-btn info-card__requirement-delete-btn btn-reset"
-      (click)="deleteRequirement$.next(requirementItem.id)">
-      <app-svg-icon icon="bin" width="21" height="24" />
-    </button>
+      <input type="text" [name]="requirementItem.name" [id]="requirementItem.id" [value]="requirementItem.value">
+      <button class="info-card__requirement-delete-btn btn-reset"
+        (click)="deleteRequirement$.next(requirementItem.id)">
+        <app-svg-icon icon="bin" width="21" height="24" />
+      </button>
     }
-
     @else {
-    <ng-container [ngSwitch]="requirementItem.type">
-      <!-- <ng-container *ngSwitchCase="_requirementTypes.Text">
-          <button class="{{classPrefix}}__requirement-entity requirement-entity requirement-entity--text btn-reset">
+      <ng-container [ngSwitch]="requirementItem.type">
+        <ng-container *ngSwitchCase="_requirementTypes.Text">
+            <button class="requirement-entity requirement-entity--text btn-reset">
+              {{ requirementItem.value }}
+            </button>
+          </ng-container>
+        <ng-container *ngSwitchCase="_requirementTypes.Link">
+          <button class="requirement-entity requirement-entity--link btn-reset">
             {{ requirementItem.value }}
           </button>
-        </ng-container> -->
-      <ng-container *ngSwitchCase="_requirementTypes.Link">
-        <button class="{{classPrefix}}__requirement-entity requirement-entity requirement-entity--link btn-reset">
-          {{ requirementItem.value }}
-        </button>
+        </ng-container>
+        <ng-container *ngSwitchCase="_requirementTypes.File">
+          <button class="requirement-entity requirement-entity--file btn-reset">
+            {{ requirementItem.value }}
+          </button>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          <!-- TODO сохранять перенос текста -->
+          <span class="info-card__requirement-row-text">{{ requirementItem.value }}</span>
+        </ng-container>
       </ng-container>
-      <ng-container *ngSwitchCase="_requirementTypes.File">
-        <button class="{{classPrefix}}__requirement-entity requirement-entity requirement-entity--file btn-reset">
-          {{ requirementItem.value }}
-        </button>
-      </ng-container>
-      <ng-container *ngSwitchDefault>
-        <!-- TODO сохранять перенос текста -->
-        <span class="{{classPrefix}}__requirement-row-text">{{ requirementItem.value }}</span>
-      </ng-container>
-    </ng-container>
     }
   </div>
 </li>

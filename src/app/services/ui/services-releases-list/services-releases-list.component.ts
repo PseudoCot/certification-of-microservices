@@ -6,7 +6,7 @@ import { ReleaseData } from '../../../shared/models/data/release.data';
 @Component({
   selector: 'app-services-releases-list',
   templateUrl: './services-releases-list.component.html',
-  styleUrls: ['./services-releases-list.component.scss'],
+  styleUrls: ['./services-releases-list.component.scss', '../../../shared/ui/card/card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [RouterModule, TextLinkComponent],

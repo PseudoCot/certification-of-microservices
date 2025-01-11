@@ -1,1 +1,147 @@
 :host {}
+
+.services__service-info-wrapper {
+  padding: 0 25px;
+  display: grid;
+  grid-template-columns: minmax(290px, 1fr) minmax(800px, 2.6fr) 1fr;
+}
+
+.service-actions {
+  grid-column-start: 2;
+}
+
+.service-releases {
+  grid-column-start: 1;
+  grid-row-start: 2;
+}
+
+.service-info {
+  grid-column-start: 2;
+  grid-row-start: 2;
+}
+
+// ::ng-deep .service-info {
+//   grid-column-start: 2;
+//   grid-row-start: 2;
+
+//   &__head {
+//     padding: 20px 20px 0 30px;
+//     margin-bottom: 30px;
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: flex-end;
+//     align-items: flex-start;
+//   }
+
+//   &__title {
+//     margin-top: 15px;
+//     width: 100%;
+//   }
+
+//   &__edit-btn {
+//     padding: 5px;
+//     margin: -5px 20px -5px -5px;
+//   }
+
+//   &__delete-btn {
+//     padding: 5px;
+//     margin: -5px -5px -5px -5px;
+//   }
+
+//   &__requirement-item {
+//     display: flex;
+//     flex-direction: row;
+//     border-top: var(--info-table-border);
+//   }
+
+//   &__requirement-item:last-of-type {
+//     border-bottom: var(--info-table-border);
+//   }
+
+//   &__requirement-name {
+//     padding: 14px 30px;
+//     width: 366px;
+//     font-family: var(--second-family);
+//     font-weight: 400;
+//     font-size: 32px;
+//     color: var(--text-light-color);
+//     border-right: var(--info-table-border);
+//   }
+
+//   &__requirement-content {
+//     padding: 15px 18px 17px;
+//     width: 100%;
+//   }
+
+//   &__requirement-row-text {
+//     font-family: var(--font-family);
+//     font-weight: 300;
+//     font-size: 28px;
+//     color: var(--text-light-color);
+//   }
+
+//   &__requirement-entity {
+//     margin: -7px 0;
+//   }
+
+//   &__footer {
+//     padding: 10px 30px 0;
+//   }
+
+//   &__add-requirement-btn {
+//     padding: 5px;
+//     margin: -5px -5px 0;
+//   }
+// }
+
+
+// ::ng-deep .service-edit {
+//   &__close-btn {
+//     padding: 5px;
+//     margin: -5px -5px -5px -5px;
+//   }
+
+//   &__requirement-item:hover {
+//     background-color: #D9D9D928;
+//   }
+
+//   &__requirement-name {
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//   }
+
+//   &__requirement-dnd-btn {
+//     padding: 5px;
+//     margin: -5px 5px -5px -5px;
+//   }
+
+//   &__requirement-content {
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     justify-content: space-between;
+//   }
+
+//   &__requirement-delete-btn {
+//     padding: 5px;
+//     margin: -5px;
+//   }
+
+//   &__footer {
+//     padding-bottom: 20px;
+//     display: flex;
+//     flex-direction: column;
+//   }
+
+//   &__add-requirement-btn {
+//     margin-bottom: 12px;
+//     width: fit-content;
+//   }
+
+//   &__save-changes-btn {
+//     padding: 16px 34px;
+//     margin: 0 auto;
+//     display: block;
+//   }
+// }

@@ -1,15 +1,14 @@
 <div class="services__service-info-wrapper">
   @if (serviceData) {
-  <app-services-actions (checkReadiness$)="checkReadiness()" (generatePage$)="generatePage()" />
+    <app-services-actions class="service-actions" (checkReadiness$)="checkReadiness()" (generatePage$)="generatePage()" />
 
-  <app-services-releases-list [releasesData]="serviceReleasesData" />
+    <app-services-releases-list class="service-releases" [releasesData]="serviceReleasesData" />
 
-  <app-info-card classPrefix="service-info" [title]="serviceData.name" [requirementItems]="serviceData.requirements"
-    (delete$)="deleteService()" (saveChanges$)="editService()" (addRequirement$)="addRequirement()"
-    (deleteRequirement$)="deleteRequirement()" />
-  }
-
+    <app-info-card class="service-info" classPrefix="service-info" [title]="serviceData.name" [requirementItems]="serviceData.requirements"
+      (delete$)="deleteService()" (saveChanges$)="editService()" (addRequirement$)="addRequirement()"
+      (deleteRequirement$)="deleteRequirement()" />
+    }
   @else {
-  <app-loader />
+    <app-loader />
   }
 </div>

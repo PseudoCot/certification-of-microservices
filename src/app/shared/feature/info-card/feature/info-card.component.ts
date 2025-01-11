@@ -4,7 +4,6 @@ import { from, map, merge, startWith, Subject } from 'rxjs';
 import { RequirementItemComponent } from '../ui/requirement-item/requirement-item.component';
 import { ButtonComponent } from '../../../ui/button/button.component';
 import { SvgIconComponent } from '../../../ui/svg-icon/svg-icon.component';
-import { RequirementData } from '../../../models/data/requirement.data';
 
 @Component({
   selector: 'app-info-card',
@@ -15,10 +14,7 @@ import { RequirementData } from '../../../models/data/requirement.data';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InfoCardComponent {
-  @Input({ required: true }) classPrefix!: string;
   @Input({ required: true }) title!: string;
-
-  @Input({ required: true }) requirementItems!: RequirementData[];
 
   @Output() delete$ = new EventEmitter<void>();
 
@@ -40,4 +36,6 @@ export class InfoCardComponent {
   @Output() addRequirement$ = new EventEmitter<void>();
   @Output() deleteRequirement$ = new EventEmitter<string>();
 
+
+  // constructor()
 }
