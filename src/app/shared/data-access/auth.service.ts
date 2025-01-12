@@ -23,11 +23,11 @@ export class AuthService {
   constructor(
     private http: HttpService,
     private router: Router,
-    private storageService: StorageService
+    private storageService: StorageService,
   ) {
-    if (!storageService.getSessionData()?.token) {
-      this.router.navigateByUrl('auth/login');
-    }
+    // if (!storageService.getSessionData()?.token && !router.url.includes('register')) {
+    //   this.router.navigateByUrl('auth/login');
+    // }
   }
 
   public isAuthenticated() {

@@ -1,3 +1,4 @@
+import { ServicesService } from './services.service';
 import { Injectable } from "@angular/core";
 import { ReleaseData } from "../models/data/release.data";
 import { BehaviorSubject, tap } from "rxjs";
@@ -10,6 +11,10 @@ import { CreateReleaseByAnotherDataModel } from "../models/release-create-by-ano
 import { GetReleasesDataModel } from "../models/releases-search/search-releases.data-model";
 import { HttpService } from "./http.service";
 import { Router } from "@angular/router";
+import { GetReleaseDataModel } from "../models/release-get/get-release.data-model";
+import { AddReleaseRequirementDataModel } from "../models/release-add-requirement/add-release-requirement.data-model";
+import { EditReleaseRequirementDataModel } from "../models/release-edit-requirement/edit-release-requirement.data-model";
+import { DeleteReleaseRequirementDataModel } from "../models/release-delete-requirement/delete-release-requirement.data-model";
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +25,8 @@ export class ReleasesService {
 
   constructor(
     private http: HttpService,
-    private router: Router
+    private router: Router,
+    private servicesService: ServicesService
   ) { }
 
 
@@ -62,7 +68,7 @@ export class ReleasesService {
     return req;
   }
 
-  public getRelease(dataModel: GetReleasesDataModel) {
+  public getRelease(dataModel: GetReleaseDataModel) {
     this.releaseData$ = new BehaviorSubject<RequestState<ReleaseData> | null>(null)
     const req = this.http.dataModelRequest<ReleaseData>(
       dataModel,
@@ -72,24 +78,48 @@ export class ReleasesService {
     return req;
   }
 
-  public addReleaseRequirement(dataModel: GetReleasesDataModel) {
+  public addReleaseRequirement(dataModel: AddReleaseRequirementDataModel) {
     return this.http.dataModelRequest<RequirementData>(
       dataModel,
       ApiRoutes.AddReleaseRequirement
+    ).pipe(
+      tap((res) => {
+        if (res.isSuccess && res.data?.id) {
+          const model = new GetReleaseDataModel();
+          model.id = res.data.id;
+          this.getRelease(model);
+        }
+      })
     );
   }
 
-  public editReleaseRequirement(dataModel: GetReleasesDataModel) {
+  public editReleaseRequirement(dataModel: EditReleaseRequirementDataModel) {
     return this.http.dataModelRequest<RequirementData>(
       dataModel,
       ApiRoutes.EditReleaseRequirement
+    ).pipe(
+      tap((res) => {
+        if (res.isSuccess && res.data?.id) {
+          const model = new GetReleaseDataModel();
+          model.id = res.data.id;
+          this.getRelease(model);
+        }
+      })
     );
   }
 
-  public deleteReleaseRequirement(dataModel: GetReleasesDataModel) {
+  public deleteReleaseRequirement(dataModel: DeleteReleaseRequirementDataModel) {
     return this.http.dataModelRequest<EmptyData>(
       dataModel,
       ApiRoutes.DeleteReleaseRequirement
+    ).pipe(
+      tap((res) => {
+        if (res.isSuccess && this.servicesService.serviceData$?.value?.data?.id) {
+          const model = new GetReleaseDataModel();
+          model.id = this.servicesService.serviceData$.value.data.id;
+          this.getRelease(model);
+        }
+      })
     );
   }
 }

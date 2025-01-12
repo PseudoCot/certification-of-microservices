@@ -21,5 +21,5 @@ export class RequirementItemComponent {
 
   @Input({ required: true }) editMode$!: Observable<boolean>;
 
-  @Output() deleteRequirement$ = new EventEmitter<string>();
+  @Output() deleteRequirement$ = new EventEmitter<void>();
 }

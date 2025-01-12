@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { ModalWindowComponent } from "../../../shared/ui/modal-window/modal-window.component";
-import { SvgIconComponent } from "../../../shared/ui/svg-icon/svg-icon.component";
 import { ButtonComponent } from "../../../shared/ui/button/button.component";
 import { UserDataMock } from '../../../shared/models/mock-data/user.data-mock';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RequirementData } from '../../../shared/models/data/requirement.data';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RawRequirementData } from '../../../shared/models/data/raw-requirement.data';
 
 @Component({
   selector: 'app-creating-requirement-form',
@@ -17,7 +16,7 @@ import { RequirementData } from '../../../shared/models/data/requirement.data';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ModalWindowComponent, SvgIconComponent, ButtonComponent],
+  imports: [ModalWindowComponent, ButtonComponent, ReactiveFormsModule],
 })
 export class CreatingRequirementFormComponent {
   protected form: FormGroup;
@@ -27,7 +26,7 @@ export class CreatingRequirementFormComponent {
   @Input() shortFormat = true;
 
   @Output() close$ = new EventEmitter<void>();
-  @Output() submit$ = new EventEmitter<RequirementData>();
+  @Output() submit$ = new EventEmitter<RawRequirementData>();
 
 
   constructor(private fb: FormBuilder) {

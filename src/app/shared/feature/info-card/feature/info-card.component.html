@@ -1,43 +1,157 @@
-<section class="info-card card">
-  <div class="info-card__head card__head">
-    <h1 class="info-card__title card__small-title title-reset">
-      {{ title }}
-    </h1>
+@let data = servicesService.serviceData$ | async;
+<!-- @let data = data$ | async;
+@let isRelease = !!data?.data?.semanticVersion; -->
 
-    @if (editMode$ | async) {
-      <button class="info-card__cancel-edit-btn btn-reset"
-        (click)="cancelChangesClick$.next()">
-        <app-svg-icon icon="cross" size="20" />
+@if (data?.isDone) {
+  <section class="info-card card">
+    <div class="info-card__head card__head">
+      <h1 class="info-card__title card__small-title title-reset">
+        {{ data?.data?.name }}
+      </h1>
+
+      @if (editMode$ | async) {
+        <button class="info-card__cancel-edit-btn btn-reset"
+          (click)="cancelChangesClick$.next()">
+          <app-svg-icon icon="cross" size="20" />
+        </button>
+      } @else {
+        <button class="info-card__edit-btn btn-reset" (click)="editClick$.next()">
+          <app-svg-icon icon="pen" width="20" height="21" />
+        </button>
+        <button class="info-card__delete-btn btn-reset" (click)="showDataDeleteForm$.next(true)">
+          <app-svg-icon icon="bin" width="21" height="24" />
+        </button>
+      }
+    </div>
+
+    <ul class="info-card__requirements-list list-reset" [formGroup]="editForm">
+      <li class="info-card__requirement-item">
+        <div class="info-card__requirement-name">
+          <div class="info-card__requirement-name-top">
+            Название
+          </div>
+          <div class="info-card__requirement-name-bottom">
+            Влад Владов
+            <!-- {{ requirementItem.responsibleId }} -->
+          </div>
+        </div>
+        <div class="info-card__requirement-content">
+          @if (editMode$ | async) {
+            <input class="info-card__requirement-input" type="text" name="name" id="name" [value]="data?.data?.name" formControlName="name">
+          } @else {
+            <span class="info-card__requirement-row-text">{{ data?.data?.name }}</span>
+          }
+        </div>
+      </li>
+      <li class="info-card__requirement-item">
+        <div class="info-card__requirement-name">
+          <div class="info-card__requirement-name-top">
+            {{ isRelease ? 'Стадия разработки' : 'Описание' }}
+          </div>
+          <div class="info-card__requirement-name-bottom">
+            Влад Владов
+            <!-- {{ requirementItem.responsibleId }} -->
+          </div>
+        </div>
+        <div class="info-card__requirement-content">
+          @if (editMode$ | async) {
+            <input class="info-card__requirement-input" type="text" name="description" id="id" formControlName="description"
+              [value]="data?.data?.description">
+            <!-- <input type="text" name="description" id="id"
+              [value]="isRelease ? data?.data?.semanticVersion : data?.data?.description"> -->
+          } @else {
+            <span class="info-card__requirement-row-text">
+              {{ data?.data?.description }}
+              <!-- {{ isRelease ? data?.data?.semanticVersion : data?.data?.description }} -->
+            </span>
+          }
+        </div>
+      </li>
+      @for (requirementItem of data?.data?.requirements; track requirementItem.id) {
+        <li class="info-card__requirement-item">
+          <div class="info-card__requirement-name">
+            <div class="info-card__requirement-name-top">
+              @if (editMode$ | async) {
+                <app-dnd-button />
+              }
+
+              {{ requirementItem.name }}
+            </div>
+            <div class="info-card__requirement-name-bottom">
+              Влад Владов
+            </div>
+          </div>
+          <div class="info-card__requirement-content">
+            @if (editMode$ | async) {
+              <input class="info-card__requirement-input" type="text" [name]="requirementItem.name" [id]="requirementItem.id"
+                [value]="requirementItem.value" [formControlName]="requirementItem.id">
+              <button class="info-card__requirement-delete-btn btn-reset" (click)="showRequirementDeleteForm$.next(requirementItem.id)">
+                <app-svg-icon icon="bin" width="21" height="24" />
+              </button>
+            } @else {
+              <ng-container [ngSwitch]="requirementItem.type">
+                <ng-container *ngSwitchCase="_requirementTypes.Text">
+                  <button class="requirement-entity requirement-entity--text btn-reset">
+                    {{ requirementItem.value }}
+                  </button>
+                </ng-container>
+                <ng-container *ngSwitchCase="_requirementTypes.Link">
+                  <button class="requirement-entity requirement-entity--link btn-reset">
+                    {{ requirementItem.value }}
+                  </button>
+                </ng-container>
+                <ng-container *ngSwitchCase="_requirementTypes.File">
+                  <button class="requirement-entity requirement-entity--file btn-reset">
+                    {{ requirementItem.value }}
+                  </button>
+                </ng-container>
+                <ng-container *ngSwitchDefault>
+                  <span class="info-card__requirement-row-text">{{ requirementItem.value }}</span>
+                </ng-container>
+              </ng-container>
+            }
+          </div>
+        </li>
+      } @empty {
+        <div class="info-card__empty-list-message">
+          Требований нет
+        </div>
+      }
+    </ul>
+
+    <div class="info-card__footer">
+      <button class="info-card__add-requirement-btn btn-reset"
+        (click)="showRequirementCreatingForm$.next(true)">
+        <app-svg-icon icon="plus" width="19" height="20" />
       </button>
-    }
 
-    @else {
-      <button class="info-card__edit-btn btn-reset" (click)="editClick$.next()">
-        <app-svg-icon icon="pen" width="20" height="21" />
-      </button>
-      <button class="info-card__delete-btn btn-reset" (click)="delete$.next()">
-        <app-svg-icon icon="bin" width="21" height="24" />
-      </button>
-    }
-  </div>
+      @if (editMode$ | async) {
+        <app-button classes="info-card__save-changes-btn" (click)="handleChangesSaving()">
+          Сохранить
+        </app-button>
+      } @else {
+        <div class="info-card__actions-history">
+          <p class="info-card__last-check paragraph-reset">
+            Последняя проверка готовности: дд.мм.гг чч.мм
+          </p>
+          <p class="info-card__confluence-link paragraph-reset">
+            Страница в Confluence не опубликована
+          </p>
+        </div>
+      }
+    </div>
+  </section>
+}
 
-  <ul class="info-card__requirements-list list-reset">
-    <!-- @for (requirementItem of requirementItems; track requirementItem.id) {
-      <app-requirement-item [requirementItem]="requirementItem" [editMode$]="editMode$"
-        (deleteRequirement$)="deleteRequirement$.next($event)" />
-    } -->
-  </ul>
+<app-creating-requirement-form [show]="!!(showRequirementCreatingForm$ | async)"
+  (close$)="showRequirementCreatingForm$.next(false)" (submit$)="temp($event)" />
 
-  <div class="info-card__footer">
-    <button class="info-card__add-requirement-btn btn-reset"
-      (click)="addRequirement$.next()">
-      <app-svg-icon icon="plus" width="19" height="20" />
-    </button>
+<app-submiting-modal-window question="Вы действительно хотите безвозвратно удалить это требование?"
+  [show]="!!(showRequirementDeleteForm$ | async)" (dismiss$)="showRequirementDeleteForm$.next(null)"
+  (close$)="showRequirementDeleteForm$.next(null)"
+  (submit$)="deleteRequirement$.next(showRequirementDeleteForm$.value || '')" />
 
-    @if (editMode$ | async) {
-      <app-button classes="info-card__save-changes-btn" (click)="saveChanges$.next()">
-        Сохранить
-      </app-button>
-    }
-  </div>
-</section>
+<app-submiting-modal-window question="Вы действительно хотите безвозвратно удалить этот {{isRelease ? 'релиз' : 'сервис'}}?"
+  [show]="!!(showDataDeleteForm$ | async)" (dismiss$)="showDataDeleteForm$.next(false)"
+  (close$)="showDataDeleteForm$.next(false)" (submit$)="deleteData$.next()" />
+

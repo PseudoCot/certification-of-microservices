@@ -8,6 +8,12 @@ export const UserDataMock: UserData[] = [
     nickname: 'IvanXX99',
   },
   {
+    id: 'hfas89hh2avajj09',
+    name: 'Влад Владов',
+    email: 'vlaDD.vlaDov@urfu.com',
+    nickname: 'VLADxXx',
+  },
+  {
     id: '8d9sahds887a7',
     name: 'Родион Родионов',
     email: 'Rodion.Rodionov@urfu.me',
@@ -16,7 +22,7 @@ export const UserDataMock: UserData[] = [
   {
     id: 'h89da9g9ga2g',
     name: 'Коля Колян',
-    email: 'kolovan.load@urfu.me',
+    email: 'kolovan.load@urfu.ru',
     nickname: 'LoadKoLoVaNxXx',
   }
 ];

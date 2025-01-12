@@ -20,6 +20,26 @@
   grid-row-start: 2;
 }
 
+.check-modal,
+.generate-modal {
+  padding: 60px 40px;
+  max-width: 1050px;
+}
+
+.check-modal__message,
+.check-modal__problems,
+.generate-modal__message {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 32px;
+  word-wrap: break-word;
+  color: #fff;
+}
+
+.check-modal__problems {
+  color: #FFFFFF88;
+}
+
 // ::ng-deep .service-info {
 //   grid-column-start: 2;
 //   grid-row-start: 2;

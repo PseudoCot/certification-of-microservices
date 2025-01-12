@@ -1,8 +1,8 @@
 <app-modal-window [show]="show" (close$)="close$.next()">
-  <form class="create-requirement__form">
+  <form class="create-requirement__form" [formGroup]="form">
     <label class="create-requirement__title modal-card__title" for="serviceName">Создать требование</label>
     <input class="create-requirement__input modal-card__input" type="text" name="serviceName" id="serviceName"
-      placeholder="Название требования">
+      placeholder="Название требования" formControlName="name">
 
     <div class="create-requirement__radio-btns">
       <div class="create-requirement__radio-btn">
@@ -37,7 +37,7 @@
     }
 
     <div class="create-requirement__btns">
-      <app-button classes="create-requirement__submit-btn" type="submit" (click$)="submit()">
+      <app-button classes="create-requirement__submit-btn" (click$)="submit()">
         Сохранить
       </app-button>
     </div>

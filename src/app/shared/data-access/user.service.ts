@@ -24,6 +24,7 @@ export class UserService {
     return req;
   }
 
+  // send request to get data?
   // public updateUser(dataModel: GetUserDataModel) {
   //   this.userData$ = this.http.dataModelRequest<GetUserResponseDto, GetUserRequestDto>(
   //     dataModel,

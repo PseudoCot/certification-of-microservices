@@ -11,6 +11,11 @@ import { CreateServiceByAnotherDataModel } from "../models/service-create-by-ano
 import { RequirementData } from "../models/data/requirement.data";
 import { EmptyData } from "../models/data/empty.data";
 import { Router } from "@angular/router";
+import { GetServiceDataModel } from "../models/service-get/get-service.data-model";
+import { GetServiceReleasesDataModel } from "../models/service-get-releases/get-service-releases.data-model";
+import { AddServiceRequirementDataModel } from "../models/service-add-requirement/add-service-requirement.data-model";
+import { EditServiceRequirementDataModel } from "../models/service-edit-requirement/edit-service-requirement.data-model";
+import { DeleteServiceRequirementDataModel } from "../models/service-delete-requirement/delete-service-requirement.data-model";
 
 @Injectable({
   providedIn: 'root',
@@ -33,7 +38,7 @@ export class ServicesService {
     ).pipe(
       tap((res) => {
         if (res.isSuccess && res.data?.id) {
-          this.router.navigate(['services', { id: res.data.id }])
+          this.router.navigate(['services', { serviceId: res.data.id }])
         }
       })
     );
@@ -46,10 +51,10 @@ export class ServicesService {
     ).pipe(
       tap((res) => {
         if (res.isSuccess && res.data?.id) {
-          this.router.navigate(['services', { id: res.data.id }])
+          this.router.navigateByUrl(`/services/${res.data.id}`)
         }
       })
-    );
+    ).subscribe();
   }
 
   public getServices(dataModel: GetServicesDataModel) {
@@ -62,7 +67,7 @@ export class ServicesService {
     return req;
   }
 
-  public getService(dataModel: GetServicesDataModel) {
+  public getService(dataModel: GetServiceDataModel) {
     this.serviceData$ = new BehaviorSubject<RequestState<ServiceData> | null>(null);
     const req = this.http.dataModelRequest<ServiceData>(
       dataModel,
@@ -72,7 +77,7 @@ export class ServicesService {
     return req;
   }
 
-  public getServiceReleases(dataModel: GetServicesDataModel) {
+  public getServiceReleases(dataModel: GetServiceReleasesDataModel) {
     this.serviceReleasesData$ = new BehaviorSubject<RequestState<ReleaseData[]> | null>(null);
     const req = this.http.dataModelRequest<ReleaseData[]>(
       dataModel,
@@ -82,24 +87,48 @@ export class ServicesService {
     return req;
   }
 
-  public addServiceRequirement(dataModel: GetServicesDataModel) {
+  public addServiceRequirement(dataModel: AddServiceRequirementDataModel) {
     return this.http.dataModelRequest<RequirementData>(
       dataModel,
       ApiRoutes.AddServiceRequirement
-    );
+    ).pipe(
+      tap((res) => {
+        if (res.isSuccess && res.data?.id) {
+          const model = new GetServiceDataModel();
+          model.id = res.data.id;
+          this.getService(model).subscribe();
+        }
+      })
+    ).subscribe();
   }
 
-  public editServiceRequirement(dataModel: GetServicesDataModel) {
+  public editServiceRequirement(dataModel: EditServiceRequirementDataModel) {
     return this.http.dataModelRequest<RequirementData>(
       dataModel,
       ApiRoutes.EditServiceRequirement
+    ).pipe(
+      tap((res) => {
+        if (res.isSuccess && res.data?.id) {
+          const model = new GetServiceDataModel();
+          model.id = res.data.id;
+          this.getService(model);
+        }
+      })
     );
   }
 
-  public deleteServiceRequirement(dataModel: GetServicesDataModel) {
+  public deleteServiceRequirement(dataModel: DeleteServiceRequirementDataModel) {
     return this.http.dataModelRequest<EmptyData>(
       dataModel,
       ApiRoutes.DeleteServiceRequirement
+    ).pipe(
+      tap((res) => {
+        if (res.isSuccess && this.serviceData$?.value?.data) {
+          const model = new GetServiceDataModel();
+          model.id = this.serviceData$.value.data.id;
+          this.getService(model);
+        }
+      })
     );
   }
 }

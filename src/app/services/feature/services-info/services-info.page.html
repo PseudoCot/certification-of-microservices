@@ -1,14 +1,39 @@
+@let serviceData = servicesService.serviceData$ | async;
+
 <div class="services__service-info-wrapper">
-  @if (serviceData) {
-    <app-services-actions class="service-actions" (checkReadiness$)="checkReadiness()" (generatePage$)="generatePage()" />
+  <!-- @if (serviceData?.isDone) { -->
+    <app-services-actions class="service-actions" (checkReadiness$)="showCheckModal$.next(true)"
+      (generatePage$)="showGenerateModal$.next(true)" />
 
-    <app-services-releases-list class="service-releases" [releasesData]="serviceReleasesData" />
+    <app-services-releases-list class="service-releases" [serviceId]="serviceData?.data?.id || ''" />
 
-    <app-info-card class="service-info" classPrefix="service-info" [title]="serviceData.name"
-      (delete$)="deleteService()" (saveChanges$)="editService()" (addRequirement$)="addRequirement()"
-      (deleteRequirement$)="deleteRequirement()" />
-    }
+    <app-info-card class="service-info" (createRequirement$)="handleRequirementCreating($event)"
+      (deleteRequirement$)="handleRequirementDeleting($event)" (deleteData$)="handleDataDeleting()"/>
+    <!-- }
   @else {
     <app-loader />
-  }
+  } -->
 </div>
+
+<app-modal-window [show]="!!(showCheckModal$ | async)" (close$)="showCheckModal$.next(false)">
+  <div class="check-modal">
+    <p class="check-modal__message paragraph-reset">
+      Проверка выполнена. <br>
+      Не заполнены следующие требования:
+    </p>
+    <p class="check-modal__problems paragraph-reset">
+      Вид проекта, ответственный Влад Владов <br>
+      Дедлайн, ответственный Влад Владов
+    </p>
+  </div>
+</app-modal-window>
+
+<app-modal-window [show]="!!(showGenerateModal$ | async)" (close$)="showGenerateModal$.next(false)">
+  <div class="generate-modal">
+    <p class="generate-modal__message">
+      Страница сгенерирована частично. <br>
+      Ссылка на страницу https://asemyonov.atlassian.net/wiki/spaces/~619e5952c510bc006b96a866/pages/24051714/Excel3000 <br>
+      При повторной генерации данные будут пересозданы.
+    </p>
+  </div>
+</app-modal-window>

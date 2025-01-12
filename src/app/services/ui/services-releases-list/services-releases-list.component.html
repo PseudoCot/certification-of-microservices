@@ -1,18 +1,23 @@
-<div class="service__service-releases service-releases card">
-  <h2 class="service-releases__title card__small-title title-reset">Релизы</h2>
-  @if (releasesData?.length) {
-  <ul class="service-releases__list list-reset">
-    @for (release of releasesData; track release.id) {
-    <li class="service-releases__item">
-      <app-text-link class="service-releases__link" [linkPath]="release.id">
-        {{ release.name }}
-      </app-text-link>
-    </li>
-    }
-  </ul>
-  }
+@let releasesData = servicesService.serviceReleasesData$ | async;
 
-  @else {
-  <p class="service-releases__empty-list-message paragraph-reset">Релизов нет</p>
-  }
-</div>
+@if (releasesData?.isDone) {
+  <div class="service__service-releases service-releases card">
+    <button class="service-releases__add-btn btn-reset">
+      <app-svg-icon icon="plus" width="19" height="20" />
+    </button>
+    <h2 class="service-releases__title card__small-title title-reset">Релизы</h2>
+    <ul class="service-releases__list list-reset">
+      @for (release of releasesData?.data; track release.id) {
+      <li class="service-releases__item">
+        <app-text-link class="service-releases__link" [linkPath]="release.id">
+          {{ release.name }}
+        </app-text-link>
+      </li>
+      } @empty {
+        <p class="service-releases__empty-list-message paragraph-reset">Релизов нет</p>
+      }
+    </ul>
+  </div>
+} @else {
+  <app-loader />
+}

@@ -15,7 +15,7 @@ export class CreateServiceByAnotherDataModel implements DataModel {
       service: {
         name: this.name,
         description: this.description,
-        service_id: this.serviceId
+        source_service_id: this.serviceId
       }
     }
   }

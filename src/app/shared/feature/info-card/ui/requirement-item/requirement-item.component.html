@@ -1,16 +1,22 @@
 <li class="info-card__requirement-item">
   <div class="info-card__requirement-name">
-    @if (editMode$ | async) {
-      <app-dnd-button />
-    }
+    <div class="info-card__requirement-name-top">
+      @if (editMode$ | async) {
+        <app-dnd-button />
+      }
 
-    {{ requirementItem.name }}
+      {{ requirementItem.name }}
+    </div>
+    <div class="info-card__requirement-name-bottom">
+      Влад Владов
+      <!-- {{ requirementItem.responsibleId }} -->
+    </div>
   </div>
   <div class="info-card__requirement-content">
     @if (editMode$ | async) {
       <input type="text" [name]="requirementItem.name" [id]="requirementItem.id" [value]="requirementItem.value">
       <button class="info-card__requirement-delete-btn btn-reset"
-        (click)="deleteRequirement$.next(requirementItem.id)">
+        (click)="deleteRequirement$.next()">
         <app-svg-icon icon="bin" width="21" height="24" />
       </button>
     }
