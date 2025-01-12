@@ -105,8 +105,8 @@ body,
   display: grid;
   grid-template-rows: auto 1fr auto;
   font-weight: 400;
-  /* background: repeat-y 0 15% url('../icons/background-mask.svg'); */
-  background-size: contain;
+  background: repeat-y 0 -30% url('/icons/background-mask.svg');
+  // background-size: contain;
 }
 
 .main {
